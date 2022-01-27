@@ -2,8 +2,8 @@
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="primary">
       <div class="container">
-        <b-navbar-brand href="#"
-          >Strong Calculator
+        <b-navbar-brand href="#">
+          Strong Calculator
           <b-badge>{{ appVersion }}</b-badge>
         </b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -11,10 +11,13 @@
           <!-- left nav-items -->
           <b-navbar-nav>
             <b-nav-item href="#">
-              <router-link to="/">Calculator</router-link>
+              <router-link to="/">Home</router-link>
             </b-nav-item>
             <b-nav-item href="#">
-              <router-link to="/about">About</router-link>
+              <router-link to="/about">About the app</router-link>
+            </b-nav-item>
+            <b-nav-item href="#">
+              <router-link to="/author">About the author</router-link>
             </b-nav-item>
           </b-navbar-nav>
 

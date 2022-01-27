@@ -5,17 +5,17 @@
     </div>
     <div v-else>
       <b-row>
-        <b-col>
-          <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'" :description="'This value is fetched from CoinGecko, in ' + currencies[currency].val.toUpperCase() + ' (' + currencies[currency].symbol + ')'">
+        <b-col sm="4" xs="12">
+          <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'" :description="'This value is fetched from CoinGecko, in ' + currencies[currency].val.toUpperCase() + ' (' + currencies[currency].symbol + ') every ' + refreshRateInMs / 1000 + ' seconds.'">
             <b-form-input v-model="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" required></b-form-input>
           </b-form-group>
         </b-col>
-        <b-col>
+        <b-col sm="4" xs="12">
           <b-form-group label="Rewards per node, per day :" :description="'This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 $' + ticker.toUpperCase() + ' per 7000 Etherum blocks completed.'">
             <b-form-input v-model="nodeRewards" type="number" placeholder="Node rewards" required></b-form-input>
           </b-form-group>
         </b-col>
-        <b-col>
+        <b-col sm="4" xs="12">
           <b-form-group label="Node count :">
             <b-form-input v-model="nodeCount" type="number" placeholder="Node count" required></b-form-input>
           </b-form-group>
@@ -44,28 +44,28 @@
         </b-col> -->
       </b-row>
       <b-row class="rewards">
-        <b-col>
+        <b-col sm="3" xs="12">
           <div class="reward">
             <h5>Daily rewards</h5>
             <div class="token">{{ daily }}&nbsp;${{ ticker.toUpperCase() }}</div>
             <div class="fiat">{{ asFiat(daily) }}&nbsp;{{ currencies[currency].symbol }}</div>
           </div>
         </b-col>
-        <b-col>
+        <b-col sm="3" xs="12">
           <div class="reward">
             <h5>Weekly rewards</h5>
             <div class="token">{{ weekly }}&nbsp;${{ ticker.toUpperCase() }}</div>
             <div class="fiat">{{ asFiat(weekly) }}&nbsp;{{ currencies[currency].symbol }}</div>
           </div>
         </b-col>
-        <b-col>
+        <b-col sm="3" xs="12">
           <div class="reward">
             <h5>Monthly rewards</h5>
             <div class="token">{{ monthly }}&nbsp;${{ ticker.toUpperCase() }}</div>
             <div class="fiat">{{ asFiat(monthly) }}&nbsp;{{ currencies[currency].symbol }}</div>
           </div>
         </b-col>
-        <b-col>
+        <b-col sm="3" xs="12">
           <div class="reward">
             <h5>Annually rewards</h5>
             <div class="token">{{ annually }}&nbsp;${{ ticker.toUpperCase() }}</div>
@@ -163,6 +163,7 @@ export default {
     background-color: @background-color;
     border-radius: 1rem;
     padding: 1rem;
+    margin-bottom: 1rem;
 
     .token {
     }
