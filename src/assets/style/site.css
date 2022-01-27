@@ -1,0 +1,16 @@
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: red;
+}
+#app .navbar {
+  margin-bottom: 15px;
+}
+#app img {
+  max-width: 100%;
+}
+#app p {
+  text-align: justify;
+}
