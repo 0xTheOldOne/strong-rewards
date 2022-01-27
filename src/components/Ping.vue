@@ -1,9 +1,8 @@
 <template>
   <div>
-    Coin Gecko API :
     <div class="status">
-      <div v-if="reachable"><b-icon icon="check-circle-fill" variant="success"></b-icon> Online</div>
-      <div v-else><b-icon icon="exclamation-circle-fill" variant="danger"></b-icon> Offline</div>
+      <b-badge variant="success" v-if="reachable">{{ target }} is online</b-badge>
+      <b-badge variant="danger" v-else>{{ target }} is offline</b-badge>
     </div>
   </div>
 </template>
@@ -17,6 +16,7 @@ export default {
   name: "Ping",
   data() {
     return {
+      target: "Coin Gecko API",
       timer: null,
       refreshRateInMs: 5000,
       reachable: true,

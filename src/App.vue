@@ -2,7 +2,10 @@
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="primary">
       <div class="container">
-        <b-navbar-brand href="#"> Strong Calculator </b-navbar-brand>
+        <b-navbar-brand href="#"
+          >Strong Calculator
+          <b-badge>{{ appVersion }}</b-badge>
+        </b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <!-- left nav-items -->
@@ -31,12 +34,18 @@
 
 <script>
 // @ is an alias to /src
+import { version } from "../package";
 import Ping from "@/components/Ping.vue";
 
 export default {
   name: "App",
   components: {
     Ping,
+  },
+  data() {
+    return {
+      appVersion: version,
+    };
   },
 };
 </script>
