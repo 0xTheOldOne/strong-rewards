@@ -11,16 +11,12 @@
 
 <script>
 // @ is an alias to /src
-import { Chart } from "highcharts-vue";
 import Calculator from "@/components/Calculator.vue";
-import Rewards from "@/components/Rewards.vue";
 
 export default {
   name: "Home",
   components: {
     Calculator,
-    Rewards,
-    highcharts: Chart,
   },
   data() {
     return {
