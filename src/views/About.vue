@@ -17,6 +17,7 @@
         <p>
           <u>To do :</u>
           <ul>
+            <li>Store values with VueX store in order to use those values across all the app</li>
             <li>Add charts</li>
             <li>Add a projection chart of earnings with auto-compound option so you can see when you will be able to create the next node</li>
             <li>Add monthly fees to the earnings projections</li>
