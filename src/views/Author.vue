@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-5">
     <div v-if="githubError != ''">
       <b-card title="Something went wrong... Oops." img-top tag="article" style="max-width: 20rem">
         <b-card-text>
