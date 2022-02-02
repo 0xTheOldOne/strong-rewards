@@ -20,28 +20,6 @@
             <b-form-input v-model.number="nodeCount" type="number" placeholder="Node count" required></b-form-input>
           </b-form-group>
         </b-col>
-        <!-- <b-col>
-          <b-form-input
-            v-model="nftBronzeCount"
-            type="number"
-            placeholder="Bronze NFT count"
-          ></b-form-input>
-          <b-form-input
-            v-model="nftSilverCount"
-            type="number"
-            placeholder="Silver NFT count"
-          ></b-form-input>
-          <b-form-input
-            v-model="nftGoldCount"
-            type="number"
-            placeholder="Gold NFT count"
-          ></b-form-input>
-          <b-form-input
-            v-model="nftPlatiniumCount"
-            type="number"
-            placeholder="Platinium NFT count"
-          ></b-form-input>
-        </b-col> -->
       </b-row>
       <b-row>
         <b-col><Rewards title="daily" :days="1" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" /></b-col>

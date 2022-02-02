@@ -1,15 +1,31 @@
+canvas.particles-js-canvas-el {
+  position: absolute;
+  top: 0;
+}
 #app {
   font-family: "Montserrat", sans-serif;
   font-size: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #f1ffff;
+  background: #000d10;
+  background: linear-gradient(225deg, #000d10 0%, #071b24 10%, #0f3444 100%);
   height: 100vh;
   width: 100vw;
+}
+#app .bg-primary {
+  background-color: #1668b0 !important;
 }
 #app .navbar {
   margin-bottom: 15px;
 }
 #app .navbar .nav-link > * {
   color: inherit !important;
+}
+#app small {
+  color: #f1ffff !important;
+}
+#app input,
+#app .card {
+  color: #2c3e50 !important;
 }

@@ -38,6 +38,7 @@
 <script>
 // @ is an alias to /src
 import { version } from "../package";
+import "particles.js";
 import Ping from "@/components/Ping.vue";
 
 export default {
@@ -49,6 +50,16 @@ export default {
     return {
       appVersion: version,
     };
+  },
+  mounted() {
+    this.initParticles();
+  },
+  methods: {
+    initParticles() {
+      window.particlesJS.load("particles", "particles.json", function () {
+        console.log("callback - particles.js config loaded");
+      });
+    },
   },
 };
 </script>
