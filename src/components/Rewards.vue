@@ -5,10 +5,10 @@
         <div class="title">{{ title.charAt(0).toUpperCase() + title.slice(1) }} rewards</div>
       </b-list-group-item>
       <b-list-group-item>
-        <span class="value">{{ earnedOnPeriod() }}</span> ${{ tokenSymbol.toUpperCase() }}
+        <b-icon icon="wallet" class="mr-2" /> <span class="value">{{ earnedOnPeriod() }}</span> ${{ tokenSymbol.toUpperCase() }}
       </b-list-group-item>
       <b-list-group-item>
-        <span class="value">{{ asFiat(earnedOnPeriod()) }}</span> {{ fiatSymbol }}
+        <b-icon icon="cash" class="mr-2" /> <span class="value">{{ asFiat(earnedOnPeriod()) }}</span> {{ fiatSymbol }}
       </b-list-group-item>
     </b-list-group>
   </b-card>

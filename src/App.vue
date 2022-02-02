@@ -3,8 +3,8 @@
     <b-navbar toggleable="lg" type="dark" variant="primary">
       <div class="container">
         <b-navbar-brand href="#">
-          Strong Calculator
-          <b-badge>{{ appVersion }}</b-badge>
+          <b-icon icon="calculator" class="mr-2" />Strong Calculator
+          <b-badge variant="success">{{ appVersion }}</b-badge>
         </b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
