@@ -39,6 +39,10 @@
             </li>
             <li>
               <b-icon icon="circle" class="mr-1" />
+              Refactor components in order to share calculation values across the app 
+            </li>
+            <li>
+              <b-icon icon="circle" class="mr-1" />
               Store values with <a href="https://vuex.vuejs.org/" target="_blank" rel="noopener noreferrer">VueX</a> store in order to use those values across all the app
             </li>
             <li>
