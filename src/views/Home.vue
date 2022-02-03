@@ -1,9 +1,8 @@
 <template>
-  <b-container>
+  <b-container fluid="md">
     <b-row>
       <b-col>
         <Calculator />
-        <!-- <highcharts :options="chartOptions"></highcharts> -->
       </b-col>
     </b-row>
   </b-container>
