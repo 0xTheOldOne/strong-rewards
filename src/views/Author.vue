@@ -37,17 +37,17 @@
           <b-card-text>{{ githubResponse.bio }}</b-card-text>
           <b-card-text class="text-center">
             <div class="social twitter" v-if="githubResponse.twitter_username != ''">
-              <a :href="'https://twitter.com/' + githubResponse.twitter_username" target="_blank" rel="noopener noreferrer">
+              <a :href="'https://twitter.com/' + githubResponse.twitter_username" target="_blank" rel="noopener noreferrer" title="My Twitter account (french native speaker)">
                 <b-icon icon="twitter"></b-icon>
               </a>
             </div>
             <div class="social github" v-if="githubUser.twitter_username != ''">
-              <a :href="'https://github.com/' + githubUser" target="_blank" rel="noopener noreferrer">
+              <a :href="'https://github.com/' + githubUser" target="_blank" rel="noopener noreferrer" title="My GitHub profile (most of the repositories are private so you will not see a lot of things unfortunatly...">
                 <b-icon icon="github"></b-icon>
               </a>
             </div>
             <div class="social mail">
-              <a href="mailto:oxtheoldone@protonmail.com" target="_blank" rel="noopener noreferrer">
+              <a href="mailto:oxtheoldone@protonmail.com" target="_blank" rel="noopener noreferrer" title="Use with caution, only if you want to talk about this app">
                 <b-icon icon="envelope"></b-icon>
               </a>
             </div>

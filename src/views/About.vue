@@ -5,7 +5,7 @@
         <p>Thanks for using Strong Calculator !</p>
         <p>
           <b-badge variant="warning" class="mr-2">
-          <b-icon icon="exclamation-triangle" class="mr-2" />Disclaimer<b-icon icon="exclamation-triangle" class="ml-2" /></b-badge>
+          <b-icon icon="exclamation-triangle" class="mr-1" />Disclaimer<b-icon icon="exclamation-triangle" class="ml-2" /></b-badge>
           This app was <u>not</u> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator.<br />
         </p>
         <p>When i wrote this app i was just starting to earn/compound strong tokens in order to create strong nodes and i tought that it could be cool to have some earnings calculator ! Please keep in mind that it was originally created in order to practice VueJs basics so maybe it's not perfect...</p>
@@ -13,19 +13,19 @@
           <u>Technical informations :</u>
           <ul class="icons">
             <li>
-              <b-icon icon="caret-right" class="mr-2" />
+              <b-icon icon="chevron-right" />
               The app layout is made with <a href="https://bootstrap-vue.org/" target="_blank" rel="noopener noreferrer">bootstrap-vue</a>
             </li>
             <li>
-              <b-icon icon="caret-right" class="mr-2" />
+              <b-icon icon="chevron-right" />
               Charts are made with <a href="https://www.highcharts.com/" target="_blank" rel="noopener noreferrer">Highcharts</a>
             </li>
             <li>
-              <b-icon icon="caret-right" class="mr-2" />
+              <b-icon icon="chevron-right" />
               Strong token price in USD is fetched using <a href="https://github.com/miscavage/CoinGecko-API" target="_blank" rel="noopener noreferrer">Miscavage's wrapper</a> on <a href="https://www.coingecko.com/api/docs/v3" target="_blank" rel="noopener noreferrer">CoinGecko API</a>
             </li>
             <li>
-              <b-icon icon="caret-right" class="mr-2" />
+              <b-icon icon="chevron-right" />
               Github avatar and bio are fetched using <a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferrer">Axios</a> and <a href="https://docs.github.com/en/rest/reference/users" target="_blank" rel="noopener noreferrer">GitHub Rest API</a>
             </li>
           </ul>
@@ -34,28 +34,35 @@
           <u>To do :</u>
           <ul class="icons">
              <li>
-              <b-icon icon="check-circle" variant="success" class="mr-2" />
+              <b-icon icon="check-circle" variant="success" class="mr-1" />
               Add token price chart
             </li>
             <li>
-              <b-icon icon="circle" class="mr-2" />
+              <b-icon icon="circle" class="mr-1" />
               Store values with <a href="https://vuex.vuejs.org/" target="_blank" rel="noopener noreferrer">VueX</a> store in order to use those values across all the app
             </li>
-           
             <li>
-              <b-icon icon="circle" class="mr-2" />
-              Add a projection chart of earnings with auto-compound option so you can see when you will be able to create the next node
-            </li>
-            <li>
-              <b-icon icon="circle" class="mr-2" />
+              <b-icon icon="circle" class="mr-1" />
               Add monthly fees to the earnings projections
             </li>
             <li>
-              <b-icon icon="circle" class="mr-2" />
-              Add NFT to rewards options
+              <b-icon icon="circle" class="mr-1" />
+              Add NFT tab
             </li>
             <li>
-              <b-icon icon="circle" class="mr-2" />
+              <b-icon icon="circle" class="mr-1" />
+              Add Polygon nodes tab
+            </li>
+            <li>
+              <b-icon icon="circle" class="mr-1" />
+              Add Sentinel nodes tab
+            </li>
+            <li>
+              <b-icon icon="question-circle" class="mr-1" />
+              Maybe add a projection chart of earnings with auto-compound option so you can see when you will be able to create the next node
+            </li>
+            <li>
+              <b-icon icon="question-circle" class="mr-1" />
               Maybe add ETH gas tracker
             </li>
           </ul>

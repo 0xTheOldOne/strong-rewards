@@ -38,9 +38,6 @@ body #app .navbar .nav-link > * {
 body #app .form-group input {
   height: 2rem !important;
 }
-body #app small {
-  color: #f1ffff !important;
-}
 body #app input,
 body #app .card {
   color: #2c3e50 !important;
@@ -53,6 +50,11 @@ body #app .title {
 body #app ul.icons {
   list-style-type: none;
   padding-left: 0;
+}
+body #app img.logo {
+  height: 1.25rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
 }
 body .visible-xs {
   display: none;

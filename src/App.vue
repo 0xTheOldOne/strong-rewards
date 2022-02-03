@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="primary">
-      <div class="container">
+      <b-container fluid="md">
         <b-navbar-brand href="#">
           <b-icon icon="calculator" class="mr-2" />Strong Calculator
           <b-badge variant="success">{{ appVersion }}</b-badge>
@@ -14,10 +14,10 @@
             <Ping />
           </b-nav-item>
         </b-navbar-nav>
-      </div>
+      </b-container>
     </b-navbar>
     <b-navbar toggleable="lg" type="dark" variant="primary" style="padding: 0 1rem; font-size: 90%">
-      <div class="container">
+      <b-container fluid="md">
         <b-collapse id="nav-collapse" is-nav>
           <!-- left nav-items -->
           <b-navbar-nav>
@@ -35,7 +35,7 @@
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
-      </div>
+      </b-container>
     </b-navbar>
     <div class="mb-4"></div>
 
