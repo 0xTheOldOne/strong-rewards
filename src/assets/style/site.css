@@ -27,11 +27,13 @@ body #app {
 body #app .bg-primary {
   background-color: #1668b0 !important;
 }
-body #app .navbar {
-  margin-bottom: 1.5rem;
-}
 body #app .navbar .nav-link > * {
   color: inherit !important;
+}
+@media (min-width: 992px) {
+  body #app .navbar .navbar-collapse {
+    justify-content: space-evenly;
+  }
 }
 body #app .form-group input {
   height: 2rem !important;
@@ -51,4 +53,18 @@ body #app .title {
 body #app ul.icons {
   list-style-type: none;
   padding-left: 0;
+}
+body .visible-xs {
+  display: none;
+}
+body .hidden-xs {
+  display: block;
+}
+@media (max-width: 767px) {
+  body .visible-xs {
+    display: block;
+  }
+  body .hidden-xs {
+    display: none;
+  }
 }

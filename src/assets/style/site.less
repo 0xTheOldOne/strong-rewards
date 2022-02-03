@@ -35,11 +35,15 @@ body {
     }
 
     .navbar {
-      margin-bottom: 1.5rem;
-
       .nav-link {
         & > * {
           color: inherit !important;
+        }
+      }
+
+      @media (min-width: @screen-md) {
+        .navbar-collapse {
+          justify-content: space-evenly;
         }
       }
     }
@@ -73,6 +77,25 @@ body {
         list-style-type: none;
         padding-left: 0;
       }
+    }
+  }
+
+  // Visibility
+  .visible-xs {
+    display: none;
+  }
+
+  .hidden-xs {
+    display: block;
+  }
+
+  @media (max-width: @screen-xs-max) {
+    .visible-xs {
+      display: block;
+    }
+
+    .hidden-xs {
+      display: none;
     }
   }
 }

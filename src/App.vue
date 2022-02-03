@@ -6,7 +6,18 @@
           <b-icon icon="calculator" class="mr-2" />Strong Calculator
           <b-badge variant="success">{{ appVersion }}</b-badge>
         </b-navbar-brand>
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+        <!-- right nav-items -->
+        <b-navbar-nav class="ml-auto">
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <b-nav-item size="sm" class="hidden-xs">
+            <Ping />
+          </b-nav-item>
+        </b-navbar-nav>
+      </div>
+    </b-navbar>
+    <b-navbar toggleable="lg" type="dark" variant="primary">
+      <div class="container">
         <b-collapse id="nav-collapse" is-nav>
           <!-- left nav-items -->
           <b-navbar-nav>
@@ -19,17 +30,14 @@
             <b-nav-item href="#">
               <router-link to="/author">About the author</router-link>
             </b-nav-item>
-          </b-navbar-nav>
-
-          <!-- right nav-items -->
-          <b-navbar-nav class="ml-auto">
-            <b-nav-item size="sm">
+            <b-nav-item size="sm" class="visible-xs">
               <Ping />
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </div>
     </b-navbar>
+    <div class="mb-5"></div>
 
     <router-view />
   </div>
