@@ -14,14 +14,9 @@
               <template #title><img src="favicon.png" class="logo" />StrongBlock</template>
               <b-card-text>
                 <b-row>
-                  <b-col sm="6" xs="12">
+                  <b-col sm="12" xs="12">
                     <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'" :description="'This value is fetched from CoinGecko, in ' + currencies[currency].val.toUpperCase() + ' (' + currencies[currency].symbol + ') every ' + refreshRateInMs / 1000 + ' seconds.'">
                       <b-form-input v-model.number="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" required></b-form-input>
-                    </b-form-group>
-                  </b-col>
-                  <b-col sm="6" xs="12">
-                    <b-form-group label="Rewards per node, per day :" :description="'This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 $' + ticker.toUpperCase() + ' per 7000 Etherum blocks completed.'">
-                      <b-form-input v-model.number="nodeRewards" type="number" placeholder="Node rewards" required></b-form-input>
                     </b-form-group>
                   </b-col>
                 </b-row>
@@ -30,9 +25,18 @@
             <b-tab>
               <template #title><img src="etherum.png" class="logo" />Etherum</template>
               <b-card-text>
-                <b-form-group :label="'Node count : ' + nodeCount" :description="daysToCompound">
-                  <b-form-input v-model.number="nodeCount" type="range" min="0" max="100" placeholder="Node count" required></b-form-input>
-                </b-form-group>
+                <b-row>
+                  <b-col sm="6" xs="12">
+                    <b-form-group label="Rewards per node, per day :" :description="'This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 $' + ticker.toUpperCase() + ' per 7000 Etherum blocks completed.'">
+                      <b-form-input v-model.number="nodeRewards" type="number" placeholder="Node rewards" required></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col sm="6" xs="12">
+                    <b-form-group :label="'Node count : ' + nodeCount" :description="daysToCompound">
+                      <b-form-input v-model.number="nodeCount" type="range" min="0" max="100" placeholder="Node count" required></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
               </b-card-text>
             </b-tab>
             <!-- <b-tab title="Tab 2">
