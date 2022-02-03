@@ -1,7 +1,7 @@
 // Colors
 @text-color: #f1ffff;
 @text-color-secondary: #2c3e50;
-@background-color: #fefefe;
+@background-color: rgba(15, 52, 68, 1);
 @border-color: #ddd;
 
 // Brand
@@ -9,3 +9,15 @@
 
 // Sizes
 @radius: 6rem;
+
+// Border
+@border: 1px solid fade(@text-color, 50%);
+
+// Media queries
+@screen-sm: 768px;
+@screen-md: 992px;
+@screen-lg: 1200px;
+@screen-xlg: 1367px;
+@screen-xs-max: (@screen-sm - 1);
+@screen-sm-max: (@screen-md - 1);
+@screen-md-max: (@screen-lg - 1);

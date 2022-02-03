@@ -1,50 +1,65 @@
 @import "variables.less";
 
-// Particles.js
-#particles {
-  position: fixed;
-  height: 100vh;
+body {
+  position: absolute;
   width: 100vw;
-  filter: blur(0.125rem);
+  height: 100vh;
 
-  canvas.particles-js-canvas-el {
-    position: absolute;
-    top: 0;
-  }
-}
+  // Particles.js
+  #particles {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    filter: blur(0.125rem);
 
-#app {
-  color: @text-color;
-  font-family: "Montserrat", sans-serif;
-  font-size: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: rgb(0, 13, 16);
-  background: linear-gradient(225deg, rgba(0, 13, 16, 1) 0%, rgba(7, 27, 36, 1) 10%, rgba(15, 52, 68, 1) 100%);
-
-  // Components
-  .bg-primary {
-    background-color: @strongblock-blue !important;
-  }
-
-  .navbar {
-    margin-bottom: 1.5rem;
-
-    .nav-link {
-      & > * {
-        color: inherit !important;
-      }
+    canvas.particles-js-canvas-el {
+      position: absolute;
+      top: 0;
     }
   }
 
-  // Primary color
-  small {
-    color: @text-color !important;
-  }
+  #app {
+    height: 100%;
+    overflow-y: auto;
+    color: @text-color;
+    font-family: "Montserrat", sans-serif;
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: rgb(0, 13, 16);
+    background: linear-gradient(225deg, rgba(0, 13, 16, 1) 0%, rgba(7, 27, 36, 1) 10%, @background-color 100%);
 
-  // Secondary color
-  input,
-  .card {
-    color: @text-color-secondary !important;
+    // Bootstrap components
+    .bg-primary {
+      background-color: @strongblock-blue !important;
+    }
+
+    .navbar {
+      margin-bottom: 1.5rem;
+
+      .nav-link {
+        & > * {
+          color: inherit !important;
+        }
+      }
+    }
+
+    // Primary color
+    small {
+      color: @text-color !important;
+    }
+
+    // Secondary color
+    input,
+    .card {
+      color: @text-color-secondary !important;
+    }
+
+    // Misc
+    .title {
+      font-weight: 400;
+      font-size: 1.25rem;
+      margin: 0.25rem 0 0.5rem 0;
+    }
   }
 }

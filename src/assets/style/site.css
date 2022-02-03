@@ -1,14 +1,21 @@
-#particles {
+body {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+body #particles {
   position: fixed;
   height: 100vh;
   width: 100vw;
   filter: blur(0.125rem);
 }
-#particles canvas.particles-js-canvas-el {
+body #particles canvas.particles-js-canvas-el {
   position: absolute;
   top: 0;
 }
-#app {
+body #app {
+  height: 100%;
+  overflow-y: auto;
   color: #f1ffff;
   font-family: "Montserrat", sans-serif;
   font-size: 100%;
@@ -17,19 +24,24 @@
   background: #000d10;
   background: linear-gradient(225deg, #000d10 0%, #071b24 10%, #0f3444 100%);
 }
-#app .bg-primary {
+body #app .bg-primary {
   background-color: #1668b0 !important;
 }
-#app .navbar {
+body #app .navbar {
   margin-bottom: 1.5rem;
 }
-#app .navbar .nav-link > * {
+body #app .navbar .nav-link > * {
   color: inherit !important;
 }
-#app small {
+body #app small {
   color: #f1ffff !important;
 }
-#app input,
-#app .card {
+body #app input,
+body #app .card {
   color: #2c3e50 !important;
+}
+body #app .title {
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin: 0.25rem 0 0.5rem 0;
 }
