@@ -1,40 +1,52 @@
 <template>
-  <div id="calculator">
+  <div>
     <div v-if="requestPending">
       <div class="spinner-border text-primary" role="status"></div>
     </div>
-    <div v-else>
-      <b-row>
-        <b-col sm="4" xs="12">
-          <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'" :description="'This value is fetched from CoinGecko, in ' + currencies[currency].val.toUpperCase() + ' (' + currencies[currency].symbol + ') every ' + refreshRateInMs / 1000 + ' seconds.'">
-            <b-form-input v-model.number="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" required></b-form-input>
-          </b-form-group>
-        </b-col>
-        <b-col sm="4" xs="12">
-          <b-form-group label="Rewards per node, per day :" :description="'This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 $' + ticker.toUpperCase() + ' per 7000 Etherum blocks completed.'">
-            <b-form-input v-model.number="nodeRewards" type="number" placeholder="Node rewards" required></b-form-input>
-          </b-form-group>
-        </b-col>
-        <b-col sm="4" xs="12">
-          <b-form-group label="Node count :">
-            <b-form-input v-model.number="nodeCount" type="number" placeholder="Node count" required></b-form-input>
-          </b-form-group>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col md="3">
+    <div id="calculator" v-else>
+      <div id="parameters">
+        <div class="title">Calculator parameters</div>
+        <b-row>
+          <b-col sm="4" xs="12">
+            <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'" :description="'This value is fetched from CoinGecko, in ' + currencies[currency].val.toUpperCase() + ' (' + currencies[currency].symbol + ') every ' + refreshRateInMs / 1000 + ' seconds.'">
+              <b-form-input v-model.number="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" required></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col sm="4" xs="12">
+            <b-form-group label="Rewards per node, per day :" :description="'This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 $' + ticker.toUpperCase() + ' per 7000 Etherum blocks completed.'">
+              <b-form-input v-model.number="nodeRewards" type="number" placeholder="Node rewards" required></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col sm="4" xs="12">
+            <b-form-group label="Node count :" :description="daysToCompound">
+              <b-form-input v-model.number="nodeCount" type="number" placeholder="Node count" required></b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
+      </div>
+
+      <div id="tokenRewards">
+        <div class="title">Periodical rewards</div>
+        <div class="rewards">
           <Rewards title="daily" :days="1" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
-        </b-col>
-        <b-col md="3">
           <Rewards title="weekly" :days="7" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
-        </b-col>
-        <b-col md="3">
           <Rewards title="monthly" :days="30" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
-        </b-col>
-        <b-col md="3">
           <Rewards title="annually" :days="365" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
-        </b-col>
-      </b-row>
+        </div>
+      </div>
+
+      <div id="tokenChart">
+        <div class="title">${{ this.ticker.toUpperCase() }} chart against {{ this.currencies[this.currency].val.toUpperCase() }} ({{ this.currencies[this.currency].symbol }})</div>
+        <div v-if="requestPending">
+          <div class="spinner-border text-primary" role="status"></div>
+        </div>
+        <div v-if="chartData == null">
+          <b-alert variant="danger">An error occured while retrieving ${{ this.ticker.toUpperCase() }} chart on CoinGecko...</b-alert>
+        </div>
+        <div v-else>
+          {{ chartData }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -72,10 +84,12 @@ export default {
       nftSilverCount: null,
       nftGoldCount: null,
       nftPlatiniumCount: null,
+      chartData: null,
     };
   },
   mounted: function () {
     this.polling();
+    this.fetchChart();
     this.timer = setInterval(() => {
       this.polling();
     }, this.refreshRateInMs);
@@ -83,7 +97,19 @@ export default {
   beforeDestroy() {
     clearInterval(this.timer);
   },
+  computed: {
+    daysToCompound: function () {
+      if (this.nodeCount > 0) {
+        return "In order to create another node, you need to earn 10 $" + this.ticker.toUpperCase() + " tokens and it will be done in approximatly " + (10 / (this.nodeCount * this.nodeRewards)).toFixed(2) + " day(s).";
+      } else {
+        return "Without node you can't earn tokens...";
+      }
+    },
+  },
   methods: {
+    asFiat: function (tokens) {
+      return (tokens * this.price).toFixed(2);
+    },
     polling: function () {
       this.requestPending = true;
       this.fetchPrice();
@@ -99,8 +125,12 @@ export default {
         this.price = response.data.strong[this.currency];
       }
     },
-    asFiat: function (tokens) {
-      return (tokens * this.price).toFixed(2);
+    fetchChart: async function () {
+      let response = await CoinGeckoClient.coins.fetchMarketChart(this.ticker);
+
+      if (response.success) {
+        this.chartData = response.data.prices;
+      }
     },
   },
 };
@@ -111,19 +141,28 @@ export default {
 @import "../assets/style/variables.less";
 
 .rewards {
-  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 
   .reward {
-    border: 1px solid @border-color;
-    background-color: @background-color;
-    border-radius: 1rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
+    flex: 1 1 150px;
+    margin: 0 0.5rem;
 
-    .token {
+    &:first-child {
+      margin-left: 0px !important;
     }
 
-    .fiat {
+    &:last-child {
+      margin-right: 0px !important;
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    flex-flow: column;
+
+    .reward {
+      margin: 0;
+      margin-bottom: 0.5rem;
     }
   }
 }
