@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body class="reward">
+  <b-card no-body class="reward mb-3">
     <b-list-group flush>
       <b-list-group-item>
         <div class="title">{{ title.charAt(0).toUpperCase() + title.slice(1) }} rewards</div>
@@ -43,6 +43,7 @@ export default {
 
 .card {
   font-size: 0.9rem;
+
   .title {
     font-size: 1.1rem;
   }

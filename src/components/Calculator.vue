@@ -22,10 +22,18 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col><Rewards title="daily" :days="1" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" /></b-col>
-        <b-col><Rewards title="weekly" :days="7" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" /></b-col>
-        <b-col><Rewards title="monthly" :days="30" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" /></b-col>
-        <b-col><Rewards title="annually" :days="365" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" /></b-col>
+        <b-col md="3">
+          <Rewards title="daily" :days="1" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
+        </b-col>
+        <b-col md="3">
+          <Rewards title="weekly" :days="7" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
+        </b-col>
+        <b-col md="3">
+          <Rewards title="monthly" :days="30" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
+        </b-col>
+        <b-col md="3">
+          <Rewards title="annually" :days="365" :dayRewards="nodeRewards" :nodeCount="nodeCount" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
+        </b-col>
       </b-row>
     </div>
   </div>
