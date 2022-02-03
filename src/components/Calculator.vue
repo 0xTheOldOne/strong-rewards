@@ -93,7 +93,9 @@ let chartOptions = {
         enabled: false,
       },
       tooltip: {
-        pointFormat: "{series.name}: <b>{point.y}</b><br/>",
+        xDateFormat: "%e %B %Y (%A)",
+        pointFormat: "{series.name}: {point.y}",
+        valueDecimals: 2,
         valueSuffix: " USD",
         shared: true,
       },
