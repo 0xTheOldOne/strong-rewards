@@ -136,7 +136,10 @@ export default {
         this.chartData = response.data.prices;
 
         var chart = new Highcharts.Chart({
-          chart: { renderTo: "graph" },
+          chart: {
+            renderTo: "graph",
+            type: "area",
+          },
           xAxis: {
             type: "datetime",
             labels: {
@@ -168,6 +171,7 @@ export default {
                 valueSuffix: " " + this.currencies[this.currency].val.toUpperCase(),
                 shared: true,
               },
+              color: "#1668b0",
             },
           ],
           title: null,
