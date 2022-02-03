@@ -11,7 +11,7 @@
         <b-card no-body>
           <b-tabs card>
             <b-tab active>
-              <template #title><img src="favicon.png" class="logo" />StrongBlock</template>
+              <template #title><img src="strongblock.png" class="logo" />StrongBlock</template>
               <b-card-text>
                 <b-row>
                   <b-col sm="12" xs="12">
