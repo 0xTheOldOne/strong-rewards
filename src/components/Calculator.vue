@@ -61,6 +61,54 @@ const CoinGeckoClient = new CoinGecko();
 import Highcharts from "../assets/scripts/highcharts";
 import Rewards from "@/components/Rewards.vue";
 
+let chartOptions = {
+  chart: {
+    renderTo: "graph",
+    type: "area",
+  },
+  xAxis: {
+    type: "datetime",
+    labels: {
+      formatter: function () {
+        return Highcharts.dateFormat("%d/%m/%Y", this.value);
+      },
+    },
+    title: {
+      enabled: false,
+    },
+  },
+  yAxis: {
+    labels: {
+      format: "{text} USD",
+    },
+    title: {
+      enabled: false,
+    },
+  },
+  series: [
+    {
+      data: [],
+      name: "$STRONG",
+      dataLabels: {
+        enabled: false,
+      },
+      tooltip: {
+        pointFormat: "{series.name}: <b>{point.y}</b><br/>",
+        valueSuffix: " USD",
+        shared: true,
+      },
+      color: "#1668b0",
+    },
+  ],
+  title: "",
+  credits: {
+    enabled: false,
+  },
+  legend: {
+    enabled: false,
+  },
+};
+
 export default {
   name: "Calculator",
   components: {
@@ -88,7 +136,10 @@ export default {
       chartData: null,
     };
   },
-  mounted: function () {
+  created() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  mounted() {
     this.polling();
     this.fetchChart();
     this.timer = setInterval(() => {
@@ -97,6 +148,9 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this.timer);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleResize);
   },
   computed: {
     daysToCompound: function () {
@@ -108,6 +162,9 @@ export default {
     },
   },
   methods: {
+    handleResize: function () {
+      this.drawChart();
+    },
     asFiat: function (tokens) {
       return (tokens * this.price).toFixed(2);
     },
@@ -134,53 +191,12 @@ export default {
 
       if (response.success) {
         this.chartData = response.data.prices;
-
-        var chart = new Highcharts.Chart({
-          chart: {
-            renderTo: "graph",
-            type: "area",
-          },
-          xAxis: {
-            type: "datetime",
-            labels: {
-              formatter: function () {
-                return Highcharts.dateFormat("%d/%m/%Y", this.value);
-              },
-            },
-            title: {
-              enabled: false,
-            },
-          },
-          yAxis: {
-            labels: {
-              format: "{text} " + this.currencies[this.currency].val.toUpperCase(),
-            },
-            title: {
-              enabled: false,
-            },
-          },
-          series: [
-            {
-              data: this.chartData,
-              name: "$" + this.ticker.toUpperCase(),
-              dataLabels: {
-                enabled: false,
-              },
-              tooltip: {
-                pointFormat: "{series.name}: <b>{point.y}</b><br/>",
-                valueSuffix: " " + this.currencies[this.currency].val.toUpperCase(),
-                shared: true,
-              },
-              color: "#1668b0",
-            },
-          ],
-          title: null,
-          credits: null,
-          legend: {
-            enabled: false,
-          },
-        });
+        this.drawChart();
       }
+    },
+    drawChart: function () {
+      chartOptions.series[0].data = this.chartData;
+      var chart = new Highcharts.Chart(chartOptions);
     },
   },
 };
