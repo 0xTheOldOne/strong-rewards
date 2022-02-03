@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="mb-5">
     <div v-if="requestPending">
-      <div class="spinner-border text-primary" role="status"></div>
+      <div class="text-center">
+        <div class="spinner-border text-primary" role="status"></div>
+      </div>
     </div>
     <div id="calculator" v-else>
       <div id="parameters">
@@ -18,8 +20,8 @@
             </b-form-group>
           </b-col>
           <b-col sm="4" xs="12">
-            <b-form-group label="Node count :" :description="daysToCompound">
-              <b-form-input v-model.number="nodeCount" type="number" placeholder="Node count" required></b-form-input>
+            <b-form-group :label="'Node count : ' + nodeCount" :description="daysToCompound">
+              <b-form-input v-model.number="nodeCount" type="range" min="0" max="100" placeholder="Node count" required></b-form-input>
             </b-form-group>
           </b-col>
         </b-row>
@@ -37,15 +39,15 @@
 
       <div id="tokenChart">
         <div class="title">${{ this.ticker.toUpperCase() }} chart against {{ this.currencies[this.currency].val.toUpperCase() }} ({{ this.currencies[this.currency].symbol }})</div>
-        <div v-if="requestPending">
-          <div class="spinner-border text-primary" role="status"></div>
-        </div>
-        <div v-if="chartData == null">
-          <b-alert variant="danger">An error occured while retrieving ${{ this.ticker.toUpperCase() }} chart on CoinGecko...</b-alert>
-        </div>
-        <div v-else>
-          {{ chartData }}
-        </div>
+        <b-card>
+          <b-card-text>
+            <div id="graph">
+              <div class="text-center">
+                <div class="spinner-border text-primary" role="status"></div>
+              </div>
+            </div>
+          </b-card-text>
+        </b-card>
       </div>
     </div>
   </div>
@@ -56,14 +58,13 @@
 const CoinGecko = require("coingecko-api");
 const CoinGeckoClient = new CoinGecko();
 
-import Chart from "highcharts-vue";
+import Highcharts from "../assets/scripts/highcharts";
 import Rewards from "@/components/Rewards.vue";
 
 export default {
   name: "Calculator",
   components: {
     Rewards,
-    highcharts: Chart,
   },
   data() {
     return {
@@ -100,7 +101,7 @@ export default {
   computed: {
     daysToCompound: function () {
       if (this.nodeCount > 0) {
-        return "In order to create another node, you need to earn 10 $" + this.ticker.toUpperCase() + " tokens and it will be done in approximatly " + (10 / (this.nodeCount * this.nodeRewards)).toFixed(2) + " day(s).";
+        return "The 10 $" + this.ticker.toUpperCase() + " tokens that you need to have in order to create another node will be earned in approximatly " + (10 / (this.nodeCount * this.nodeRewards)).toFixed(2) + " day(s).";
       } else {
         return "Without node you can't earn tokens...";
       }
@@ -126,10 +127,55 @@ export default {
       }
     },
     fetchChart: async function () {
-      let response = await CoinGeckoClient.coins.fetchMarketChart(this.ticker);
+      let response = await CoinGeckoClient.coins.fetchMarketChart(this.ticker, {
+        days: "max",
+        vs_currency: this.currencies[this.currency].val,
+      });
 
       if (response.success) {
         this.chartData = response.data.prices;
+
+        var chart = new Highcharts.Chart({
+          chart: { renderTo: "graph" },
+          xAxis: {
+            type: "datetime",
+            labels: {
+              formatter: function () {
+                return Highcharts.dateFormat("%d/%m/%Y", this.value);
+              },
+            },
+            title: {
+              enabled: false,
+            },
+          },
+          yAxis: {
+            labels: {
+              format: "{text} " + this.currencies[this.currency].val.toUpperCase(),
+            },
+            title: {
+              enabled: false,
+            },
+          },
+          series: [
+            {
+              data: this.chartData,
+              name: "$" + this.ticker.toUpperCase(),
+              dataLabels: {
+                enabled: false,
+              },
+              tooltip: {
+                pointFormat: "{series.name}: <b>{point.y}</b><br/>",
+                valueSuffix: " " + this.currencies[this.currency].val.toUpperCase(),
+                shared: true,
+              },
+            },
+          ],
+          title: null,
+          credits: null,
+          legend: {
+            enabled: false,
+          },
+        });
       }
     },
   },

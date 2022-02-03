@@ -11,22 +11,53 @@
         <p>When i wrote this app i was just starting to earn/compound strong tokens in order to create strong nodes and i tought that it could be cool to have some earnings calculator ! Please keep in mind that it was originally created in order to practice VueJs basics so maybe it's not perfect...</p>
         <p>
           <u>Technical informations :</u>
-          <ul>
-            <li>The app layout is made with <a href="https://bootstrap-vue.org/" target="_blank" rel="noopener noreferrer">bootstrap-vue</a></li>
-            <li>Charts are made with <a href="https://github.com/highcharts/highcharts-vue" target="_blank" rel="noopener noreferrer">highcharts-vue</a></li>
-            <li>Strong token price in USD is fetched using <a href="https://github.com/miscavage/CoinGecko-API" target="_blank" rel="noopener noreferrer">Miscavage's wrapper</a> on <a href="https://www.coingecko.com/api/docs/v3" target="_blank" rel="noopener noreferrer">CoinGecko API</a></li>
-            <li>Github avatar and bio are fetched using <a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferrer">Axios</a> and <a href="https://docs.github.com/en/rest/reference/users" target="_blank" rel="noopener noreferrer">GitHub Rest API</a></li>
+          <ul class="icons">
+            <li>
+              <b-icon icon="caret-right" class="mr-2" />
+              The app layout is made with <a href="https://bootstrap-vue.org/" target="_blank" rel="noopener noreferrer">bootstrap-vue</a>
+            </li>
+            <li>
+              <b-icon icon="caret-right" class="mr-2" />
+              Charts are made with <a href="https://www.highcharts.com/" target="_blank" rel="noopener noreferrer">Highcharts</a>
+            </li>
+            <li>
+              <b-icon icon="caret-right" class="mr-2" />
+              Strong token price in USD is fetched using <a href="https://github.com/miscavage/CoinGecko-API" target="_blank" rel="noopener noreferrer">Miscavage's wrapper</a> on <a href="https://www.coingecko.com/api/docs/v3" target="_blank" rel="noopener noreferrer">CoinGecko API</a>
+            </li>
+            <li>
+              <b-icon icon="caret-right" class="mr-2" />
+              Github avatar and bio are fetched using <a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferrer">Axios</a> and <a href="https://docs.github.com/en/rest/reference/users" target="_blank" rel="noopener noreferrer">GitHub Rest API</a>
+            </li>
           </ul>
         </p>
         <p>
           <u>To do :</u>
-          <ul>
-            <li>Store values with VueX store in order to use those values across all the app</li>
-            <li>Add charts</li>
-            <li>Add a projection chart of earnings with auto-compound option so you can see when you will be able to create the next node</li>
-            <li>Add monthly fees to the earnings projections</li>
-            <li>Add NFT to calculator options</li>
-            <li>Maybe add ETH gas tracker</li>
+          <ul class="icons">
+             <li>
+              <b-icon icon="check-circle" variant="success" class="mr-2" />
+              Add token price chart
+            </li>
+            <li>
+              <b-icon icon="circle" class="mr-2" />
+              Store values with <a href="https://vuex.vuejs.org/" target="_blank" rel="noopener noreferrer">VueX</a> store in order to use those values across all the app
+            </li>
+           
+            <li>
+              <b-icon icon="circle" class="mr-2" />
+              Add a projection chart of earnings with auto-compound option so you can see when you will be able to create the next node
+            </li>
+            <li>
+              <b-icon icon="circle" class="mr-2" />
+              Add monthly fees to the earnings projections
+            </li>
+            <li>
+              <b-icon icon="circle" class="mr-2" />
+              Add NFT to rewards options
+            </li>
+            <li>
+              <b-icon icon="circle" class="mr-2" />
+              Maybe add ETH gas tracker
+            </li>
           </ul>
         </p>
       </b-col>

@@ -33,6 +33,9 @@ body #app .navbar {
 body #app .navbar .nav-link > * {
   color: inherit !important;
 }
+body #app .form-group input {
+  height: 2rem !important;
+}
 body #app small {
   color: #f1ffff !important;
 }
@@ -44,4 +47,8 @@ body #app .title {
   font-weight: 400;
   font-size: 1.25rem;
   margin: 0.25rem 0 0.5rem 0;
+}
+body #app ul.icons {
+  list-style-type: none;
+  padding-left: 0;
 }

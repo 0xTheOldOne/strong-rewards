@@ -1,6 +1,5 @@
 import Vue from "vue";
 import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
-import HighchartsVue from "highcharts-vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -11,7 +10,6 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
-Vue.use(HighchartsVue);
 
 // https://github.com/miscavage/CoinGecko-API
 const CoinGecko = require("coingecko-api");
