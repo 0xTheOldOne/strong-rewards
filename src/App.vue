@@ -16,7 +16,7 @@
         </b-navbar-nav>
       </div>
     </b-navbar>
-    <b-navbar toggleable="lg" type="dark" variant="primary">
+    <b-navbar toggleable="lg" type="dark" variant="primary" style="padding: 0 1rem; font-size: 90%">
       <div class="container">
         <b-collapse id="nav-collapse" is-nav>
           <!-- left nav-items -->
@@ -37,7 +37,7 @@
         </b-collapse>
       </div>
     </b-navbar>
-    <div class="mb-5"></div>
+    <div class="mb-4"></div>
 
     <router-view />
   </div>
