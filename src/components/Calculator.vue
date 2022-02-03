@@ -7,7 +7,7 @@
     </div>
     <div id="calculator" v-else>
       <div id="parameters">
-        <div class="title">Calculator parameters</div>
+        <div class="title">Settings</div>
         <b-row>
           <b-col sm="4" xs="12">
             <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'" :description="'This value is fetched from CoinGecko, in ' + currencies[currency].val.toUpperCase() + ' (' + currencies[currency].symbol + ') every ' + refreshRateInMs / 1000 + ' seconds.'">
