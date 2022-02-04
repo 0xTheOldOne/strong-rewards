@@ -6,19 +6,19 @@
           <b-badge variant="warning" class="mr-2">
             <b-icon icon="exclamation-triangle" class="mr-1" />Disclaimer<b-icon icon="exclamation-triangle" class="ml-2" />
           </b-badge>
-          This app was <u>not</u> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator.
+          This tool was <u>not</u> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator.
         </p>
         <p>
           When i wrote this app i was just starting to earn/compound strong tokens in order to create strong nodes and i tought that it could be cool to have some earnings calculator, especially if you're new to StrongBlock because this can help if you don't know how it works.
         </p>
         <p>
-          Also, i thought that it could be cool if the app was able to connect to a wallet and see how many tokens you have in your wallet, how many nodes too and how many earnings you had but i <b>don't</b> know how to do that at the moment and i <b>don't</b> want this app to be able to interact with people's wallets because nowadays we see a lot of scammers trying to do so people could be in fear about that and that's not what i want concerning this app. This app will not retrieve those kind of informations then, i hope it's ok for you !
+          Also, i thought that it could be cool if my app was able to connect to a wallet and see how many tokens you have in your wallet, how many nodes too or how many earnings you had but i <b>don't</b> know how to do that at the moment and i <b>don't</b> want this app to be able to interact with people's wallets because nowadays we see a lot of scammers trying to do so and people could be in fear about that and that's not what i want, stay safe ! This app will not retrieve those kind of informations then, i hope it's ok for you !
         </p>
         <p>
           Please keep in mind that it was originally created in order to practice VueJs basics so maybe it's not perfect...
         </p>
         <p>
-          Last thing about all of this is i do this on my free time (<i>i have a full-time job and a new born, so i don't have a lot of free time unfortunatly</i>) so this app is provided "as is" and i'll update it when i have enough time.
+          Last thing about all of this is i code on my free time (<i>i have a full-time job and a new born, so i don't have a lot of free time unfortunatly</i>) so this tool is provided "as is" and i'll update it when i have enough time.
         </p>
         <p>Thank you for your understanding and many thanks for using Strong Calculator !</p>
         <p class="mt-5">
