@@ -105,4 +105,18 @@ body {
       display: none;
     }
   }
+
+  // Effects
+  .hover {
+    @scale: 1.25;
+    @duration: 0.15s;
+    transition: -webkit-transform @duration;
+    transition: transform @duration;
+    transition: transform @duration, -webkit-transform @duration;
+
+    &:hover {
+      -webkit-transform: scale(@scale);
+      transform: scale(@scale);
+    }
+  }
 }

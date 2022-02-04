@@ -33,26 +33,47 @@
           </b-card>
         </template>
 
-        <b-card :title="githubResponse.login" :img-src="githubResponse.avatar_url" :img-alt="githubResponse.login" img-top tag="article" style="max-width: 20rem" class="mb-2">
-          <b-card-text v-html="bio"></b-card-text>
-          <b-card-text class="text-center">
+        <b-card :title="githubResponse.login" :img-src="githubResponse.avatar_url" :img-alt="githubResponse.login" img-top tag="article" style="max-width: 20rem" class="mb-3">
+          <b-card-text v-html="bio" class="mb-3"></b-card-text>
+          <b-card-text class="mb-4 mt-4 text-center">
             <div class="social twitter" v-if="githubResponse.twitter_username != ''">
               <a :href="'https://twitter.com/' + githubResponse.twitter_username" target="_blank" rel="noopener noreferrer" title="My Twitter account (french native speaker)">
-                <b-icon icon="twitter"></b-icon>
+                <b-icon icon="twitter" class="hover"></b-icon>
               </a>
             </div>
             <div class="social github" v-if="githubUser.twitter_username != ''">
               <a :href="'https://github.com/' + githubUser" target="_blank" rel="noopener noreferrer" title="My GitHub profile (most of the repositories are private so you will not see a lot of things unfortunatly...">
-                <b-icon icon="github"></b-icon>
+                <b-icon icon="github" class="hover"></b-icon>
               </a>
             </div>
             <div class="social mail">
               <a href="mailto:oxtheoldone@protonmail.com" target="_blank" rel="noopener noreferrer" title="Use with caution, only if you want to talk about this app">
-                <b-icon icon="envelope"></b-icon>
+                <b-icon icon="envelope" class="hover"></b-icon>
               </a>
             </div>
           </b-card-text>
         </b-card>
+
+        <!-- Not for now... -->
+        <!-- <b-card img-top tag="article" style="max-width: 20rem" class="mb-5">
+          <b-card-text>
+            <small>
+              <p class="text-justify">Since a few people suggested that on Twitter, here are some wallet addresses if you want to send a tip (again, i'm not asking for this since i coded this tool in order to help people to get into StrongBlock but people suggested it so here we go) :</p>
+              <div class="address-container">
+                <div class="network"><img src="etherum.png" class="logo" />ERC20 wallet :</div>
+                <div class="address hover">0x6D768Eb34608F6Ec148EaCb0B834cCe33bBBe234</div>
+              </div>
+              <div class="address-container">
+                <div class="network"><img src="avalanche.png" class="logo" />AVALANCHE wallet :</div>
+                <div class="address hover">not available</div>
+              </div>
+              <div class="address-container">
+                <div class="network"><img src="fantom.png" class="logo" />FANTOM wallet :</div>
+                <div class="address hover">not available</div>
+              </div>
+            </small>
+          </b-card-text>
+        </b-card> -->
       </b-skeleton-wrapper>
     </div>
   </div>
@@ -105,8 +126,6 @@ export default {
 }
 
 .social {
-  @duration: 0.15s;
-  @scale: 1.25;
   margin: 0px 0.5em;
   display: inline-block;
 
@@ -114,17 +133,6 @@ export default {
     @size: 2em;
     width: @size;
     height: @size;
-
-    transition: -webkit-transform @duration;
-    transition: transform @duration;
-    transition: transform @duration, -webkit-transform @duration;
-  }
-
-  &:hover {
-    svg {
-      -webkit-transform: scale(@scale);
-      transform: scale(@scale);
-    }
   }
 
   &.twitter {
@@ -143,6 +151,19 @@ export default {
     svg {
       fill: #505264;
     }
+  }
+}
+
+.address-container {
+  margin-bottom: 1rem;
+
+  .address {
+    font-family: "Source Code Pro", monospace;
+    background-color: @text-color;
+    border: 1px solid @border-color;
+    margin: 0.25rem 0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
   }
 }
 </style>

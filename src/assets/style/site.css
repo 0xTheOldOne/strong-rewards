@@ -74,3 +74,12 @@ body .hidden-xs {
     display: none;
   }
 }
+body .hover {
+  transition: -webkit-transform 0.15s;
+  transition: transform 0.15s;
+  transition: transform 0.15s, -webkit-transform 0.15s;
+}
+body .hover:hover {
+  -webkit-transform: scale(1.25);
+  transform: scale(1.25);
+}
