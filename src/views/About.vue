@@ -12,7 +12,7 @@
           When i wrote this app i was just starting to earn/compound strong tokens in order to create strong nodes and i tought that it could be cool to have some earnings calculator, especially if you're new to StrongBlock because this can help if you don't know how it works.
         </p>
         <p>
-          Also, i thought that it could be cool if the app was able to connect to a wallet and see how many tokens you have in your wallet, how many nodes too and how many earnings you had but i <b>don't</b> know how to do that at the moment and i <b>don't</b> want this app to be able to interact with people wallets because nowadays we see a lot of scammers trying to do so people could be in fear about that and that's not what i want concerning this app. This app will not retrieve those kind of informations then, i hope it's ok for you !
+          Also, i thought that it could be cool if the app was able to connect to a wallet and see how many tokens you have in your wallet, how many nodes too and how many earnings you had but i <b>don't</b> know how to do that at the moment and i <b>don't</b> want this app to be able to interact with people's wallets because nowadays we see a lot of scammers trying to do so people could be in fear about that and that's not what i want concerning this app. This app will not retrieve those kind of informations then, i hope it's ok for you !
         </p>
         <p>
           Please keep in mind that it was originally created in order to practice VueJs basics so maybe it's not perfect...
@@ -89,7 +89,7 @@
         </p>
         <p>
           <b-badge variant="primary" class="mr-2">Nota bene</b-badge>
-          I don't own NFTs or <img src="polygon.png" class="logo" />Polygon nodes or <img src="sentinel.png" class="logo" />Sentinel nodes at the moment so i don't know how they work.
+          I don't own NFTs or <img src="polygon.png" class="logo" />Polygon nodes or <img src="sentinel.png" class="logo" />Sentinel nodes at the moment so i don't know how they work, yet...
         </p>
       </b-col>
     </b-row>
