@@ -87,7 +87,10 @@ export default {
   },
   computed: {
     bio: function () {
-      return this.githubResponse.bio.replace(" - ", "<br />");
+      if (this.githubResponse != null && this.githubResponse.bio != null) {
+        return this.githubResponse.bio.replace(" - ", "<br />");
+      }
+      return "";
     },
   },
 };
