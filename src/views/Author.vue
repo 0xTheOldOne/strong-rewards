@@ -34,7 +34,7 @@
         </template>
 
         <b-card :title="githubResponse.login" :img-src="githubResponse.avatar_url" :img-alt="githubResponse.login" img-top tag="article" style="max-width: 20rem" class="mb-2">
-          <b-card-text>{{ githubResponse.bio }}</b-card-text>
+          <b-card-text v-html="bio"></b-card-text>
           <b-card-text class="text-center">
             <div class="social twitter" v-if="githubResponse.twitter_username != ''">
               <a :href="'https://twitter.com/' + githubResponse.twitter_username" target="_blank" rel="noopener noreferrer" title="My Twitter account (french native speaker)">
@@ -84,6 +84,11 @@ export default {
       .catch((e) => {
         this.githubError = e;
       });
+  },
+  computed: {
+    bio: function () {
+      return this.githubResponse.bio.replace(" - ", "<br />");
+    },
   },
 };
 </script>

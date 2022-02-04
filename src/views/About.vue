@@ -2,14 +2,26 @@
   <b-container>
     <b-row>
       <b-col>
-        <p>Thanks for using Strong Calculator !</p>
         <p>
           <b-badge variant="warning" class="mr-2">
-          <b-icon icon="exclamation-triangle" class="mr-1" />Disclaimer<b-icon icon="exclamation-triangle" class="ml-2" /></b-badge>
-          This app was <u>not</u> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator.<br />
+            <b-icon icon="exclamation-triangle" class="mr-1" />Disclaimer<b-icon icon="exclamation-triangle" class="ml-2" />
+          </b-badge>
+          This app was <u>not</u> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator.
         </p>
-        <p>When i wrote this app i was just starting to earn/compound strong tokens in order to create strong nodes and i tought that it could be cool to have some earnings calculator ! Please keep in mind that it was originally created in order to practice VueJs basics so maybe it's not perfect...</p>
         <p>
+          When i wrote this app i was just starting to earn/compound strong tokens in order to create strong nodes and i tought that it could be cool to have some earnings calculator, especially if you're new to StrongBlock because this can help if you don't know how it works.
+        </p>
+        <p>
+          Also, i thought that it could be cool if the app was able to connect to a wallet and see how many tokens you have in your wallet, how many nodes too and how many earnings you had but i <b>don't</b> know how to do that at the moment and i <b>don't</b> want this app to be able to interact with people wallets because nowadays we see a lot of scammers trying to do so people could be in fear about that and that's not what i want concerning this app. This app will not retrieve those kind of informations then, i hope it's ok for you !
+        </p>
+        <p>
+          Please keep in mind that it was originally created in order to practice VueJs basics so maybe it's not perfect...
+        </p>
+        <p>
+          Last thing about all of this is i do this on my free time (<i>i have a full-time job and a new born, so i don't have a lot of free time unfortunatly</i>) so this app is provided "as is" and i'll update it when i have enough time.
+        </p>
+        <p>Thank you for your understanding and many thanks for using Strong Calculator !</p>
+        <p class="mt-5">
           <u>Technical informations :</u>
           <ul class="icons">
             <li>
@@ -47,29 +59,37 @@
             </li>
             <li>
               <b-icon icon="circle" class="mr-1" />
-              Add monthly fees to the earnings projections
+              Add a projection chart of earnings
             </li>
             <li>
               <b-icon icon="circle" class="mr-1" />
-              Add NFT tab
+              Add an auto-compound option to this chart so you can see when you will be able to create the next node
             </li>
             <li>
               <b-icon icon="circle" class="mr-1" />
-              Add Polygon nodes tab
-            </li>
-            <li>
-              <b-icon icon="circle" class="mr-1" />
-              Add Sentinel nodes tab
+              Add monthly fees to the earnings projections (depends on the visualization i choose, it could be a mess with a lot of nodes)
             </li>
             <li>
               <b-icon icon="question-circle" class="mr-1" />
-              Maybe add a projection chart of earnings with auto-compound option so you can see when you will be able to create the next node
+              Maybe add NFT tab
             </li>
             <li>
               <b-icon icon="question-circle" class="mr-1" />
-              Maybe add ETH gas tracker
+              Maybe add Polygon nodes tab
+            </li>
+            <li>
+              <b-icon icon="question-circle" class="mr-1" />
+              Maybe add Sentinel nodes tab
+            </li>
+            <li>
+              <b-icon icon="question-circle" class="mr-1" />
+              Maybe add an ETH gas tracker
             </li>
           </ul>
+        </p>
+        <p>
+          <b-badge variant="primary" class="mr-2">Nota bene</b-badge>
+          I don't own NFTs or <img src="polygon.png" class="logo" />Polygon nodes or <img src="sentinel.png" class="logo" />Sentinel nodes at the moment so i don't know how they work.
         </p>
       </b-col>
     </b-row>

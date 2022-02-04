@@ -25,7 +25,7 @@
               <router-link to="/">Home</router-link>
             </b-nav-item>
             <b-nav-item href="#">
-              <router-link to="/about">About the app</router-link>
+              <router-link to="/about">Concerning the app</router-link>
             </b-nav-item>
             <b-nav-item href="#">
               <router-link to="/author">About the author</router-link>

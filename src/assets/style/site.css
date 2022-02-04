@@ -53,8 +53,12 @@ body #app ul.icons {
 }
 body #app img.logo {
   height: 1.25rem;
-  margin-right: 0.5rem;
+  margin: 0 0.25rem;
   vertical-align: middle;
+}
+body #app blockquote {
+  border-left: 3px solid rgba(241, 255, 255, 0.5);
+  padding-left: 0.5rem;
 }
 body .visible-xs {
   display: none;
