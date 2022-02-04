@@ -1,7 +1,7 @@
 <template>
   <b-container class="mt-5">
     <b-row>
-      <b-col>
+      <b-col md="4" xs="12">
         <div v-if="githubError != ''">
           <b-card title="Something went wrong... Oops.">
             <b-card-text>
@@ -58,7 +58,7 @@
           </b-skeleton-wrapper>
         </div>
       </b-col>
-      <b-col>
+      <b-col md="8" xs="12">
         <b-card img-top tag="article" class="mb-4">
           <b-card-text>
             <p class="text-justify">Since a few people suggested that on Twitter, here are some wallet addresses if you want to send a tip (again, i'm not asking for this since i coded this tool in order to help people to get into StrongBlock but several people suggested that i add a tip address so here we go)...</p>
