@@ -61,38 +61,40 @@
       <b-col md="8" xs="12">
         <b-card img-top tag="article" class="mb-4">
           <b-card-text>
-            <p class="text-justify">Since a few people suggested that on Twitter, here are some wallet addresses if you want to send a tip (again, i'm not asking for this since i coded this tool in order to help people to get into StrongBlock but several people suggested that i add a tip address so here we go)...</p>
-            <p class="text-justify">So, i created a MetaMask account only for this purpose and the following networks will work with this address :</p>
+            <p class="text-justify">Since people on Twitter suggested that i add a "tip" part on this page i created a MetaMask wallet only for this purpose.</p>
+            <p class="text-justify">The following networks will work with this MetaMask wallet address :</p>
+
             <table class="networks mt-3 mb-3">
               <tr>
                 <td><img src="etherum.png" class="logo" /></td>
                 <td>
-                  ERC20 wallet<br />
+                  ERC20 (Etherum)<br />
                   <small>This is the default network on MetaMask</small>
                 </td>
               </tr>
               <tr>
                 <td><img src="bsc.png" class="logo" /></td>
                 <td>
-                  BEP20 wallet (Binance Smart Chain)<br />
+                  BEP20 (Binance Smart Chain)<br />
                   <small>I added Binance Smart Chain network to my MetaMask account using <a href="https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain" target="_blank" rel="noopener noreferrer">this tutorial</a></small>
                 </td>
               </tr>
               <tr>
                 <td><img src="avalanche.png" class="logo" /></td>
                 <td>
-                  AVALANCHE wallet (C Chain i guess)<br />
+                  Avalanche (C Chain i guess)<br />
                   <small>I added Avalanche network to my MetaMask account using <a href="https://support.avax.network/en/articles/4626956-how-do-i-set-up-metamask-on-avalanche" target="_blank" rel="noopener noreferrer">this tutorial</a></small>
                 </td>
               </tr>
             </table>
-            <p class="text-justify">All those networks are working with a unique address, so feel free so send something on this address if you want :</p>
-            <div class="address-container">
+
+            <div class="address-container mt-4 mb-4">
               <div class="address hover">
                 <img src="metamask.png" class="logo" />0x6D768Eb34608F6Ec148EaCb0B834cCe33bBBe234<br />
                 <img src="donation-address.png" class="mt-3 mb-3" />
               </div>
             </div>
+            <p class="text-justify"><small>(Again, i'm not asking for tips since i coded this tool in order to help people to get into StrongBlock, but if you really want to send a tip i'll be happy with that !)</small></p>
           </b-card-text>
         </b-card>
       </b-col>
@@ -202,8 +204,6 @@ table.networks {
 }
 
 .address-container {
-  margin-bottom: 1rem;
-
   .address {
     font-family: "Source Code Pro", monospace;
     background-color: white;
