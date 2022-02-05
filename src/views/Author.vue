@@ -35,7 +35,7 @@
               </b-card>
             </template>
 
-            <b-card :title="githubResponse.login" :img-src="githubResponse.avatar_url" :img-alt="githubResponse.login" img-top class="mb-4">
+            <b-card :title="githubResponse.login" :img-src="githubResponse.avatar_url" :img-alt="githubResponse.login" img-top class="author mb-4">
               <b-card-text v-html="bio" class="mb-3"></b-card-text>
               <b-card-text class="mb-4 mt-4 text-center">
                 <div class="social twitter" v-if="githubResponse.twitter_username != ''">
@@ -143,7 +143,21 @@ export default {
 @import "../assets/style/variables.less";
 
 .card {
-  margin: 0 auto;
+  &.author {
+    @size: 70%;
+    @padding-top:@size / 2 + 5%;
+    padding-top: @padding-top;
+    margin-top: (@size / 2);
+
+    .card-img-top {
+      border-radius: 100%;
+      position: absolute;
+      width: @size;
+      margin: 0 ((100% - @size) / 2);
+      margin-top: -(@size / 2 + @padding-top);
+      box-shadow: 0px 0px 3px white;
+    }
+  }
 }
 
 .social {
