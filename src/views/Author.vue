@@ -157,7 +157,7 @@ export default {
       width: @size;
       margin: 0 ((100% - @size) / 2);
       margin-top: -(@size / 2 + @padding-top);
-      box-shadow: 0px 0px 3px white;
+      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.125);
     }
   }
 }
