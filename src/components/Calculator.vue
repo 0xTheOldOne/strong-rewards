@@ -11,8 +11,9 @@
                 <b-row>
                   <b-col sm="12" xs="12">
                     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-                      <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'" :description="'This value is fetched from CoinGecko, in ' + currencies[currency].val.toUpperCase() + ' (' + currencies[currency].symbol + ') every ' + refreshRateInMs / 1000 + ' seconds.'">
+                      <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'">
                         <b-form-input v-model.number="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" required></b-form-input>
+                        <template #description> This value is fetched from CoinGecko, in {{ currencies[currency].val.toUpperCase() }} ({{ currencies[currency].symbol }}) every {{ refreshPeriod }}. </template>
                       </b-form-group>
                     </b-overlay>
                   </b-col>
@@ -58,6 +59,17 @@ export default {
     CoinGeckoChart,
   },
   computed: {
+    refreshPeriod() {
+      var period = this.refreshRateInMs / 1000;
+      var unit = "second";
+
+      if (period > 60) {
+        unit = "minute";
+        period = period / 60;
+      }
+
+      return period + " " + unit + (period > 1 ? "s" : "");
+    },
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,
       refreshRateInMs: (state) => state.coinGeckoRefreshRateInMs,
