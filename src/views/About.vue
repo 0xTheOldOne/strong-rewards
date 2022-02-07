@@ -21,9 +21,13 @@
           Last thing about all of this is i code on my free time (<i>i have a full-time job and a new born, so i don't have a lot of free time unfortunatly</i>) so this tool is provided "as is" and i'll update it when i have enough time.
         </p>
         <p>Thank you for your understanding and many thanks for using Strong Calculator !</p>
-        <p class="mt-5">
-          <u>Technical informations :</u>
-          <ul class="icons">
+      </b-col>
+    </b-row>
+    <b-row class="mb-3">
+      <b-col sm="8" xs="12" class="mt-5">
+        <u>Technical informations :</u>
+        <p class="mb-3">
+          <ul class="icons mt-2">
             <li>
               <b-icon icon="chevron-right" />
               The app layout is made with <a href="https://bootstrap-vue.org/" target="_blank" rel="noopener noreferrer">bootstrap-vue</a>
@@ -42,9 +46,10 @@
             </li>
           </ul>
         </p>
-        <p>
-          <u>To do, ordered by priority :</u>
-          <ul class="icons">
+
+        <u>To do, ordered by priority :</u>
+        <p class="mb-3">
+          <ul class="icons mt-2">
              <li>
               <b-icon icon="check-circle" variant="success" class="mr-1" />
               Add token price chart
@@ -96,11 +101,68 @@
           I don't own NFTs or <img src="polygon.png" class="logo" />Polygon nodes or <img src="sentinel.png" class="logo" />Sentinel nodes at the moment so i don't know how they work, yet...
         </p>
       </b-col>
+      <b-col sm="4" xs="12" class="mt-5">
+        <u>Details about the {{githubHistoryDepth}} last source updates :</u>
+        <b-overlay :show="!loaded" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+          <div v-if="loaded" class="commits mt-2">
+            <div class="commit mb-1" v-for="commit in githubResponse" :key="commit.sha">
+              <div class="message">{{commit.commit.message}}</div>
+              <div class="infos">
+                <div class="sha">
+                  {{commit.sha.substring(0,7)}}
+                </div>
+                <div class="date">
+                  {{new Date(commit.commit.author.date).toLocaleString()}}
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </b-overlay>
+      </b-col>
     </b-row>
   </b-container>
 </template>
 
-<script></script>
+<script>
+import axios from "axios";
+
+export default {
+  name: "Author",
+  data() {
+    return {
+      loaded: false,
+      githubUser: "0xTheOldOne",
+      githubRepo: "strong-rewards",
+      githubHistoryDepth: 5,
+      githubError: "",
+      githubResponse: {
+        commits: [],
+      },
+    };
+  },
+  created() {
+    this.loaded = false;
+    axios
+      .get("https://api.github.com/repos/" + this.githubUser + "/" + this.githubRepo + "/commits")
+      .then((response) => {
+        this.githubResponse = response.data.slice(0, this.githubHistoryDepth);
+        this.loaded = true;
+      })
+      .catch((e) => {
+        this.githubError = e;
+      });
+  },
+  computed: {
+    bio: function () {
+      if (this.githubResponse != null && this.githubResponse.bio != null) {
+        return this.githubResponse.bio.replace(" - ", "<br />");
+      }
+      return "";
+    },
+  },
+};
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
