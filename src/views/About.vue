@@ -31,31 +31,6 @@
       <b-col sm="7" xs="12">
         <b-card class="mb-4">
           <b-card-text>
-            <u>Technical informations :</u>
-            <p class="mb-3">
-              <ul class="icons mt-2">
-                <li>
-                  <b-icon icon="chevron-right" />
-                  The app layout is made with <a href="https://bootstrap-vue.org/" target="_blank" rel="noopener noreferrer">bootstrap-vue</a>
-                </li>
-                <li>
-                  <b-icon icon="chevron-right" />
-                  Charts are made with <a href="https://www.highcharts.com/" target="_blank" rel="noopener noreferrer">Highcharts</a>
-                </li>
-                <li>
-                  <b-icon icon="chevron-right" />
-                  Strong token price in USD is fetched using <a href="https://github.com/miscavage/CoinGecko-API" target="_blank" rel="noopener noreferrer">Miscavage's wrapper</a> on <a href="https://www.coingecko.com/api/docs/v3" target="_blank" rel="noopener noreferrer">CoinGecko API</a>
-                </li>
-                <li>
-                  <b-icon icon="chevron-right" />
-                  Github avatar and bio are fetched using <a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferrer">Axios</a> and <a href="https://docs.github.com/en/rest/reference/users" target="_blank" rel="noopener noreferrer">GitHub Rest API</a>
-                </li>
-              </ul>
-            </p>
-          </b-card-text>
-        </b-card>
-        <b-card class="mb-4">
-          <b-card-text>
             <u>To do, ordered by priority :</u>
             <p class="mb-3">
               <ul class="icons mt-2">
@@ -113,6 +88,31 @@
         </b-card>
       </b-col>
       <b-col sm="5" xs="12">
+        <b-card class="mb-4">
+          <b-card-text>
+            <u>Technical informations :</u>
+            <p class="mb-3">
+              <ul class="icons mt-2">
+                <li>
+                  <b-icon icon="chevron-right" />
+                  The app layout is made with <a href="https://bootstrap-vue.org/" target="_blank" rel="noopener noreferrer">bootstrap-vue</a>
+                </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  Charts are made with <a href="https://www.highcharts.com/" target="_blank" rel="noopener noreferrer">Highcharts</a>
+                </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  Strong token price in USD is fetched using <a href="https://github.com/miscavage/CoinGecko-API" target="_blank" rel="noopener noreferrer">Miscavage's wrapper</a> on <a href="https://www.coingecko.com/api/docs/v3" target="_blank" rel="noopener noreferrer">CoinGecko API</a>
+                </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  Github avatar and bio are fetched using <a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferrer">Axios</a> and <a href="https://docs.github.com/en/rest/reference/users" target="_blank" rel="noopener noreferrer">GitHub Rest API</a>
+                </li>
+              </ul>
+            </p>
+          </b-card-text>
+        </b-card>
         <b-card class="mb-3">
           <b-card-text>
             <u>Details about the {{githubHistoryDepth}} last updates :</u>
