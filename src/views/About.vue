@@ -43,12 +43,8 @@
                   Store values with <a href="https://vuex.vuejs.org/" target="_blank" rel="noopener noreferrer">VueX</a> store in order to use those values across the app
                 </li>
                 <li>
-                  <b-icon icon="circle" class="mr-1" />
+                  <b-icon icon="check-circle" variant="success" class="mr-1" />
                   Refactor rewards component in order to use VueX store values
-                </li>
-                <li>
-                  <b-icon icon="question-circle" class="mr-1" />
-                  Maybe add some internationalization (i18n) for non english speakers
                 </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
@@ -61,6 +57,10 @@
                 <li>
                   <b-icon icon="circle" class="mr-1" />
                   Add monthly fees to the earnings projections (depends on the visualization i choose, it could be a mess with a lot of nodes)
+                </li>
+                <li>
+                  <b-icon icon="question-circle" class="mr-1" />
+                  Maybe add some internationalization (i18n) for non english speakers
                 </li>
                 <li>
                   <b-icon icon="question-circle" class="mr-1" />

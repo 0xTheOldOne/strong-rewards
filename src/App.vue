@@ -25,6 +25,9 @@
               <router-link to="/">Home</router-link>
             </b-nav-item>
             <b-nav-item href="#">
+              <router-link to="/strongblock">What is strongBlock ?</router-link>
+            </b-nav-item>
+            <b-nav-item href="#">
               <router-link to="/about">Concerning the app</router-link>
             </b-nav-item>
             <b-nav-item href="#">
