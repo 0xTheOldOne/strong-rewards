@@ -7,12 +7,12 @@ https://dev.to/anjolaogunmefun/deploy-vue-js-projects-to-heroku-1hb5
 
 ### How to change git confg credential that are used to push to github
 ```
-git config user.name 0xTheOldOne
-git config user.email oxtheoldone@protonmail.com
+git config user.name MyCommitName
+git config user.email MyCommitEmail
 ```
 
 
-### If you failed to push your code without changing your user info, leading to display your real name (fucking dubass !)
+### If you failed to push your code without changing your user info, you can revert what you've done by going back to a previous commit
 ```
 git push -f origin commit:branch
 ```
