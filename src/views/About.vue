@@ -28,7 +28,7 @@
       </b-col>
     </b-row>
     <b-row class="mb-4">
-      <b-col sm="7" xs="12">
+      <b-col sm="6" xs="12">
         <b-card class="mb-4">
           <b-card-text>
             <u>To do, ordered by priority :</u>
@@ -87,7 +87,7 @@
           </b-card-text>
         </b-card>
       </b-col>
-      <b-col sm="5" xs="12">
+      <b-col sm="6" xs="12">
         <b-card class="mb-4">
           <b-card-text>
             <u>Technical informations :</u>
