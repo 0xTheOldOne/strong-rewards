@@ -17,19 +17,19 @@ export default new Vuex.Store({
     price: 0.0,
     networks: {
       etherum: {
-        name: "Etherum",
+        name: "etherum",
         count: 1,
         rewards: 0.09143,
         display: true,
       },
       polygon: {
-        name: "Polygon",
+        name: "polygon",
         count: 0,
         rewards: 0.1,
         display: false,
       },
       sentinel: {
-        name: "Sentinel",
+        name: "sentinel",
         count: 0,
         rewards: 0.1,
         display: false,

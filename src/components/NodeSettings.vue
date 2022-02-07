@@ -1,7 +1,9 @@
 <template>
   <div v-if="network.display">
     <b-tab>
-      <template #title><img :src="network.name + '.png'" class="logo" />{{ network.name }}</template>
+      <template #title
+        ><img :src="network.name + '.png'" class="logo" /><span class="ticker">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }}</span></template
+      >
       <b-card-text>
         <b-row>
           <b-col sm="6" xs="12">
