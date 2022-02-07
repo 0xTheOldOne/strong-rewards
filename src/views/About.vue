@@ -50,12 +50,12 @@
               Add token price chart
             </li>
             <li>
-              <b-icon icon="circle" class="mr-1" />
-              Refactor components in order to share calculation values across the app 
+            <b-icon icon="check-circle" variant="success" class="mr-1" />
+              Store values with <a href="https://vuex.vuejs.org/" target="_blank" rel="noopener noreferrer">VueX</a> store in order to use those values across the app
             </li>
             <li>
               <b-icon icon="circle" class="mr-1" />
-              Store values with <a href="https://vuex.vuejs.org/" target="_blank" rel="noopener noreferrer">VueX</a> store in order to use those values across the app
+              Refactor rewards component in order to use VueX store values
             </li>
             <li>
               <b-icon icon="circle" class="mr-1" />
