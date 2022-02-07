@@ -48,6 +48,11 @@
                     <b-icon icon="github" class="hover"></b-icon>
                   </a>
                 </div>
+                <div class="social">
+                  <a href="https://stackoverflow.com/users/2003597" target="_blank" rel="noopener noreferrer" title="My StackOverflow profile">
+                    <img src="stackoverflow.png" class="hover" />
+                  </a>
+                </div>
                 <div class="social mail">
                   <a href="mailto:oxtheoldone@protonmail.com" target="_blank" rel="noopener noreferrer" title="Use with caution, only if you want to talk about this app">
                     <b-icon icon="envelope" class="hover"></b-icon>
@@ -166,10 +171,15 @@ export default {
   margin: 0px 0.5em;
   display: inline-block;
 
-  svg {
+  svg,
+  img {
     @size: 2em;
     width: @size;
     height: @size;
+  }
+
+  img {
+    vertical-align: baseline;
   }
 
   &.twitter {

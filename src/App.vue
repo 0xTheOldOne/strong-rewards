@@ -37,9 +37,8 @@
         </b-collapse>
       </b-container>
     </b-navbar>
-    <div class="mb-4"></div>
 
-    <router-view />
+    <router-view class="mt-4" />
   </div>
 </template>
 
