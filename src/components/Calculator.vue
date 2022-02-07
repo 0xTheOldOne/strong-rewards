@@ -30,10 +30,10 @@
       <div id="tokenRewards">
         <div class="title">Periodical rewards</div>
         <div class="rewards">
-          <Rewards title="daily" :days="1" :dayRewards="networks.etherum.rewards" :nodeCount="networks.etherum.count" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
-          <Rewards title="weekly" :days="7" :dayRewards="networks.etherum.rewards" :nodeCount="networks.etherum.count" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
-          <Rewards title="monthly" :days="30" :dayRewards="networks.etherum.rewards" :nodeCount="networks.etherum.count" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
-          <Rewards title="annually" :days="365" :dayRewards="networks.etherum.rewards" :nodeCount="networks.etherum.count" :priceAsFiat="price" :fiatSymbol="currencies[currency].symbol" :tokenSymbol="ticker" />
+          <Rewards :days="1" />
+          <Rewards :days="7" />
+          <Rewards :days="30" />
+          <Rewards :days="365" />
         </div>
       </div>
 
