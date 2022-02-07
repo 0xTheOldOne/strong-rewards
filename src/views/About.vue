@@ -43,7 +43,7 @@
           </ul>
         </p>
         <p>
-          <u>To do :</u>
+          <u>To do, ordered by priority :</u>
           <ul class="icons">
              <li>
               <b-icon icon="check-circle" variant="success" class="mr-1" />
@@ -56,6 +56,10 @@
             <li>
               <b-icon icon="circle" class="mr-1" />
               Refactor rewards component in order to use VueX store values
+            </li>
+            <li>
+              <b-icon icon="question-circle" class="mr-1" />
+              Maybe add some internationalization (i18n) for non english speakers
             </li>
             <li>
               <b-icon icon="circle" class="mr-1" />
