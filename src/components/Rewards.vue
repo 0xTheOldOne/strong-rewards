@@ -1,20 +1,24 @@
 <template>
   <b-card no-body class="reward mb-3">
-    <b-list-group flush>
-      <b-list-group-item>
-        <div class="title">{{ title.charAt(0).toUpperCase() + title.slice(1) }} rewards</div>
-      </b-list-group-item>
-      <b-list-group-item>
-        <b-icon icon="wallet" class="mr-2" /> <span class="value">{{ earnedOnPeriod() }}</span> ${{ tokenSymbol.toUpperCase() }}
-      </b-list-group-item>
-      <b-list-group-item>
-        <b-icon icon="cash" class="mr-2" /> <span class="value">{{ asFiat(earnedOnPeriod()) }}</span> {{ fiatSymbol }}
-      </b-list-group-item>
-    </b-list-group>
+    <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+      <b-list-group flush>
+        <b-list-group-item>
+          <div class="title">{{ title.charAt(0).toUpperCase() + title.slice(1) }} rewards</div>
+        </b-list-group-item>
+        <b-list-group-item>
+          <b-icon icon="wallet" class="mr-2" /> <span class="value">{{ earnedOnPeriod() }}</span> ${{ tokenSymbol.toUpperCase() }}
+        </b-list-group-item>
+        <b-list-group-item>
+          <b-icon icon="cash" class="mr-2" /> <span class="value">{{ asFiat(earnedOnPeriod()) }}</span> {{ fiatSymbol }}
+        </b-list-group-item>
+      </b-list-group>
+    </b-overlay>
   </b-card>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "Rewards",
   props: {
@@ -33,6 +37,16 @@ export default {
     asFiat: function (tokens) {
       return (tokens * this.priceAsFiat).toFixed(2);
     },
+  },
+  computed: {
+    ...mapState({
+      requestPending: (state) => state.coinGeckoRequestPending,
+      currencies: (state) => state.currencies,
+      currency: (state) => state.currency,
+      ticker: (state) => state.ticker,
+      price: (state) => state.price,
+      networks: (state) => state.networks,
+    }),
   },
 };
 </script>

@@ -11,7 +11,7 @@
         <b-navbar-nav class="ml-auto">
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
           <b-nav-item size="sm" class="hidden-xs">
-            <Ping />
+            <CoinGeckoUpdater />
           </b-nav-item>
         </b-navbar-nav>
       </b-container>
@@ -31,7 +31,7 @@
               <router-link to="/author">About the author</router-link>
             </b-nav-item>
             <b-nav-item size="sm" class="visible-xs">
-              <Ping />
+              <CoinGeckoUpdater />
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
@@ -47,12 +47,12 @@
 // @ is an alias to /src
 import { version } from "../package";
 import "particles.js";
-import Ping from "@/components/Ping.vue";
+import CoinGeckoUpdater from "@/components/CoinGeckoUpdater.vue";
 
 export default {
   name: "App",
   components: {
-    Ping,
+    CoinGeckoUpdater,
   },
   data() {
     return {
