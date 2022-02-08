@@ -136,7 +136,10 @@
               <div v-if="loaded" class="commits mt-2">
                 <div class="commit mb-2" v-for="commit in githubResponse" :key="commit.sha">
                     <div class="message">{{commit.commit.message}}</div>
-                    <div class="date"><b-badge class="sha mr-2">{{commit.sha.substring(0,7)}}</b-badge>{{new Date(commit.commit.author.date).toLocaleString()}}</div>
+                    <div class="date">
+                      <b-badge class="sha mr-2">{{commit.sha.substring(0,7)}}</b-badge>
+                      <small>{{new Date(commit.commit.author.date).toLocaleString()}}</small>
+                    </div>
                 </div>
               </div>
             </b-overlay>
