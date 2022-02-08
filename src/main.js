@@ -17,9 +17,12 @@ Vue.prototype.$CoinGeckoClient = new CoinGecko();
 
 Vue.config.productionTip = false;
 
-new Vue({
+window.Vue = new Vue({
   router,
   store,
+  beforeCreate() {
+    this.$store.commit("initializeFromLocalStorage");
+  },
   render: function (h) {
     return h(App);
   },

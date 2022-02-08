@@ -9,14 +9,14 @@
           <b-col sm="6" xs="12">
             <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
               <b-form-group label="Rewards per node, per day :" :description="'This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 $' + ticker.toUpperCase() + ' per 7000 Etherum blocks completed.'">
-                <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" required></b-form-input>
+                <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" required @change="updateNodeRewards($event)"></b-form-input>
               </b-form-group>
             </b-overlay>
           </b-col>
           <b-col sm="6" xs="12">
             <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
               <b-form-group :label="'Node count : ' + network.count">
-                <b-form-input v-model.number="network.count" type="range" min="0" max="100" placeholder="Node count" required></b-form-input>
+                <b-form-input v-model.number="network.count" type="range" min="0" max="100" placeholder="Node count" required @change="updateNodeCount($event)"></b-form-input>
                 <template #description>
                   {{ daysToCompound(ticker, network.rewards, network.count) }}
                 </template>
@@ -53,6 +53,20 @@ export default {
       } else {
         return "Without node you can't earn tokens...";
       }
+    },
+    updateNodeRewards(event) {
+      this.$store.commit({
+        type: "setNodeRewards",
+        network: this.network.name,
+        rewards: event,
+      });
+    },
+    updateNodeCount(event) {
+      this.$store.commit({
+        type: "setNodeCount",
+        network: this.network.name,
+        count: event,
+      });
     },
   },
 };
