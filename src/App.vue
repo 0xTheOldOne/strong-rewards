@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="primary">
+    <b-navbar toggleable="md" type="dark" variant="primary">
       <b-container fluid="md">
         <b-navbar-brand href="#">
           <b-icon icon="calculator" class="mr-2" />Strong Calculator
@@ -11,12 +11,13 @@
         <b-navbar-nav class="ml-auto">
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
           <b-nav-item size="sm" class="hidden-xs">
-            <CoinGeckoUpdater />
+            <CoinGeckoUpdater variant="right" />
           </b-nav-item>
         </b-navbar-nav>
       </b-container>
     </b-navbar>
-    <b-navbar toggleable="lg" type="dark" variant="primary" style="padding: 0 1rem; font-size: 90%">
+
+    <b-navbar toggleable="md" type="dark" variant="primary" style="padding: 0 1rem; font-size: 90%">
       <b-container fluid="md">
         <b-collapse id="nav-collapse" is-nav>
           <!-- left nav-items -->
@@ -25,7 +26,7 @@
               <router-link to="/">Home</router-link>
             </b-nav-item>
             <b-nav-item href="#">
-              <router-link to="/strongblock">What is strongBlock ?</router-link>
+              <router-link to="/strongblock">What is StrongBlock ?</router-link>
             </b-nav-item>
             <b-nav-item href="#">
               <router-link to="/about">Concerning the app</router-link>
@@ -41,7 +42,7 @@
       </b-container>
     </b-navbar>
 
-    <router-view class="mt-4" />
+    <router-view class="mt-4 mb-4" />
   </div>
 </template>
 

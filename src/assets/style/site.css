@@ -38,9 +38,14 @@ body #app .navbar .nav-link > * {
 body #app .form-group input {
   height: 2rem !important;
 }
-body #app input,
+body #app input {
+  color: #2c3e50 !important;
+}
 body #app .card {
   color: #2c3e50 !important;
+}
+body #app .card .card-body p:last-of-type {
+  margin-bottom: 0px !important;
 }
 body #app .title {
   font-weight: 400;

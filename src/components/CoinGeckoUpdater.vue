@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div :class="variant">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       <div class="status">
         <b-badge variant="success" v-if="reachable">{{ target }} is online</b-badge>
         <b-badge variant="danger" v-else>{{ target }} is offline</b-badge>
-        <div>
-          Next refresh in
-          <div class="refresh">{{ ((refreshRateInMs - timerTicks * timerTicksRateInMs) / 1000).toFixed(2) }}</div>
-          seconds
-        </div>
+      </div>
+      <div class="refresh-container">
+        Next refresh in
+        <div class="refresh">{{ ((refreshRateInMs - timerTicks * timerTicksRateInMs) / 1000).toFixed(2) }}</div>
+        seconds
       </div>
     </b-overlay>
   </div>
@@ -21,6 +21,12 @@ const CoinGeckoClient = new CoinGecko();
 
 export default {
   name: "CoinGeckoUpdater",
+  props: {
+    variant: {
+      type: String,
+      default: "left",
+    },
+  },
   data() {
     return {
       target: "Coin Gecko API",
@@ -91,14 +97,41 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .status {
+  .badge {
+    line-height: 1rem;
+  }
+}
+
+.refresh-container {
   display: inline-block;
-  text-align: right;
-  font-size: 0.8rem;
 
   .refresh {
     font-family: "Source Code Pro", monospace;
     min-width: 40px;
+    line-height: 1rem;
     display: inline-block;
+  }
+}
+
+&.right {
+  font-size: 0.8rem;
+  text-align: right;
+
+  .refresh-container {
+    display: block;
+    margin-top: 0.25rem;
+  }
+}
+
+&.left {
+  font-size: 0.8rem;
+
+  .status {
+    display: inline-block;
+
+    .badge {
+      margin-right: 1rem;
+    }
   }
 }
 </style>

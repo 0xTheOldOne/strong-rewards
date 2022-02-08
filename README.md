@@ -1,8 +1,9 @@
 <h1 align="center">strong-rewards</h1>
+<img align="right" src="https://img.shields.io/github/package-json/v/0xTheOldOne/strong-rewards?style=for-the-badge" />
 
-<h3>Description</h3>
-<img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=0xTheOldOne&repo=strong-rewards" />
+<h3 >Description</h3>
 <div>
+  <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=0xTheOldOne&repo=strong-rewards" />
   <p>This app made with VueJS and allows everyone that is taking part to the project or wants to be in to get some insights about rewards/earnings that this kind of nodes can provide while helping the blockchain echosystem to grow :rocket:</p>
 </div>
 

@@ -54,9 +54,20 @@ body {
       }
     }
 
-    input,
+    input {
+      color: @text-color-secondary !important;
+    }
+
     .card {
       color: @text-color-secondary !important;
+
+      .card-body {
+        p {
+          &:last-of-type {
+            margin-bottom: 0px !important;
+          }
+        }
+      }
     }
 
     // Misc
