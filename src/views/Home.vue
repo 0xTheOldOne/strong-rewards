@@ -13,7 +13,7 @@
                     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
                       <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'">
                         <b-form-input v-model.number="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" required></b-form-input>
-                        <template #description> This value is fetched from CoinGecko, in {{ currencies[currency].val.toUpperCase() }} ({{ currencies[currency].symbol }}) every {{ refreshPeriod }}. </template>
+                        <template #description><b-icon icon="stopwatch" class="mr-1" />This value is fetched from CoinGecko, in {{ currencies[currency].val.toUpperCase() }} ({{ currencies[currency].symbol }}) every {{ refreshPeriod }}. </template>
                       </b-form-group>
                     </b-overlay>
                   </b-col>
@@ -36,6 +36,15 @@
           <Rewards :days="30" />
           <Rewards :days="365" />
         </div>
+      </b-col>
+    </b-row>
+    <b-row class="mb-4">
+      <b-col>
+        <div class="title">Auto-compound projection chart</div>
+        <b-alert variant="warning" show>
+          <b-icon icon="hourglass" animation="cylon-vertical" class="mr-1" />
+          Coming soon...
+        </b-alert>
       </b-col>
     </b-row>
   </b-container>

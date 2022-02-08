@@ -9,7 +9,13 @@
 
         <!-- right nav-items -->
         <b-navbar-nav class="ml-auto">
-          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <b-navbar-toggle target="nav-collapse">
+            <template #default="{ expanded }">
+              <b-icon v-if="expanded" icon="chevron-up"></b-icon>
+              <b-icon v-else icon="list"></b-icon>
+            </template>
+          </b-navbar-toggle>
+
           <b-nav-item size="sm" class="hidden-xs">
             <CoinGeckoUpdater variant="right" />
           </b-nav-item>

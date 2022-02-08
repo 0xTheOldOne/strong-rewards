@@ -56,11 +56,11 @@
                 </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
-                  Add an auto-compound option to this chart so you can see when you will be able to create the next node
+                  Add monthly fees to the earnings projections (depends on the visualization i choose, it could be a mess with a lot of nodes)
                 </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
-                  Add monthly fees to the earnings projections (depends on the visualization i choose, it could be a mess with a lot of nodes)
+                  Add an auto-compound option to this chart so you can see when you will be able to create the next node
                 </li>
                 <li>
                   <b-icon icon="question-circle" class="mr-1" />
