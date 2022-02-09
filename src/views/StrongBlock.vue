@@ -14,9 +14,8 @@
         <div>
           <div class="title">
             ${{ this.ticker.toUpperCase() }} chart against {{ this.currencies[this.currency].val.toUpperCase() }} ({{ this.currencies[this.currency].symbol }})
-            <div style="float: right; align-items: center;">
-              <b-badge variant="info" style="margin-left: 20px;" href="https://etherscan.io/gastracker">Gas price : {{ Gwei }} from <img src="etherum.png" class="logo" /></b-badge>
-              <b-badge  style="margin-left: 20px;" href="https://www.coingecko.com/en/coins/strong">See it on <img src="coingecko.png" class="logo" />CoinGecko</b-badge>
+            <div style="float: right">
+              <b-badge href="https://www.coingecko.com/en/coins/strong">See it on <img src="coingecko.png" class="logo" />CoinGecko</b-badge>
             </div>
           </div>
           <CoinGeckoChart :ticker="ticker" :currency="currency" period="max" />
@@ -30,20 +29,17 @@
 // @ is an alias to /src
 import { mapState } from "vuex";
 import CoinGeckoChart from "@/components/CoinGeckoChart.vue";
-import GasFees from "@/components/GasFees";
 
 export default {
   name: "StrongBlock",
   components: {
     CoinGeckoChart,
-    GasFees,
   },
   computed: {
     ...mapState({
       currencies: (state) => state.currencies,
       currency: (state) => state.currency,
       ticker: (state) => state.ticker,
-      Gwei: (state) => state.Gwei,
     }),
   },
 };

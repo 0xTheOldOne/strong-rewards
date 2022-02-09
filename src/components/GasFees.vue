@@ -1,97 +1,64 @@
 <template>
-  <div>
-      <div class="status">
-        <b-badge variant="info">Gas price : {{ Gwei }} {{ gasEmoji }}</b-badge>
-
-      </div>
+  <div class="status">
+    <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+      <b-badge variant="info">⛽ {{ gwei }} gwei</b-badge>
+    </b-overlay>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-const axios = require('axios');
+const axios = require("axios");
 
 export default {
   name: "GasFees",
   data() {
     return {
-      gasEmoji: '😀',
       timer: null,
-      timerTicks: 0,
-      timerTicksRateInMs: 100,
+      timerTicksRateInMs: 30 * 1000,
+      requestPending: false,
+      gwei: 0,
     };
   },
   mounted: function () {
     this.fetchFeesFromEtherScan();
 
     this.timer = setInterval(() => {
-      this.timerTicks++;
-
-      if (this.timerTicks * this.timerTicksRateInMs >= this.refreshRateInMs) {
-        this.timerTicks = 0;
-        this.fetchFeesFromEtherScan();
-      }
+      this.fetchFeesFromEtherScan();
     }, this.timerTicksRateInMs);
   },
   beforeDestroy() {
     clearInterval(this.timer);
   },
   methods: {
-    evalGasFees: function () {
-      const fees = this.Gwei
-      switch (true) {
-        case (fees < 50):
-          this.gasEmoji = '🤩';
-          break;
-        case (fees < 75):
-          this.gasEmoji = '😀';
-          break;
-        case (fees < 100):
-          this.gasEmoji = '🥶';
-          break;
-        case (fees > 100):
-          this.gasEmoji = '🤯';
-          break;
-        default :
-          this.gasEmoji = '😀';
-          break;
-      }
-    },
     fetchFeesFromEtherScan: async function () {
-      let response = await axios.get(
-          this.apiUrl,
-          { params: {
-              module: "gastracker",
-              action: "gasoracle",
-              apikey: this.apiKey,
-            }}
-      );
+      this.requestPending = true;
+
+      let response = await axios.get("https://api.etherscan.io/api", {
+        params: {
+          module: "gastracker",
+          action: "gasoracle",
+          apikey: this.apiKey,
+        },
+      });
+
       if (response.status === 200) {
-        this.$store.commit({
-          type: "setGweiFees",
-          Gwei: response.data.result.SafeGasPrice,
-        });
-        this.evalGasFees();
+        this.gwei = response.data.result.SafeGasPrice;
       }
+
+      this.requestPending = false;
     },
   },
   computed: {
     ...mapState({
-      reachable: (state) => state.etherScanIsReachable,
-      refreshRateInMs: (state) => state.etherScanRefreshRateInMs,
-      apiUrl: (state) => state.etherScanApi,
       apiKey: (state) => state.etherScanApiKey,
-      Gwei: (state) => state.Gwei,
     }),
   },
-
-}
+};
 </script>
 
 <style scoped>
-status {
+.status {
   display: inline-block;
-  text-align: right;
-  font-size: 0.8rem;
 }
 </style>

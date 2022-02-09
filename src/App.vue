@@ -5,8 +5,7 @@
         <b-navbar-brand href="#">
           <b-icon icon="calculator" class="mr-2" />Strong Calculator
           <b-badge variant="success">{{ appVersion }}</b-badge>
-          <GasFees/>
-
+          <GasFees class="ml-3" />
         </b-navbar-brand>
 
         <!-- right nav-items -->
@@ -43,7 +42,6 @@
               <router-link to="/author">About the author</router-link>
             </b-nav-item>
             <b-nav-item size="sm" class="visible-xs">
-
               <CoinGeckoUpdater />
             </b-nav-item>
           </b-navbar-nav>
