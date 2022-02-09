@@ -51,6 +51,10 @@
                   Store VueX state in localStorage using <a href="https://github.com/championswimmer/vuex-persist" target="_blank" rel="noopener noreferrer">vuex-persist</a> plugin so you can retrieve your settings the next time you want to use the app
                 </li>
                 <li>
+                  <b-icon icon="check-circle" variant="success" class="mr-1" />
+                  Add an ETH gas tracker
+                </li>
+                <li>
                   <b-icon icon="circle" class="mr-1" />
                   Add a projection chart of earnings
                 </li>
@@ -78,10 +82,7 @@
                   <b-icon icon="question-circle" class="mr-1" />
                   Maybe add Sentinel nodes tab
                 </li>
-                <li>
-                  <b-icon icon="question-circle" class="mr-1" />
-                  Maybe add an ETH gas tracker
-                </li>
+
               </ul>
             </p>
             <p>
