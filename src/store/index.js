@@ -8,6 +8,11 @@ export default new Vuex.Store({
     coinGeckoRefreshRateInMs: 5 * 60 * 1000,
     coinGeckoIsReachable: false,
     coinGeckoRequestPending: false,
+    etherScanApi: "https://api.etherscan.io/api",
+    etherScanApiKey: "GK5ISJEBJAIJR1Q97MB6HSVYWB1IJ9UR46",
+    etherScanRefreshRateInMs: 10000,
+    etherScanIsReachable: false,
+    Gwei: 0,
     currency: "usd",
     currencies: {
       usd: { id: 1, val: "usd", symbol: "$" },
@@ -61,6 +66,9 @@ export default new Vuex.Store({
     setNodeRewards(state, payload) {
       state.networks[payload.network].rewards = payload.rewards;
     },
+    setGweiFees(state, payload) {
+      state.Gwei = payload.Gwei;
+    }
   },
   actions: {},
   modules: {},
