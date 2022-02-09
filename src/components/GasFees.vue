@@ -1,7 +1,7 @@
 <template>
   <div>
       <div class="status">
-        <b-badge variant="info">Gas price : {{ Gwei }} </b-badge>
+        <b-badge variant="info">Gas price : {{ Gwei }} {{ gasEmoji }}</b-badge>
 
       </div>
   </div>
@@ -15,7 +15,7 @@ export default {
   name: "GasFees",
   data() {
     return {
-      gasFees: 0,
+      gasEmoji: '😀',
       timer: null,
       timerTicks: 0,
       timerTicksRateInMs: 100,
@@ -37,6 +37,26 @@ export default {
     clearInterval(this.timer);
   },
   methods: {
+    evalGasFees: function () {
+      const fees = this.Gwei
+      switch (true) {
+        case (fees < 50):
+          this.gasEmoji = '🤩';
+          break;
+        case (fees < 75):
+          this.gasEmoji = '😀';
+          break;
+        case (fees < 100):
+          this.gasEmoji = '🥶';
+          break;
+        case (fees > 100):
+          this.gasEmoji = '🤯';
+          break;
+        default :
+          this.gasEmoji = '😀';
+          break;
+      }
+    },
     fetchFeesFromEtherScan: async function () {
       let response = await axios.get(
           this.apiUrl,
@@ -51,6 +71,7 @@ export default {
           type: "setGweiFees",
           Gwei: response.data.result.SafeGasPrice,
         });
+        this.evalGasFees();
       }
     },
   },
