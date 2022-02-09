@@ -118,11 +118,19 @@
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />
-                  Strong token price in USD is fetched using <a href="https://github.com/miscavage/CoinGecko-API" target="_blank" rel="noopener noreferrer">Miscavage's wrapper</a> on <a href="https://www.coingecko.com/api/docs/v3" target="_blank" rel="noopener noreferrer">CoinGecko API</a>
+                  Rest API consuming is done with <a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferrer">Axios</a>
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />
-                  Github avatar and bio are fetched using <a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferrer">Axios</a> and <a href="https://docs.github.com/en/rest/reference/users" target="_blank" rel="noopener noreferrer">GitHub Rest API</a>
+                  Gas fees are fetched from <a href="https://etherscan.io/apis" target="_blank" rel="noopener noreferrer">Etherscan API</a>
+                </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  Github avatar and bio are fetched from <a href="https://docs.github.com/en/rest/reference/users" target="_blank" rel="noopener noreferrer">GitHub Rest API</a>
+                </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  Strong token price in USD is fetched using <a href="https://github.com/miscavage/CoinGecko-API" target="_blank" rel="noopener noreferrer">Miscavage's wrapper</a> on <a href="https://www.coingecko.com/api/docs/v3" target="_blank" rel="noopener noreferrer">CoinGecko API</a>
                 </li>
               </ul>
             </p>

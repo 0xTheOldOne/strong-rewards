@@ -4,7 +4,7 @@
       <b-container fluid="md">
         <b-navbar-brand href="#">
           <b-icon icon="calculator" class="mr-2" />Strong Calculator
-          <b-badge variant="success">{{ appVersion }}</b-badge>
+          <b-badge class="ml-2" variant="success">{{ appVersion }}</b-badge>
           <GasFees class="ml-3" />
         </b-navbar-brand>
 
