@@ -3,6 +3,7 @@
     <b-row>
       <b-col>
         <div class="title">What is StrongBlock ?</div>
+
         <div class="video-wrapper mb-4">
           <iframe class="video" src="https://www.youtube.com/embed/tjQpaHakzYA?autoplay=1"></iframe>
         </div>
@@ -13,11 +14,10 @@
         <div>
           <div class="title">
             ${{ this.ticker.toUpperCase() }} chart against {{ this.currencies[this.currency].val.toUpperCase() }} ({{ this.currencies[this.currency].symbol }})
-            <small style="float: right">
-              <a href="https://www.coingecko.com/en/coins/strong" target="_blank" rel="noopener noreferrer">
-                <b-badge>See it on <img src="coingecko.png" class="logo" />CoinGecko</b-badge>
-              </a>
-            </small>
+            <div style="float: right; align-items: center;">
+              <b-badge variant="info" style="margin-left: 20px;" href="https://etherscan.io/gastracker">Gas price : {{ Gwei }} from <img src="etherum.png" class="logo" /></b-badge>
+              <b-badge  style="margin-left: 20px;" href="https://www.coingecko.com/en/coins/strong">See it on <img src="coingecko.png" class="logo" />CoinGecko</b-badge>
+            </div>
           </div>
           <CoinGeckoChart :ticker="ticker" :currency="currency" period="max" />
         </div>
@@ -30,17 +30,20 @@
 // @ is an alias to /src
 import { mapState } from "vuex";
 import CoinGeckoChart from "@/components/CoinGeckoChart.vue";
+import GasFees from "@/components/GasFees";
 
 export default {
   name: "StrongBlock",
   components: {
     CoinGeckoChart,
+    GasFees,
   },
   computed: {
     ...mapState({
       currencies: (state) => state.currencies,
       currency: (state) => state.currency,
       ticker: (state) => state.ticker,
+      Gwei: (state) => state.Gwei,
     }),
   },
 };
