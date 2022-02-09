@@ -1,7 +1,11 @@
 <template>
   <div class="status">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-      <b-badge variant="info">⛽ {{ gwei }} gwei</b-badge>
+      <b-badge variant="info">
+        <span class="mr-1">⛽</span>
+        {{ gwei }} gwei
+        <span class="ml-1">{{ emoji }}</span>
+      </b-badge>
     </b-overlay>
   </div>
 </template>
@@ -18,6 +22,7 @@ export default {
       timerTicksRateInMs: 30 * 1000,
       requestPending: false,
       gwei: 0,
+      emoji: null,
     };
   },
   mounted: function () {
@@ -44,6 +49,18 @@ export default {
 
       if (response.status === 200) {
         this.gwei = response.data.result.SafeGasPrice;
+      }
+
+      if (this.gwei <= 50) {
+        this.emoji = "🟢";
+      } else if (this.gwei <= 60) {
+        this.emoji = "🟡";
+      } else if (this.gwei <= 80) {
+        this.emoji = "🟠";
+      } else if (this.gwei <= 100) {
+        this.emoji = "🔴";
+      } else {
+        this.emoji = "◾";
       }
 
       this.requestPending = false;
