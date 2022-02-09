@@ -51,13 +51,13 @@ export default {
         this.gwei = response.data.result.SafeGasPrice;
       }
 
-      if (this.gwei <= 50) {
+      if (this.gwei < 50) {
         this.emoji = "🟢";
-      } else if (this.gwei <= 60) {
+      } else if (this.gwei >= 50) {
         this.emoji = "🟡";
-      } else if (this.gwei <= 80) {
+      } else if (this.gwei >= 80) {
         this.emoji = "🟠";
-      } else if (this.gwei <= 100) {
+      } else if (this.gwei >= 100) {
         this.emoji = "🔴";
       } else {
         this.emoji = "◾";
