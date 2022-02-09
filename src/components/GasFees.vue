@@ -1,11 +1,7 @@
 <template>
   <div class="status">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-      <b-badge variant="info">
-        <span class="mr-1">⛽</span>
-        {{ gwei }} gwei
-        <span class="ml-1">{{ emoji }}</span>
-      </b-badge>
+      <b-badge :variant="gweiVariant"><span class="mr-1">⛽</span> {{ gwei }} gwei</b-badge>
     </b-overlay>
   </div>
 </template>
@@ -22,7 +18,7 @@ export default {
       timerTicksRateInMs: 30 * 1000,
       requestPending: false,
       gwei: 0,
-      emoji: null,
+      gweiVariant: "",
     };
   },
   mounted: function () {
@@ -52,13 +48,13 @@ export default {
       }
 
       if (this.gwei >= 100) {
-        this.emoji = "🔴";
+        this.gweiVariant = "danger";
       } else if (this.gwei >= 80) {
-        this.emoji = "🟠";
+        this.gweiVariant = "warning";
       } else if (this.gwei >= 50) {
-        this.emoji = "🟡";
+        this.gweiVariant = "info";
       } else if (this.gwei < 50) {
-        this.emoji = "🟢";
+        this.gweiVariant = "success";
       }
 
       this.requestPending = false;
