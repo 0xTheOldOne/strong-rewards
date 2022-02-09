@@ -1,5 +1,5 @@
 <template>
-  <b-container class="mt-5">
+  <b-container fluid="md">
     <b-row>
       <b-col md="4" xs="12">
         <div v-if="githubError != ''">

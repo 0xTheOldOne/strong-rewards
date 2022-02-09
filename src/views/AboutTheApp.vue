@@ -1,8 +1,8 @@
 <template>
-  <b-container>
+  <b-container fluid="md">
     <b-row>
-      <b-col>
-        <b-card class="mb-4">
+      <b-col class="mb-4">
+        <b-card>
           <b-card-text>
             <p>
               <b-badge variant="warning" class="mr-2">
@@ -27,8 +27,8 @@
         </b-card>
       </b-col>
     </b-row>
-    <b-row class="mb-4">
-      <b-col sm="6" xs="12">
+    <b-row>
+      <b-col>
         <b-card class="mb-4">
           <b-card-text>
             <u>To do, ordered by priority :</u>
@@ -47,16 +47,20 @@
                   Refactor rewards component in order to use VueX store values
                 </li>
                 <li>
+                  <b-icon icon="check-circle" variant="success" class="mr-1" />
+                  Store VueX state in localStorage using <a href="https://github.com/championswimmer/vuex-persist" target="_blank" rel="noopener noreferrer">vuex-persist</a> plugin so you can retrieve your settings the next time you want to use the app
+                </li>
+                <li>
                   <b-icon icon="circle" class="mr-1" />
                   Add a projection chart of earnings
                 </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
-                  Add an auto-compound option to this chart so you can see when you will be able to create the next node
+                  Add monthly fees to the earnings projections (depends on the visualization i choose, it could be a mess with a lot of nodes)
                 </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
-                  Add monthly fees to the earnings projections (depends on the visualization i choose, it could be a mess with a lot of nodes)
+                  Add an auto-compound option to this chart so you can see when you will be able to create the next node
                 </li>
                 <li>
                   <b-icon icon="question-circle" class="mr-1" />
@@ -87,8 +91,10 @@
           </b-card-text>
         </b-card>
       </b-col>
-      <b-col sm="6" xs="12">
-        <b-card class="mb-4">
+    </b-row>
+    <b-row>
+      <b-col sm="6" xs="12" class="mb-4">
+        <b-card>
           <b-card-text>
             <u>Technical informations :</u>
             <p class="mb-3">
@@ -96,6 +102,14 @@
                 <li>
                   <b-icon icon="chevron-right" />
                   The app layout is made with <a href="https://bootstrap-vue.org/" target="_blank" rel="noopener noreferrer">bootstrap-vue</a>
+                </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  Data are shared across the different parts of the app using a centralized data store called <a href="https://vuex.vuejs.org/" target="_blank" rel="noopener noreferrer">VueX</a>
+                </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  Data state is stored to <code>localStorage</code> using <a href="https://github.com/championswimmer/vuex-persist" target="_blank" rel="noopener noreferrer">championswimmer' plugin</a> so you can retrieve your settings everytime you use this app (data remains, across PC reboots, untill you clear browser data)
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />
@@ -113,14 +127,19 @@
             </p>
           </b-card-text>
         </b-card>
-        <b-card class="mb-3">
+      </b-col>
+      <b-col sm="6" xs="12" class="mb-4">
+        <b-card>
           <b-card-text>
             <u>Details about the {{githubHistoryDepth}} last updates :</u>
             <b-overlay :show="!loaded" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
               <div v-if="loaded" class="commits mt-2">
                 <div class="commit mb-2" v-for="commit in githubResponse" :key="commit.sha">
                     <div class="message">{{commit.commit.message}}</div>
-                    <div class="date"><b-badge class="sha mr-2">{{commit.sha.substring(0,7)}}</b-badge>{{new Date(commit.commit.author.date).toLocaleString()}}</div>
+                    <div class="date">
+                      <b-badge class="sha mr-2">{{commit.sha.substring(0,7)}}</b-badge>
+                      <small>{{new Date(commit.commit.author.date).toLocaleString()}}</small>
+                    </div>
                 </div>
               </div>
             </b-overlay>
