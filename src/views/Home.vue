@@ -2,7 +2,7 @@
   <b-container fluid="md">
     <b-row class="mb-4">
       <b-col>
-        <div class="title">Settings</div>
+        <div class="title">⚙️ Settings</div>
         <b-card no-body>
           <b-tabs card>
             <b-tab active>
@@ -31,7 +31,7 @@
     </b-row>
     <b-row class="mb-4">
       <b-col>
-        <div class="title">Periodical rewards</div>
+        <div class="title">💸 Periodical rewards</div>
         <div class="rewards">
           <Rewards :days="1" />
           <Rewards :days="7" />
@@ -42,7 +42,7 @@
     </b-row>
     <b-row class="mb-2">
       <b-col>
-        <div class="title">Auto-compound projection charts</div>
+        <div class="title">🔄 Rewards projection chart</div>
       </b-col>
     </b-row>
     <b-row class="mb-4">
