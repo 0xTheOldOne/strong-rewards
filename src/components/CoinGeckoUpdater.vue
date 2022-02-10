@@ -2,8 +2,8 @@
   <div :class="variant">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       <div class="status">
-        <b-badge variant="success" v-if="reachable">{{ target }} is online</b-badge>
-        <b-badge variant="danger" v-else>{{ target }} is offline</b-badge>
+        <b-badge variant="success" class="light" v-if="reachable">{{ target }} is online</b-badge>
+        <b-badge variant="danger" class="light" v-else>{{ target }} is offline</b-badge>
       </div>
       <div class="refresh-container">
         <b-icon icon="stopwatch" class="mr-1" />

@@ -1,7 +1,7 @@
 <template>
   <div class="status">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-      <b-badge :variant="gweiVariant"><span class="mr-1">⛽</span> {{ gwei }} gwei</b-badge>
+      <b-badge :variant="gweiVariant" class="light"><span class="mr-1">⛽</span> {{ gwei }} gwei</b-badge>
     </b-overlay>
   </div>
 </template>

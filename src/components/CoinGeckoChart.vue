@@ -39,6 +39,20 @@ let chartOptions = {
       enabled: false,
     },
   },
+  plotOptions: {
+    area: {
+      marker: {
+        enabled: false,
+        symbol: "circle",
+        radius: 2,
+        states: {
+          hover: {
+            enabled: true,
+          },
+        },
+      },
+    },
+  },
   series: [
     {
       data: [],

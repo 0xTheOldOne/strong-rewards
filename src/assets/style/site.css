@@ -65,6 +65,9 @@ body #app blockquote {
   border-left: 3px solid rgba(241, 255, 255, 0.5);
   padding-left: 0.5rem;
 }
+body .light {
+  font-weight: 300 !important;
+}
 body .visible-xs {
   display: none;
 }
