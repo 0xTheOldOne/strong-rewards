@@ -6,7 +6,9 @@
         <b-card no-body>
           <b-tabs card>
             <b-tab active>
-              <template #title><img src="strongblock.png" class="logo" />StrongBlock</template>
+              <template #title>
+                <small> <img src="strongblock.png" class="logo" />StrongBlock </small>
+              </template>
               <b-card-text>
                 <b-row>
                   <b-col sm="12" xs="12">
@@ -20,9 +22,9 @@
                 </b-row>
               </b-card-text>
             </b-tab>
-            <NodeSettings :network="networks.etherum" />
-            <NodeSettings :network="networks.polygon" />
-            <NodeSettings :network="networks.sentinel" />
+            <NodeSettings :network="networks['etherum']" />
+            <NodeSettings :network="networks['polygon']" />
+            <NodeSettings :network="networks['sentinel']" />
           </b-tabs>
         </b-card>
       </b-col>
@@ -38,13 +40,20 @@
         </div>
       </b-col>
     </b-row>
+    <b-row class="mb-2">
+      <b-col>
+        <div class="title">Auto-compound projection charts</div>
+      </b-col>
+    </b-row>
     <b-row class="mb-4">
       <b-col>
-        <div class="title">Auto-compound projection chart</div>
-        <b-alert variant="warning" show>
-          <b-icon icon="hourglass" animation="cylon-vertical" class="mr-1" />
-          Coming soon...
-        </b-alert>
+        <b-card no-body>
+          <b-tabs card>
+            <ProjectionChart :network="networks['etherum']" />
+            <ProjectionChart :network="networks['polygon']" />
+            <ProjectionChart :network="networks['sentinel']" />
+          </b-tabs>
+        </b-card>
       </b-col>
     </b-row>
   </b-container>
@@ -55,12 +64,14 @@
 import { mapState } from "vuex";
 import Rewards from "@/components/Rewards.vue";
 import NodeSettings from "@/components/NodeSettings.vue";
+import ProjectionChart from "@/components/ProjectionChart.vue";
 
 export default {
   name: "Home",
   components: {
     Rewards,
     NodeSettings,
+    ProjectionChart,
   },
   computed: {
     refreshPeriod() {
@@ -120,6 +131,16 @@ export default {
       margin: 0;
       margin-bottom: 0.5rem;
     }
+  }
+}
+
+.projection-options {
+  float: right;
+  display: flex;
+  align-items: center;
+
+  > * {
+    margin-left: 0.5rem;
   }
 }
 </style>

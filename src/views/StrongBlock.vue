@@ -15,7 +15,9 @@
           <div class="title">
             ${{ this.ticker.toUpperCase() }} chart against {{ this.currencies[this.currency].val.toUpperCase() }} ({{ this.currencies[this.currency].symbol }})
             <div style="float: right">
-              <b-badge href="https://www.coingecko.com/en/coins/strong">See it on <img src="coingecko.png" class="logo" />CoinGecko</b-badge>
+              <small>
+                <b-badge href="https://www.coingecko.com/en/coins/strong" class="light">See it on <img src="coingecko.png" class="logo" />CoinGecko</b-badge>
+              </small>
             </div>
           </div>
           <CoinGeckoChart :ticker="ticker" :currency="currency" period="max" />

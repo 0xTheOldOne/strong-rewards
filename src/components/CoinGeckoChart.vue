@@ -15,6 +15,7 @@ import Highcharts from "../assets/scripts/highcharts";
 const CoinGecko = require("coingecko-api"); // https://github.com/miscavage/CoinGecko-API
 const CoinGeckoClient = new CoinGecko();
 
+let chart = null;
 let chartOptions = {
   chart: {
     renderTo: "graph",
@@ -56,6 +57,7 @@ let chartOptions = {
   series: [
     {
       data: [],
+      step: false,
       name: "$STRONG",
       dataLabels: {
         enabled: false,
@@ -126,7 +128,7 @@ export default {
     },
     drawChart: function () {
       chartOptions.series[0].data = this.chartData;
-      var chart = new Highcharts.Chart(chartOptions);
+      chart = new Highcharts.Chart(chartOptions);
     },
     handleResize: function () {
       this.drawChart();

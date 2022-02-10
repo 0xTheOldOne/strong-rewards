@@ -6,7 +6,7 @@
           <b-icon icon="calculator" class="mr-2" />Strong Calculator
           <small>
             <b-badge class="ml-2 light" variant="success">{{ appVersion }}</b-badge>
-            <GasFees class="ml-3" />
+            <GasFees class="ml-2" />
           </small>
         </b-navbar-brand>
 

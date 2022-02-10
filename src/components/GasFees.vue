@@ -39,7 +39,7 @@ export default {
         params: {
           module: "gastracker",
           action: "gasoracle",
-          apikey: this.apiKey,
+          apikey: this.apiKey, // 100.000 calls per day on free version of API
         },
       });
 

@@ -1,9 +1,12 @@
 <template>
   <div v-if="network.display">
     <b-tab>
-      <template #title
-        ><img :src="network.name + '.png'" class="logo" /><span class="ticker">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }}</span></template
-      >
+      <template #title>
+        <small>
+          <img :src="network.name + '.png'" class="logo" />
+          <span class="ticker">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }} ({{ network.nodes }})</span>
+        </small>
+      </template>
       <b-card-text>
         <b-row>
           <b-col sm="6" xs="12">
@@ -15,10 +18,10 @@
           </b-col>
           <b-col sm="6" xs="12">
             <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-              <b-form-group :label="'Node count : ' + network.count">
-                <b-form-input v-model.number="network.count" type="range" min="0" max="100" placeholder="Node count" required @change="updateNodeCount($event)"></b-form-input>
+              <b-form-group :label="'Node count : ' + network.nodes">
+                <b-form-input v-model.number="network.nodes" type="range" min="0" max="100" placeholder="Node count" required @change="updateNodeCount($event)"></b-form-input>
                 <template #description>
-                  {{ daysToCompound(ticker, network.rewards, network.count) }}
+                  {{ daysToCompound(ticker, network.rewards, network.nodes) }}
                 </template>
               </b-form-group>
             </b-overlay>

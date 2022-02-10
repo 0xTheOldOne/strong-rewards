@@ -11,6 +11,8 @@ const vuexLocal = new VuexPersistence({
   reducer: (state) => ({
     networks: state.networks,
     nft: state.nft,
+    projectionPeriodInMonths: state.projectionPeriodInMonths,
+    projectionAutoCompound: state.projectionAutoCompound,
   }),
 });
 
@@ -30,20 +32,26 @@ export default new Vuex.Store({
     networks: {
       etherum: {
         name: "etherum",
-        count: 1,
+        nodes: 1,
+        maxNodesPerWallet: 100,
         rewards: 0.09143,
+        monthlyFees: 14.95,
         display: true,
       },
       polygon: {
         name: "polygon",
-        count: 0,
+        nodes: 0,
+        maxNodesPerWallet: 100,
         rewards: 0.1,
+        monthlyFees: 14.95,
         display: false,
       },
       sentinel: {
         name: "sentinel",
-        count: 0,
+        nodes: 0,
+        maxNodesPerWallet: 100,
         rewards: 0.1,
+        monthlyFees: 14.95,
         display: false,
       },
     },
@@ -53,6 +61,8 @@ export default new Vuex.Store({
       gold: 0,
       platinium: 0,
     },
+    projectionPeriodInMonths: 1,
+    projectionAutoCompound: false,
   },
   mutations: {
     initializeFromLocalStorage(state) {
@@ -67,26 +77,40 @@ export default new Vuex.Store({
       console.log("Retrieving settings from localStorage... DONE");
     },
     setRefreshRate(state, payload) {
+      console.debug(payload);
       state.coinGeckoRefreshRateInMs = payload.refreshRate;
     },
     setRequestPending(state, payload) {
+      console.debug(payload);
       state.coinGeckoRequestPending = payload.requestPending;
     },
     setReachable(state, payload) {
+      console.debug(payload);
       state.coinGeckoIsReachable = payload.reachable;
     },
     setPrice(state, payload) {
+      console.debug(payload);
       state.price = payload.price;
     },
     setNodeCount(state, payload) {
-      console.warn(payload);
+      console.debug(payload);
       state.networks[payload.network].count = payload.count;
     },
     setNodeRewards(state, payload) {
+      console.debug(payload);
       state.networks[payload.network].rewards = payload.rewards;
     },
     setNftCount(state, payload) {
+      console.debug(payload);
       state.nft[payload.level] = payload.count;
+    },
+    setProjectionPeriodInMonths(state, payload) {
+      console.debug(payload);
+      state.projectionPeriodInMonths = payload.period;
+    },
+    setProjectionAutoCompound(state, payload) {
+      console.debug(payload);
+      state.projectionAutoCompound = payload.value;
     },
   },
   actions: {},
