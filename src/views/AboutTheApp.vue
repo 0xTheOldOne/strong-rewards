@@ -97,7 +97,7 @@
       <b-col sm="6" xs="12" class="mb-4">
         <b-card>
           <b-card-text>
-            <u>Technical informations :</u>
+            📝 Technical informations :
             <p class="mb-3">
               <ul class="icons mt-2">
                 <li>
@@ -138,9 +138,9 @@
         </b-card>
       </b-col>
       <b-col sm="6" xs="12" class="mb-4">
-        <b-card>
+        <b-card class="mb-4">
           <b-card-text>
-            <u>Details about the {{githubHistoryDepth}} last updates :</u>
+            🔎 Details about the {{githubHistoryDepth}} last updates :
             <b-overlay :show="!loaded" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
               <div v-if="loaded" class="commits mt-2">
                 <div class="commit mb-2" v-for="commit in githubResponse" :key="commit.sha">
@@ -152,6 +152,16 @@
                 </div>
               </div>
             </b-overlay>
+          </b-card-text>
+        </b-card>
+        <b-card>
+          <b-card-text>
+            🐞 Known bugs :
+            <ul class="icons">
+              <li>
+                <small>On desktop (not mobile), when you change an input on home page, Google Chrome scrolls to the top of the page... Maybe it's the same on other browsers.</small>
+              </li>
+            </ul>
           </b-card-text>
         </b-card>
       </b-col>

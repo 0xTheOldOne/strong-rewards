@@ -13,7 +13,7 @@
             <b-overlay :show="requestPending || calculating" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
               <div class="projection-options">
                 <small>
-                  <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">Auto-compound rewards</b-form-checkbox>
+                  <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">Create new node at 10 ${{ ticker.toUpperCase() }}</b-form-checkbox>
                 </small>
                 <small>
                   <b-form-select :value="projectionPeriod" :options="options" @change="updateProjectionPeriodInMonths" size="sm" style="width: auto !important"></b-form-select>
@@ -160,6 +160,7 @@ export default {
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,
       price: (state) => state.price,
+      ticker: (state) => state.ticker,
       projectionPeriod: (state) => state.projectionPeriodInMonths,
       projectionAutoCompound: (state) => state.projectionAutoCompound,
     }),
@@ -290,6 +291,17 @@ export default {
   small {
     display: inline-block;
     margin-left: 0.5rem;
+  }
+
+  .custom-checkbox {
+    .custom-control-label {
+      vertical-align: sub !important;
+
+      &:before,
+      &:after {
+        top: 0.05rem !important;
+      }
+    }
   }
 }
 </style>
