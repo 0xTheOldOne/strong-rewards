@@ -61,6 +61,7 @@
 // @ is an alias to /src
 import { version } from "../package";
 import "particles.js";
+import { mapState } from "vuex";
 import CoinGeckoUpdater from "@/components/CoinGeckoUpdater.vue";
 import GasFees from "@/components/GasFees";
 
@@ -75,14 +76,50 @@ export default {
       appVersion: version,
     };
   },
+  computed: {
+    ...mapState({
+      screenOrientationToast: (state) => state.screenOrientationToast,
+    }),
+  },
+  created() {
+    window.addEventListener("orientationchange", this.handleOrientationChange);
+  },
+  destroyed() {
+    window.removeEventListener("orientationchange", this.handleOrientationChange);
+  },
   mounted() {
     this.initParticles();
+    this.handleOrientationChange();
   },
   methods: {
     initParticles() {
       window.particlesJS.load("particles", "particles.json", function () {
         console.log("callback - particles.js config loaded");
       });
+    },
+    handleOrientationChange() {
+      const orientation = window.screen.orientation.type;
+      if (orientation === "portrait-primary") {
+        // portrait mode
+        if (!this.screenOrientationToast) {
+          this.$bvToast.toast("In order to get the most out of this app, you should rotate your phone to landscape mode otherwise you may not have a clear view of what is displayed on graphs. Enjoy ! 🙏", {
+            title: "📱 Screen orientation",
+            toaster: "b-toaster-top-center",
+            autoHideDelay: 60000,
+            appendToast: true,
+            noCloseButton: false,
+            solid: true,
+            variant: "warning",
+          });
+
+          this.$store.commit({
+            type: "setScreenOrientationToast",
+            seen: true,
+          });
+        }
+      } else if (orientation === "landscape-primary") {
+        // landscape mode
+      }
     },
   },
 };

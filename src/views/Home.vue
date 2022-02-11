@@ -110,8 +110,8 @@ export default {
       this.$store.commit({
         type: "resetLocalStorage",
       });
-      this.$bvToast.toast("♻️ Values were restored to defaults (you now have 0 node for each type of node).", {
-        title: "Settings",
+      this.$bvToast.toast("Values were restored to defaults (you now have 0 node for each type of node).", {
+        title: "♻️ Settings restored",
         toaster: "b-toaster-top-center",
         autoHideDelay: 5000,
         appendToast: true,

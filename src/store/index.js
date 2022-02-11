@@ -9,6 +9,7 @@ const vuexLocal = new VuexPersistence({
   key: vuexPersistKey,
   storage: window.localStorage,
   reducer: (state) => ({
+    screenOrientationToast: state.screenOrientationToast,
     networks: state.networks,
     nft: state.nft,
     projectionPeriodInMonths: state.projectionPeriodInMonths,
@@ -22,6 +23,7 @@ var display_sentinel = false;
 
 export default new Vuex.Store({
   state: {
+    screenOrientationToast: false,
     coinGeckoRefreshRateInMs: 5 * 60 * 1000,
     coinGeckoIsReachable: false,
     coinGeckoRequestPending: false,
@@ -97,6 +99,10 @@ export default new Vuex.Store({
       }
 
       console.debug("Retrieving settings from localStorage... DONE");
+    },
+    setScreenOrientationToast(state, payload) {
+      console.debug(payload);
+      state.screenOrientationToast = payload.seen;
     },
     setRefreshRate(state, payload) {
       console.debug(payload);
