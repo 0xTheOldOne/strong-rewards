@@ -15,15 +15,18 @@
               When i wrote this app i was just starting to earn/compound strong tokens in order to create strong nodes and i tought that it could be cool to have some earnings calculator, especially if you're new to StrongBlock because this can help if you don't know how it works.
             </p>
             <p>
-              Also, i thought that it could be cool if my app was able to connect to a wallet and see how many tokens you have in your wallet, how many nodes too or how many earnings you had but i <b>don't</b> know how to do that at the moment and i <b>don't</b> want this app to be able to interact with people's wallets because nowadays we see a lot of scammers trying to do so and people could be in fear about that and that's not what i want, stay safe ! This app will not retrieve those kind of informations then, i hope it's ok for you !
+              Also, i thought that it could be cool if my app was able to connect to a wallet and see how many tokens you have in your wallet, how many nodes too or how many earnings you had but i <b>don't</b> know how to do that at the moment and i <b>don't</b> want this app to be able to interact with people's wallets because nowadays we see a lot of scammers trying to do so and people could be in fear about that and that's not what i want, stay safe !
+            </p>
+            <p class="text-center">
+              This app will not retrieve those kind of informations, i hope it's ok for you !
             </p>
             <p>
               Please keep in mind that it was originally created in order to practice VueJs basics so maybe it's not perfect...
             </p>
             <p>
-              Last thing about all of this is i code on my free time (<i>i have a full-time job and a new born, so i don't have a lot of free time unfortunatly</i>) so this tool is provided "as is" and i'll update it when i have enough time.
+              Last thing about all of this is i code on my free time (<i>i have a full-time job and a new born, so i don't have a lot of free time unfortunatly</i>... 😅) so this tool is provided "as is" and i'll update it when i can.
             </p>
-            <p>Thank you for your understanding and many thanks for using Strong Calculator !</p>
+            <p>Thank you for your understanding and many thanks for using Strong Calculator ! 🥳</p>
           </b-card-text>
         </b-card>
       </b-col>
@@ -56,7 +59,7 @@
                   Add an ETH gas tracker
                 </li>
                 <li>
-                  <b-icon icon="circle" class="mr-1" />
+                  <b-icon icon="check-circle" variant="success" class="mr-1" />
                   Add a projection chart of earnings
                 </li>
                 <li>
@@ -64,7 +67,7 @@
                   Add monthly fees to the earnings projections (depends on the visualization i choose, it could be a mess with a lot of nodes)
                 </li>
                 <li>
-                  <b-icon icon="circle" class="mr-1" />
+                  <b-icon icon="check-circle" variant="success" class="mr-1" />
                   Add an auto-compound option to this chart so you can see when you will be able to create the next node
                 </li>
                 <li>

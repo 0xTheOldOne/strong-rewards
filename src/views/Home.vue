@@ -3,10 +3,10 @@
     <b-row class="mb-4">
       <b-col>
         <div class="title">
-          ⚙️ Settings
+          ⚙️ Nodes settings
           <div class="reset-settings">
             <b-badge @click="resetLocalStorage">
-              <small>♻️ Reset settings to default</small>
+              <small>♻️ Reset settings</small>
             </b-badge>
           </div>
         </div>
@@ -22,7 +22,7 @@
                     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
                       <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'">
                         <b-form-input v-model.number="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" required></b-form-input>
-                        <template #description><b-icon icon="stopwatch" class="mr-1" />This value is fetched from CoinGecko, in {{ currencies[currency].val.toUpperCase() }} ({{ currencies[currency].symbol }}) every {{ refreshPeriod }}. </template>
+                        <template #description>⏱️ This value is fetched from CoinGecko, in {{ currencies[currency].val.toUpperCase() }} ({{ currencies[currency].symbol }}) every {{ refreshPeriod }}. </template>
                       </b-form-group>
                     </b-overlay>
                   </b-col>

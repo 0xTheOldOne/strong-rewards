@@ -3,7 +3,8 @@
     <b-navbar toggleable="md" type="dark" variant="primary">
       <b-container fluid="md">
         <b-navbar-brand href="#">
-          <b-icon icon="calculator" class="mr-2" />Strong Calculator
+          <span class="mr-1">🧮</span>
+          <span class="mr-3">Strong Calculator</span>
           <small>
             <b-badge class="ml-2 mr-2 light" variant="success">{{ appVersion }}</b-badge>
             <br class="visible-xs" />

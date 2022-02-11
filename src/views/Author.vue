@@ -35,7 +35,7 @@
               </b-card>
             </template>
 
-            <b-card :title="githubResponse.login" :img-src="githubResponse.avatar_url" :img-alt="githubResponse.login" img-top class="author mb-4">
+            <b-card :title="'👨‍💻 ' + githubResponse.login" :img-src="githubResponse.avatar_url" :img-alt="githubResponse.login" img-top class="author mb-4">
               <b-card-text v-html="bio" class="mb-3"></b-card-text>
               <b-card-text class="mb-4 mt-4 text-center">
                 <div class="social twitter" v-if="githubResponse.twitter_username != ''">
@@ -48,16 +48,16 @@
                     <b-icon icon="github" class="hover"></b-icon>
                   </a>
                 </div>
-                <div class="social">
+                <!-- <div class="social">
                   <a href="https://stackoverflow.com/users/2003597" target="_blank" rel="noopener noreferrer" title="My StackOverflow profile">
                     <img src="stackoverflow.png" class="hover" />
                   </a>
-                </div>
-                <div class="social mail">
+                </div> -->
+                <!-- <div class="social mail">
                   <a href="mailto:oxtheoldone@protonmail.com" target="_blank" rel="noopener noreferrer" title="Use with caution, only if you want to talk about this app">
                     <b-icon icon="envelope" class="hover"></b-icon>
                   </a>
-                </div>
+                </div> -->
               </b-card-text>
             </b-card>
           </b-skeleton-wrapper>
@@ -81,14 +81,14 @@
                 <td><img src="bsc.png" class="logo" /></td>
                 <td>
                   BEP20 (Binance Smart Chain)<br />
-                  <small>I added Binance Smart Chain network to my MetaMask account using <a href="https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain" target="_blank" rel="noopener noreferrer">this tutorial</a></small>
+                  <small>📚 I added Binance Smart Chain network to my MetaMask account using <a href="https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain" target="_blank" rel="noopener noreferrer">this tutorial</a></small>
                 </td>
               </tr>
               <tr>
                 <td><img src="avalanche.png" class="logo" /></td>
                 <td>
-                  Avalanche (C Chain i guess)<br />
-                  <small>I added Avalanche network to my MetaMask account using <a href="https://support.avax.network/en/articles/4626956-how-do-i-set-up-metamask-on-avalanche" target="_blank" rel="noopener noreferrer">this tutorial</a></small>
+                  Avalanche (C Chain i guess 🤔)<br />
+                  <small>📚 I added Avalanche network to my MetaMask account using <a href="https://support.avax.network/en/articles/4626956-how-do-i-set-up-metamask-on-avalanche" target="_blank" rel="noopener noreferrer">this tutorial</a></small>
                 </td>
               </tr>
             </table>
@@ -99,7 +99,7 @@
                 <img src="donation-address.png" class="mt-3 mb-3" />
               </div>
             </div>
-            <p class="text-justify"><small>(Again, i'm not asking for tips since i coded this tool in order to help people to get into StrongBlock, but if you really want to send a tip i'll be happy with that !)</small></p>
+            <p class="text-justify"><small>(Again, i'm not asking for tips since i coded this tool in order to help people to get into StrongBlock, but if you really want to send a tip i'll be happy with that ! 🤗)</small></p>
           </b-card-text>
         </b-card>
       </b-col>

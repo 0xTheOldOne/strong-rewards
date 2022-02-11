@@ -6,8 +6,7 @@
         <b-badge variant="danger" class="light" v-else>{{ target }} is offline</b-badge>
       </div>
       <div class="refresh-container">
-        <b-icon icon="stopwatch" class="mr-1" />
-        Next refresh in
+        ⏱️ Next refresh in
         <div class="refresh">{{ ((refreshRateInMs - timerTicks * timerTicksRateInMs) / 1000).toFixed(2) }}</div>
         seconds
       </div>
