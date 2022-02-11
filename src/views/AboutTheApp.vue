@@ -8,7 +8,7 @@
               <b-badge variant="warning" class="mb-3">
                 ⚠️ Disclaimer ⚠️
               </b-badge>
-              <p class="text-left">This tool was <u>not</u> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator or any other tool that may look like this app.</p>
+              <p class="text-left">This tool was <b>not</b> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator or any other tool that may look like this app.</p>
             </div>
             
             <p>
@@ -71,22 +71,21 @@
                   Sync network tabs on home page (if the Etherum settings tab is active, then the Etherum projection chart must be active too)
                 </li>
                 <li>
+                  <b-icon icon="circle" class="mr-1" />
+                  Add a NFT tab
+                </li>
+                <li>
+                  <b-icon icon="circle" class="mr-1" />
+                  Add a Polygon nodes tab
+                </li>
+                <li>
+                  <b-icon icon="circle" class="mr-1" />
+                  Add a Sentinel nodes tab
+                </li>
+                <li>
                   <b-icon icon="question-circle" class="mr-1" />
                   Maybe add some internationalization (i18n) for non english speakers
                 </li>
-                <li>
-                  <b-icon icon="question-circle" class="mr-1" />
-                  Maybe add NFT tab
-                </li>
-                <li>
-                  <b-icon icon="question-circle" class="mr-1" />
-                  Maybe add Polygon nodes tab
-                </li>
-                <li>
-                  <b-icon icon="question-circle" class="mr-1" />
-                  Maybe add Sentinel nodes tab
-                </li>
-
               </ul>
             </p>
             <p>
@@ -114,7 +113,7 @@
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />
-                  Data state is stored to <code>localStorage</code> using <a href="https://github.com/championswimmer/vuex-persist" target="_blank" rel="noopener noreferrer">championswimmer' plugin</a> so you can retrieve your settings everytime you use this app (data remains, across PC reboots, untill you clear browser data)
+                  Data state is stored to <code>localStorage</code> using <a href="https://github.com/championswimmer/vuex-persist" target="_blank" rel="noopener noreferrer">Championswimmer's plugin</a> so you can retrieve your settings everytime you use this app (data remains, across PC reboots, untill you clear browser data)
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />
@@ -135,6 +134,10 @@
                 <li>
                   <b-icon icon="chevron-right" />
                   Strong token price in USD is fetched using <a href="https://github.com/miscavage/CoinGecko-API" target="_blank" rel="noopener noreferrer">Miscavage's wrapper</a> on <a href="https://www.coingecko.com/api/docs/v3" target="_blank" rel="noopener noreferrer">CoinGecko API</a>
+                </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  Emojis were found in <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank" rel="noopener noreferrer">Ikatyang's emoji cheat sheet</a>
                 </li>
               </ul>
             </p>

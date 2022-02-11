@@ -3,13 +3,13 @@
     <template #title>
       <small>
         <img :src="network.name + '.png'" class="logo" />
-        <span class="ticker">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }} ({{ network.nodes }})</span>
+        <span class="ticker hidden-xs">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }} ({{ network.nodes }})</span>
       </small>
     </template>
     <b-card-text v-if="network.display">
       <b-row>
         <b-col>
-          <b-overlay :show="requestPending || calculating" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+          <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
             <div class="projection-options">
               <small>
                 <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">Create new node at 10 ${{ ticker.toUpperCase() }}</b-form-checkbox>
@@ -49,18 +49,32 @@ let chartOptions = {
     renderTo: "graph",
     type: "area",
   },
-  xAxis: {
-    type: "datetime",
-    labels: {
-      formatter: function () {
-        return Highcharts.dateFormat("%d/%m/%Y", this.value);
+  xAxis: [
+    {
+      type: "datetime",
+      labels: {
+        formatter: function () {
+          return Highcharts.dateFormat("%d/%m/%Y", this.value);
+        },
+        rotation: -45,
       },
-      rotation: -45,
+      title: {
+        enabled: false,
+      },
     },
-    title: {
-      enabled: false,
+    {
+      type: "linear",
+      labels: {
+        formatter: function () {
+          return this.value + " day(s)";
+        },
+        rotation: -45,
+      },
+      title: {
+        enabled: false,
+      },
     },
-  },
+  ],
   yAxis: [
     {
       min: 0,
@@ -125,13 +139,15 @@ let chartOptions = {
       type: "line",
       data: [],
       step: true,
+      xAxis: 1,
       yAxis: 1,
       name: "Node count",
       dataLabels: {
         enabled: false,
       },
       tooltip: {
-        xDateFormat: "%e %B %Y (%A)",
+        useHTML: true,
+        headerFormat: "After {point.key} day(s)<br />",
         pointFormat: "{series.name}: {point.y}",
         valueDecimals: 0,
         valueSuffix: " node(s)",
@@ -195,7 +211,6 @@ export default {
   },
   data() {
     return {
-      calculating: false,
       options: [
         { value: 1, text: "One month" },
         { value: 3, text: "Three months" },
@@ -244,7 +259,6 @@ export default {
     drawChart: function () {
       if (this.network.display) {
         console.debug(this.network.name + " - drawChart()...");
-        this.calculating = true;
 
         try {
           chartOptions.chart.renderTo = "graph-" + this.network.name;
@@ -254,7 +268,6 @@ export default {
           console.error(error);
         }
 
-        this.calculating = false;
         console.debug(this.network.name + " - drawChart()... DONE");
       }
     },
@@ -294,12 +307,13 @@ export default {
         previousValue += value;
 
         data.push([Date.parse(nextPointDate), previousValue]);
-        nodes.push([Date.parse(nextPointDate), numberOfNodes]);
+        nodes.push([i, numberOfNodes]);
       }
 
       // Node count
       chartOptions.series[0].data = nodes;
       chartOptions.yAxis[0].visible = false;
+      chartOptions.xAxis[1].visible = false;
 
       // Rewards
       chartOptions.series[1].data = data;

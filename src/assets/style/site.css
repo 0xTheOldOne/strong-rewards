@@ -84,6 +84,20 @@ body .hidden-xs {
     display: none;
   }
 }
+body span.visible-xs {
+  display: none;
+}
+body span.hidden-xs {
+  display: inline-block;
+}
+@media (max-width: 767px) {
+  body span.visible-xs {
+    display: inline-block;
+  }
+  body span.hidden-xs {
+    display: none;
+  }
+}
 body .hover {
   transition: -webkit-transform 0.15s;
   transition: transform 0.15s;

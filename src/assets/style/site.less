@@ -123,6 +123,26 @@ body {
     }
   }
 
+  span {
+    &.visible-xs {
+      display: none;
+    }
+
+    &.hidden-xs {
+      display: inline-block;
+    }
+
+    @media (max-width: @screen-xs-max) {
+      &.visible-xs {
+        display: inline-block;
+      }
+
+      &.hidden-xs {
+        display: none;
+      }
+    }
+  }
+
   // Effects
   .hover {
     @scale: 1.25;

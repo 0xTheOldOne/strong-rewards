@@ -4,7 +4,7 @@
       <b-container fluid="md">
         <b-navbar-brand href="#">
           <span class="mr-1">🧮</span>
-          <span class="mr-3">Strong Calculator</span>
+          <span class="mr-1">Strong Calculator</span>
           <small>
             <b-badge class="ml-2 mr-2 light" variant="success">{{ appVersion }}</b-badge>
             <br class="visible-xs" />
