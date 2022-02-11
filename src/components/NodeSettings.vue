@@ -10,8 +10,11 @@
       <b-row>
         <b-col sm="6" xs="12">
           <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-            <b-form-group label="Rewards per node, per day :" :description="'This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 $' + ticker.toUpperCase() + ' per 7000 Etherum blocks completed.'">
+            <b-form-group label="Rewards per node, per day :">
               <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" required @change="updateNodeRewards($event)"></b-form-input>
+              <template #description>
+                <span v-html="rewardsPerNode"></span>
+              </template>
             </b-form-group>
           </b-overlay>
         </b-col>
@@ -30,10 +33,7 @@
     <b-card-text v-else>
       <b-row>
         <b-col>
-          <b-alert variant="warning" show>
-            <b-icon icon="hourglass" animation="cylon-vertical" class="mr-1" />
-            Coming soon...
-          </b-alert>
+          <ComingSoon />
         </b-col>
       </b-row>
     </b-card-text>
@@ -42,9 +42,13 @@
 
 <script>
 import { mapState } from "vuex";
+import ComingSoon from "@/components/ComingSoon.vue";
 
 export default {
   name: "NodeSettings",
+  components: {
+    ComingSoon,
+  },
   props: {
     network: {
       type: Object,
@@ -56,6 +60,20 @@ export default {
       requestPending: (state) => state.coinGeckoRequestPending,
       ticker: (state) => state.ticker,
     }),
+    rewardsPerNode: function () {
+      switch (this.network.name) {
+        case "etherum":
+          return "<p>This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 $" + this.ticker.toUpperCase() + " per 7000 Etherum blocks completed.</p><p class='mb-1'>If you want to see the historical number of blocks produced on the Ethereum network and the total block reward, you can download the <a href='https://etherscan.io/chart/blocks?output=csv' target='_blank' rel='noopener noreferrer'>CSV file</a> containing all the values from Etherscan.</p>";
+          break;
+        case "polygon":
+          break;
+        case "sentinel":
+          break;
+        default:
+          return "";
+          break;
+      }
+    },
   },
   methods: {
     daysToCompound: function (ticker, rewards, count) {

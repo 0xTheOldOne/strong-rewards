@@ -57,6 +57,10 @@ body #app .title {
 body #app ul.icons {
   list-style-type: none;
   padding-left: 0;
+  margin-bottom: 0;
+}
+body #app ul.icons li img {
+  margin-right: 0.5rem;
 }
 body #app img.logo {
   height: 1.25rem;

@@ -30,10 +30,7 @@
     <b-card-text v-else>
       <b-row>
         <b-col>
-          <b-alert variant="warning" show>
-            <b-icon icon="hourglass" animation="cylon-vertical" class="mr-1" />
-            Coming soon...
-          </b-alert>
+          <ComingSoon />
         </b-col>
       </b-row>
     </b-card-text>
@@ -43,6 +40,7 @@
 <script>
 import { mapState } from "vuex";
 import Highcharts from "../assets/scripts/highcharts";
+import ComingSoon from "@/components/ComingSoon.vue";
 
 let chartOptions = {
   chart: {
@@ -203,6 +201,9 @@ let chartOptions = {
 
 export default {
   name: "ProjectionChart",
+  components: {
+    ComingSoon,
+  },
   props: {
     network: {
       type: Object,
