@@ -132,6 +132,7 @@ export default {
 
     .badge {
       margin-right: 1rem;
+      margin-bottom: 0.25rem;
     }
   }
 }
