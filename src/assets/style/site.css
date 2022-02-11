@@ -44,7 +44,9 @@ body #app input {
 body #app .card {
   color: #2c3e50 !important;
 }
-body #app .card .card-body p:last-of-type {
+body #app .card .card-body p:last-of-type,
+body #app .card .card-body fieldset:last-of-type,
+body #app .card .card-body .alert:last-of-type {
   margin-bottom: 0px !important;
 }
 body #app .title {
