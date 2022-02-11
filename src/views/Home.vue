@@ -14,7 +14,10 @@
           <b-tabs card>
             <b-tab active>
               <template #title>
-                <small> <img src="strongblock.png" class="logo" />StrongBlock </small>
+                <small>
+                  <img src="strongblock.png" class="logo" />
+                  <span class="ticker hidden-xs">StrongBlock</span>
+                </small>
               </template>
               <b-card-text>
                 <b-row>

@@ -3,7 +3,7 @@
     <template #title>
       <small>
         <img :src="network.name + '.png'" class="logo" />
-        <span class="ticker">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }} ({{ network.nodes }})</span>
+        <span class="ticker hidden-xs">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }} ({{ network.nodes }})</span>
       </small>
     </template>
     <b-card-text v-if="network.display">
