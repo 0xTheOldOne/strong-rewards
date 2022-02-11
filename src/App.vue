@@ -30,7 +30,7 @@
       <b-container fluid="md">
         <b-collapse id="nav-collapse" is-nav>
           <!-- left nav-items -->
-          <b-navbar-nav>
+          <b-navbar-nav class="menu">
             <b-nav-item href="#">
               <router-link to="/">Home</router-link>
             </b-nav-item>
@@ -88,4 +88,17 @@ export default {
 
 <style lang="less">
 @import "./assets/style/site.less";
+.menu {
+  .nav-link {
+    & > * {
+      padding: 0;
+      border-width: 0;
+      font-size: 0.9rem;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
 </style>

@@ -1,8 +1,14 @@
 <template>
   <div class="status">
-    <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-      <b-badge :variant="gweiVariant" class="light"><span class="mr-1">⛽</span> {{ gwei }} gwei</b-badge>
-    </b-overlay>
+    <div>
+      <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+        <b-badge :variant="gweiVariant" class="light">
+          <span class="mr-1">⛽</span>
+          <span class="gwei">{{ gwei }}</span> gwei
+        </b-badge>
+      </b-overlay>
+    </div>
+    <b-toast id="gasfees-toast" title="Gas fees alert" static></b-toast>
   </div>
 </template>
 
@@ -68,8 +74,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="less">
 .status {
   display: inline-block;
+
+  .gwei {
+    font-family: "Source Code Pro", monospace;
+  }
 }
 </style>

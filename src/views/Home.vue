@@ -2,7 +2,14 @@
   <b-container fluid="md">
     <b-row class="mb-4">
       <b-col>
-        <div class="title">⚙️ Settings</div>
+        <div class="title">
+          ⚙️ Settings
+          <div class="reset-settings">
+            <b-badge @click="resetLocalStorage">
+              <small>♻️ Reset settings to default</small>
+            </b-badge>
+          </div>
+        </div>
         <b-card no-body>
           <b-tabs card>
             <b-tab active>
@@ -96,6 +103,19 @@ export default {
     }),
   },
   methods: {
+    resetLocalStorage() {
+      this.$store.commit({
+        type: "resetLocalStorage",
+      });
+      this.$bvToast.toast("♻️ Values were restored to defaults (you now have 0 node for each type of node).", {
+        title: "Settings",
+        toaster: "b-toaster-top-center",
+        autoHideDelay: 5000,
+        appendToast: true,
+        noCloseButton: true,
+        solid: true,
+      });
+    },
     asFiat: function (tokens) {
       return (tokens * this.price).toFixed(2);
     },
@@ -106,6 +126,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/style/variables.less";
+
+.reset-settings {
+  float: right;
+  cursor: pointer;
+}
 
 .rewards {
   display: flex;

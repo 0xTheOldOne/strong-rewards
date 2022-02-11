@@ -1,35 +1,43 @@
 <template>
-  <div v-if="network.display">
-    <b-tab>
-      <template #title>
-        <small>
-          <img :src="network.name + '.png'" class="logo" />
-          <span class="ticker">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }} ({{ network.nodes }})</span>
-        </small>
-      </template>
-      <b-card-text>
-        <b-row>
-          <b-col>
-            <b-overlay :show="requestPending || calculating" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-              <div class="projection-options">
-                <small>
-                  <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">Create new node at 10 ${{ ticker.toUpperCase() }}</b-form-checkbox>
-                </small>
-                <small>
-                  <b-form-select :value="projectionPeriod" :options="options" @change="updateProjectionPeriodInMonths" size="sm" style="width: auto !important"></b-form-select>
-                </small>
+  <b-tab>
+    <template #title>
+      <small>
+        <img :src="network.name + '.png'" class="logo" />
+        <span class="ticker">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }} ({{ network.nodes }})</span>
+      </small>
+    </template>
+    <b-card-text v-if="network.display">
+      <b-row>
+        <b-col>
+          <b-overlay :show="requestPending || calculating" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+            <div class="projection-options">
+              <small>
+                <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">Create new node at 10 ${{ ticker.toUpperCase() }}</b-form-checkbox>
+              </small>
+              <small>
+                <b-form-select :value="projectionPeriod" :options="options" @change="updateProjectionPeriodInMonths" size="sm" style="width: auto !important"></b-form-select>
+              </small>
+            </div>
+            <div :id="'graph-' + network.name">
+              <div class="text-center">
+                <div class="spinner-border text-primary" role="status"></div>
               </div>
-              <div id="graph">
-                <div class="text-center">
-                  <div class="spinner-border text-primary" role="status"></div>
-                </div>
-              </div>
-            </b-overlay>
-          </b-col>
-        </b-row>
-      </b-card-text>
-    </b-tab>
-  </div>
+            </div>
+          </b-overlay>
+        </b-col>
+      </b-row>
+    </b-card-text>
+    <b-card-text v-else>
+      <b-row>
+        <b-col>
+          <b-alert variant="warning" show>
+            <b-icon icon="hourglass" animation="cylon-vertical" class="mr-1" />
+            Coming soon...
+          </b-alert>
+        </b-col>
+      </b-row>
+    </b-card-text>
+  </b-tab>
 </template>
 
 <script>
@@ -198,12 +206,13 @@ export default {
         this.calculating = true;
 
         try {
+          chartOptions.chart.renderTo = "graph-" + this.network.name;
           chartOptions.series[0].data = this.calculateCompound();
           chartOptions.yAxis[0].title.text = this.rewardAxisLabelText;
           // chartOptions.series[1].data = this.calculateFees();
           // chartOptions.yAxis[1].title.text = this.feesAxisLabelText;
 
-          chart = new Highcharts.Chart(chartOptions);
+          new Highcharts.Chart(chartOptions);
         } catch (error) {
           console.error(error);
         }

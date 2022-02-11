@@ -16,6 +16,10 @@ const vuexLocal = new VuexPersistence({
   }),
 });
 
+var display_etherum = true;
+var display_polygon = false;
+var display_sentinel = false;
+
 export default new Vuex.Store({
   state: {
     coinGeckoRefreshRateInMs: 5 * 60 * 1000,
@@ -65,8 +69,26 @@ export default new Vuex.Store({
     projectionAutoCompound: false,
   },
   mutations: {
+    resetLocalStorage(state) {
+      console.debug("Reset localStorage...");
+
+      // Delete localStorage state
+      localStorage.removeItem(vuexPersistKey);
+
+      // Default values
+      state.networks.etherum.display = display_etherum;
+      state.networks.etherum.nodes = 0;
+      state.networks.polygon.display = display_polygon;
+      state.networks.polygon.nodes = 0;
+      state.networks.sentinel.display = display_sentinel;
+      state.networks.sentinel.nodes = 0;
+
+      this.commit("initializeFromLocalStorage");
+
+      console.debug("Reset localStorage... DONE");
+    },
     initializeFromLocalStorage(state) {
-      console.log("Retrieving settings from localStorage...");
+      console.debug("Retrieving settings from localStorage...");
 
       if (localStorage.getItem(vuexPersistKey) != null && localStorage.getItem(vuexPersistKey) != undefined) {
         state = JSON.parse(localStorage.getItem(vuexPersistKey));
@@ -74,7 +96,7 @@ export default new Vuex.Store({
         localStorage.setItem(vuexPersistKey, JSON.stringify(state));
       }
 
-      console.log("Retrieving settings from localStorage... DONE");
+      console.debug("Retrieving settings from localStorage... DONE");
     },
     setRefreshRate(state, payload) {
       console.debug(payload);

@@ -1,7 +1,7 @@
 <template>
   <b-card>
     <b-card-text>
-      <div id="graph">
+      <div id="graph-price">
         <div class="text-center">
           <div class="spinner-border text-primary" role="status"></div>
         </div>
@@ -15,10 +15,9 @@ import Highcharts from "../assets/scripts/highcharts";
 const CoinGecko = require("coingecko-api"); // https://github.com/miscavage/CoinGecko-API
 const CoinGeckoClient = new CoinGecko();
 
-let chart = null;
 let chartOptions = {
   chart: {
-    renderTo: "graph",
+    renderTo: "graph-price",
     type: "area",
   },
   xAxis: {
@@ -128,7 +127,7 @@ export default {
     },
     drawChart: function () {
       chartOptions.series[0].data = this.chartData;
-      chart = new Highcharts.Chart(chartOptions);
+      new Highcharts.Chart(chartOptions);
     },
     handleResize: function () {
       this.drawChart();

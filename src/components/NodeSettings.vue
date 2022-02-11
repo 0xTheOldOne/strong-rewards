@@ -1,35 +1,43 @@
 <template>
-  <div v-if="network.display">
-    <b-tab>
-      <template #title>
-        <small>
-          <img :src="network.name + '.png'" class="logo" />
-          <span class="ticker">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }} ({{ network.nodes }})</span>
-        </small>
-      </template>
-      <b-card-text>
-        <b-row>
-          <b-col sm="6" xs="12">
-            <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-              <b-form-group label="Rewards per node, per day :" :description="'This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 $' + ticker.toUpperCase() + ' per 7000 Etherum blocks completed.'">
-                <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" required @change="updateNodeRewards($event)"></b-form-input>
-              </b-form-group>
-            </b-overlay>
-          </b-col>
-          <b-col sm="6" xs="12">
-            <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-              <b-form-group :label="'Node count : ' + network.nodes">
-                <b-form-input v-model.number="network.nodes" type="range" min="0" max="100" placeholder="Node count" required @change="updateNodeCount($event)"></b-form-input>
-                <template #description>
-                  {{ daysToCompound(ticker, network.rewards, network.nodes) }}
-                </template>
-              </b-form-group>
-            </b-overlay>
-          </b-col>
-        </b-row>
-      </b-card-text>
-    </b-tab>
-  </div>
+  <b-tab>
+    <template #title>
+      <small>
+        <img :src="network.name + '.png'" class="logo" />
+        <span class="ticker">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }} ({{ network.nodes }})</span>
+      </small>
+    </template>
+    <b-card-text v-if="network.display">
+      <b-row>
+        <b-col sm="6" xs="12">
+          <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+            <b-form-group label="Rewards per node, per day :" :description="'This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 $' + ticker.toUpperCase() + ' per 7000 Etherum blocks completed.'">
+              <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" required @change="updateNodeRewards($event)"></b-form-input>
+            </b-form-group>
+          </b-overlay>
+        </b-col>
+        <b-col sm="6" xs="12">
+          <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+            <b-form-group :label="'Node count : ' + network.nodes">
+              <b-form-input v-model.number="network.nodes" type="range" min="0" :max="network.maxNodesPerWallet" placeholder="Node count" required @change="updateNodeCount($event)"></b-form-input>
+              <template #description>
+                {{ daysToCompound(ticker, network.rewards, network.nodes) }}
+              </template>
+            </b-form-group>
+          </b-overlay>
+        </b-col>
+      </b-row>
+    </b-card-text>
+    <b-card-text v-else>
+      <b-row>
+        <b-col>
+          <b-alert variant="warning" show>
+            <b-icon icon="hourglass" animation="cylon-vertical" class="mr-1" />
+            Coming soon...
+          </b-alert>
+        </b-col>
+      </b-row>
+    </b-card-text>
+  </b-tab>
 </template>
 
 <script>

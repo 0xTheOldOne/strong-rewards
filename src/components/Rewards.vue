@@ -6,10 +6,10 @@
           <div class="period">{{ title.charAt(0).toUpperCase() + title.slice(1) }} rewards</div>
         </b-list-group-item>
         <b-list-group-item>
-          <b-icon icon="wallet" class="mr-2" /><span class="value mr-1">{{ earnedOnPeriod() }}</span> ${{ ticker.toUpperCase() }}
+          <b-icon icon="wallet" class="mr-2" /><span class="value mr-1">{{ earnedOnPeriod }}</span> ${{ ticker.toUpperCase() }}
         </b-list-group-item>
         <b-list-group-item>
-          <b-icon icon="cash" class="mr-2" /><span class="value mr-1">{{ asFiat(earnedOnPeriod()) }}</span
+          <b-icon icon="cash" class="mr-2" /><span class="value mr-1">{{ asFiat(earnedOnPeriod) }}</span
           >{{ currencies[currency].symbol }}
         </b-list-group-item>
       </b-list-group>
@@ -26,9 +26,6 @@ export default {
     days: Number,
   },
   methods: {
-    earnedOnPeriod: function () {
-      return (this.days * this.networks.etherum.rewards * this.networks.etherum.count).toFixed(4);
-    },
     asFiat: function (tokens) {
       return (tokens * this.price).toFixed(2);
     },
@@ -46,6 +43,17 @@ export default {
       } else {
         return "unknown day count !";
       }
+    },
+    earnedOnPeriod: function () {
+      var total = 0;
+
+      total += this.networks["etherum"].display ? this.networks["etherum"].nodes * this.networks["etherum"].rewards : 0;
+      total += this.networks["polygon"].display ? this.networks["polygon"].nodes * this.networks["polygon"].rewards : 0;
+      total += this.networks["sentinel"].display ? this.networks["sentinel"].nodes * this.networks["sentinel"].rewards : 0;
+
+      return (total * this.days).toFixed(2);
+
+      // return (this.days * this.networks.etherum.rewards * this.networks.etherum.count).toFixed(4);
     },
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,

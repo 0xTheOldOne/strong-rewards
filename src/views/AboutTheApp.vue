@@ -4,12 +4,13 @@
       <b-col class="mb-4">
         <b-card>
           <b-card-text>
-            <p>
-              <b-badge variant="warning" class="mr-2">
-                <b-icon icon="exclamation-triangle" class="mr-1" />Disclaimer<b-icon icon="exclamation-triangle" class="ml-2" />
+            <div class="disclaimer mb-3 pb-3">
+              <b-badge variant="warning" class="mb-3">
+                ⚠️ Disclaimer ⚠️
               </b-badge>
-              This tool was <u>not</u> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator.
-            </p>
+              <p class="text-left">This tool was <u>not</u> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator or any other tool that may look like this app.</p>
+            </div>
+            
             <p>
               When i wrote this app i was just starting to earn/compound strong tokens in order to create strong nodes and i tought that it could be cool to have some earnings calculator, especially if you're new to StrongBlock because this can help if you don't know how it works.
             </p>
@@ -31,7 +32,7 @@
       <b-col>
         <b-card class="mb-4">
           <b-card-text>
-            <u>To do, ordered by priority :</u>
+            ☑️ To do, ordered by priority :
             <p class="mb-3">
               <ul class="icons mt-2">
                 <li>
@@ -212,6 +213,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/style/variables.less";
+
+.disclaimer {
+  text-align: center;
+  border-bottom: 1px solid @border-color;
+}
 
 .commit {
   font-size: .9rem;
