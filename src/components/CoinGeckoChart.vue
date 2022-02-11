@@ -55,6 +55,7 @@ let chartOptions = {
   },
   series: [
     {
+      type: "area",
       data: [],
       step: false,
       name: "$STRONG",

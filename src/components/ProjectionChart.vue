@@ -44,7 +44,6 @@
 import { mapState } from "vuex";
 import Highcharts from "../assets/scripts/highcharts";
 
-let chart = null;
 let chartOptions = {
   chart: {
     renderTo: "graph",
@@ -64,6 +63,16 @@ let chartOptions = {
   },
   yAxis: [
     {
+      min: 0,
+      labels: {
+        format: "{text} node(s)",
+      },
+      title: {
+        text: "",
+      },
+    },
+    {
+      min: 0,
       labels: {
         format: "{text} $STRONG",
       },
@@ -72,18 +81,30 @@ let chartOptions = {
       },
     },
     {
+      min: 0,
       labels: {
         format: "{text} USD",
       },
       title: {
         text: "",
       },
-      // opposite: true,
+      opposite: true,
     },
   ],
   plotOptions: {
+    line: {
+      marker: {
+        enabled: false,
+        symbol: "circle",
+        radius: 2,
+        states: {
+          hover: {
+            enabled: true,
+          },
+        },
+      },
+    },
     area: {
-      pointStart: 1940,
       marker: {
         enabled: false,
         symbol: "circle",
@@ -101,6 +122,25 @@ let chartOptions = {
   },
   series: [
     {
+      type: "line",
+      data: [],
+      step: true,
+      yAxis: 1,
+      name: "Node count",
+      dataLabels: {
+        enabled: false,
+      },
+      tooltip: {
+        xDateFormat: "%e %B %Y (%A)",
+        pointFormat: "{series.name}: {point.y}",
+        valueDecimals: 0,
+        valueSuffix: " node(s)",
+        shared: true,
+      },
+      color: "#1668b0",
+    },
+    {
+      type: "area",
       data: [],
       step: false,
       yAxis: 0,
@@ -118,6 +158,7 @@ let chartOptions = {
       color: "#0F9D58",
     },
     {
+      type: "area",
       data: [],
       step: true,
       yAxis: 1,
@@ -207,11 +248,7 @@ export default {
 
         try {
           chartOptions.chart.renderTo = "graph-" + this.network.name;
-          chartOptions.series[0].data = this.calculateCompound();
-          chartOptions.yAxis[0].title.text = this.rewardAxisLabelText;
-          // chartOptions.series[1].data = this.calculateFees();
-          // chartOptions.yAxis[1].title.text = this.feesAxisLabelText;
-
+          this.computeChartData();
           new Highcharts.Chart(chartOptions);
         } catch (error) {
           console.error(error);
@@ -239,14 +276,14 @@ export default {
       });
       this.drawChart();
     },
-    calculateCompound() {
+    computeChartData() {
       var data = [];
+      var nodes = [];
       var previousValue = 0;
       var numberOfNodes = this.network.nodes;
 
       for (let i = 0; i < this.daysBetweenDates; i++) {
-        // if (this.projectionAutoCompound && previousValue >= 10 && numberOfNodes < this.network.maxNodesPerWallet) {
-        if (this.projectionAutoCompound && previousValue >= 10) {
+        if (this.projectionAutoCompound && previousValue >= 10 && numberOfNodes < this.network.maxNodesPerWallet) {
           previousValue -= 10;
           numberOfNodes += 1;
         }
@@ -257,9 +294,15 @@ export default {
         previousValue += value;
 
         data.push([Date.parse(nextPointDate), previousValue]);
+        nodes.push([Date.parse(nextPointDate), numberOfNodes]);
       }
 
-      return data;
+      // Node count
+      chartOptions.series[0].data = nodes;
+      chartOptions.yAxis[0].visible = false;
+
+      // Rewards
+      chartOptions.series[1].data = data;
     },
     calculateFees() {
       var data = [];
