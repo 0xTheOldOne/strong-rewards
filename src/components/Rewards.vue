@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body class="reward mb-3">
+  <b-card no-body class="reward">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       <b-list-group flush>
         <b-list-group-item>
