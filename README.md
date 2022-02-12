@@ -4,7 +4,7 @@
 <h3 >Description</h3>
 <div>
   <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=0xTheOldOne&repo=strong-rewards" />
-  <p>This app made with VueJS and allows everyone that is taking part to the project or wants to be in to get some insights about rewards/earnings that this kind of nodes can provide while helping the blockchain echosystem to grow :rocket:</p>
+  <p>This app is made with VueJS and allows everyone that is taking part to StrongBlock's project or wants to be in to get some insights about rewards/earnings that this kind of nodes can provide while helping the blockchain echosystem to grow :rocket:</p>
 </div>
 
 <div class="mb-5">&nbsp;</div>
