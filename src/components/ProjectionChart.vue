@@ -76,7 +76,6 @@ let chartOptions = {
   yAxis: [
     {
       min: 0,
-      tickInterval: 1,
       labels: {
         format: "{text} $STRONG",
       },
