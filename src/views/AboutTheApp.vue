@@ -117,7 +117,7 @@
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />
-                  Charts are made with <a href="https://www.highcharts.com/" target="_blank" rel="noopener noreferrer">Highcharts</a>
+                  Charts are made with <a href="https://www.highcharts.com/demo/" target="_blank" rel="noopener noreferrer">Highcharts</a> and <a href="https://www.highcharts.com/demo/stock" target="_blank" rel="noopener noreferrer">Highcharts Stock</a>
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />

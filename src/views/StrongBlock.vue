@@ -75,6 +75,10 @@ export default {
   background: white url("../../public/strongblock.png") no-repeat center center;
   border-radius: 0.25rem;
 
+  @media (max-width: @screen-xs-max) {
+    background-size: contain !important;
+  }
+
   iframe {
     position: absolute;
     top: 0;

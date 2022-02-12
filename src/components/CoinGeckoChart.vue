@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Highcharts from "../assets/scripts/highcharts";
+import Highcharts from "../assets/scripts/highstock";
 const CoinGecko = require("coingecko-api"); // https://github.com/miscavage/CoinGecko-API
 const CoinGeckoClient = new CoinGecko();
 
@@ -39,23 +39,8 @@ let chartOptions = {
       enabled: false,
     },
   },
-  plotOptions: {
-    area: {
-      marker: {
-        enabled: false,
-        symbol: "circle",
-        radius: 2,
-        states: {
-          hover: {
-            enabled: true,
-          },
-        },
-      },
-    },
-  },
   series: [
     {
-      type: "area",
       data: [],
       step: false,
       name: "$STRONG",
@@ -128,7 +113,7 @@ export default {
     },
     drawChart: function () {
       chartOptions.series[0].data = this.chartData;
-      new Highcharts.Chart(chartOptions);
+      new Highcharts.stockChart(chartOptions);
     },
     handleResize: function () {
       this.drawChart();
