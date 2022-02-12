@@ -76,8 +76,9 @@ let chartOptions = {
   yAxis: [
     {
       min: 0,
+      tickInterval: 1,
       labels: {
-        format: "{text} node(s)",
+        format: "{text} $STRONG",
       },
       title: {
         text: "",
@@ -86,7 +87,7 @@ let chartOptions = {
     {
       min: 0,
       labels: {
-        format: "{text} $STRONG",
+        format: "{text} node(s)",
       },
       title: {
         text: "",
@@ -226,6 +227,7 @@ export default {
       requestPending: (state) => state.coinGeckoRequestPending,
       price: (state) => state.price,
       ticker: (state) => state.ticker,
+      walletTokens: (state) => state.walletTokens,
       projectionPeriod: (state) => state.projectionPeriodInMonths,
       projectionAutoCompound: (state) => state.projectionAutoCompound,
     }),
@@ -293,10 +295,10 @@ export default {
     computeChartData() {
       var data = [];
       var nodes = [];
-      var previousValue = 0;
+      var previousValue = parseFloat(this.walletTokens);
       var numberOfNodes = this.network.nodes;
 
-      for (let i = 0; i < this.daysBetweenDates; i++) {
+      for (let i = 0; i <= this.daysBetweenDates; i++) {
         if (this.projectionAutoCompound && previousValue >= 10 && numberOfNodes < this.network.maxNodesPerWallet) {
           previousValue -= 10;
           numberOfNodes += 1;
@@ -305,15 +307,18 @@ export default {
         var nextPointDate = new Date(this.startProjectionDate.getFullYear(), this.startProjectionDate.getMonth(), this.startProjectionDate.getDate() + i);
         var value = parseFloat(this.network.rewards) * numberOfNodes;
 
-        previousValue += value;
+        // First point is current state
+        if (i > 0) {
+          previousValue += value;
+        }
 
-        data.push([Date.parse(nextPointDate), previousValue]);
         nodes.push([i, numberOfNodes]);
+        data.push([Date.parse(nextPointDate), previousValue]);
       }
 
       // Node count
       chartOptions.series[0].data = nodes;
-      chartOptions.yAxis[0].visible = false;
+      chartOptions.yAxis[1].visible = false;
       chartOptions.xAxis[1].visible = false;
 
       // Rewards
@@ -333,6 +338,9 @@ export default {
     },
   },
   watch: {
+    walletTokens: function (newVal, oldVal) {
+      this.drawChart();
+    },
     "network.nodes": function (newVal, oldVal) {
       this.drawChart();
     },

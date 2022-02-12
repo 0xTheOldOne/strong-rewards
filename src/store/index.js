@@ -10,6 +10,7 @@ const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
   reducer: (state) => ({
     screenOrientationToast: state.screenOrientationToast,
+    walletTokens: state.walletTokens,
     networks: state.networks,
     nft: state.nft,
     projectionPeriodInMonths: state.projectionPeriodInMonths,
@@ -35,6 +36,7 @@ export default new Vuex.Store({
     },
     ticker: "strong",
     price: 0.0,
+    walletTokens: 0.0,
     networks: {
       etherum: {
         name: "etherum",
@@ -78,6 +80,7 @@ export default new Vuex.Store({
       localStorage.removeItem(vuexPersistKey);
 
       // Default values
+      state.walletTokens = 0;
       state.networks.etherum.display = display_etherum;
       state.networks.etherum.nodes = 0;
       state.networks.polygon.display = display_polygon;
@@ -119,6 +122,10 @@ export default new Vuex.Store({
     setPrice(state, payload) {
       console.debug(payload);
       state.price = payload.price;
+    },
+    setWalletTokens(state, payload) {
+      console.debug(payload);
+      state.walletTokens = payload.tokens;
     },
     setNodeCount(state, payload) {
       console.debug(payload);

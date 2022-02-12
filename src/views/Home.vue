@@ -21,13 +21,19 @@
               </template>
               <b-card-text>
                 <b-row>
-                  <b-col sm="12" xs="12">
+                  <b-col sm="6" xs="12">
                     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
                       <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'">
-                        <b-form-input v-model.number="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" required></b-form-input>
+                        <b-form-input :value="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" @change="updatePrice" required></b-form-input>
                         <template #description>⏱️ This value is fetched from CoinGecko, in {{ currencies[currency].val.toUpperCase() }} ({{ currencies[currency].symbol }}) every {{ refreshPeriod }}. </template>
                       </b-form-group>
                     </b-overlay>
+                  </b-col>
+                  <b-col sm="6" xs="12">
+                    <b-form-group :label="'$' + ticker.toUpperCase() + ' token(s) that are already in your wallet :'">
+                      <b-form-input :value="walletTokens" type="number" :placeholder="'$' + ticker.toUpperCase() + ' in your wallet'" @change="updateWalletTokens"></b-form-input>
+                      <template #description>Here you can set how many tokens you already have in your wallet, so all the calculations will be more accurate for you.</template>
+                    </b-form-group>
                   </b-col>
                 </b-row>
               </b-card-text>
@@ -102,6 +108,7 @@ export default {
       currency: (state) => state.currency,
       ticker: (state) => state.ticker,
       price: (state) => state.price,
+      walletTokens: (state) => state.walletTokens,
       networks: (state) => state.networks,
     }),
   },
@@ -117,6 +124,18 @@ export default {
         appendToast: true,
         noCloseButton: true,
         solid: true,
+      });
+    },
+    updatePrice: function (price) {
+      this.$store.commit({
+        type: "setPrice",
+        price: price,
+      });
+    },
+    updateWalletTokens: function (tokens) {
+      this.$store.commit({
+        type: "setWalletTokens",
+        tokens: tokens,
       });
     },
     asFiat: function (tokens) {
