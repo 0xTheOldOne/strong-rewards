@@ -104,4 +104,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/style/variables.less";
+
+@media (max-width: @screen-xs-max) {
+  .col-sm-6 {
+    &:first-of-type {
+      margin-bottom: 1rem;
+    }
+  }
+}
 </style>
