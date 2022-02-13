@@ -20,7 +20,7 @@
                 </small>
               </template>
               <b-card-text>
-                <b-row>
+                <b-row class="settings">
                   <b-col sm="6" xs="12">
                     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
                       <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'">
@@ -152,6 +152,16 @@ export default {
 .reset-settings {
   float: right;
   cursor: pointer;
+}
+
+.settings {
+  @media (max-width: @screen-xs-max) {
+    .col-sm-6 {
+      &:first-of-type {
+        margin-bottom: 1rem;
+      }
+    }
+  }
 }
 
 .rewards {
