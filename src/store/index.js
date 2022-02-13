@@ -68,6 +68,7 @@ export default new Vuex.Store({
       silver: 0,
       gold: 0,
       platinium: 0,
+      display: false,
     },
     projectionPeriodInMonths: 1,
     projectionAutoCompound: false,

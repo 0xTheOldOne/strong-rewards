@@ -1,5 +1,5 @@
 <template>
-  <b-tab>
+  <b-tab v-if="network.display">
     <template #title>
       <small>
         <img :src="network.name + '.png'" class="logo" />

@@ -41,6 +41,7 @@
             <NodeSettings :network="networks['etherum']" />
             <NodeSettings :network="networks['polygon']" />
             <NodeSettings :network="networks['sentinel']" />
+            <NFTSettings />
           </b-tabs>
         </b-card>
       </b-col>
@@ -80,6 +81,7 @@
 import { mapState } from "vuex";
 import Rewards from "@/components/Rewards.vue";
 import NodeSettings from "@/components/NodeSettings.vue";
+import NFTSettings from "@/components/NFTSettings.vue";
 import ProjectionChart from "@/components/ProjectionChart.vue";
 
 export default {
@@ -87,6 +89,7 @@ export default {
   components: {
     Rewards,
     NodeSettings,
+    NFTSettings,
     ProjectionChart,
   },
   computed: {
