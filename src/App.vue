@@ -4,11 +4,12 @@
       <b-container fluid="md">
         <b-navbar-brand href="#">
           <span class="mr-1">🧮</span>
-          <span class="mr-1">Strong Calculator</span>
+          <span class="mr-3">Strong Calculator</span>
           <small>
-            <b-badge class="ml-2 mr-2 light" variant="success">{{ appVersion }}</b-badge>
+            <b-badge class="mr-2 light" variant="success">{{ appVersion }}</b-badge>
             <br class="visible-xs" />
-            <GasFees />
+            <GasFees class="mr-2" />
+            <TokenPrice class="mr-2" />
           </small>
         </b-navbar-brand>
 
@@ -64,12 +65,14 @@ import "particles.js";
 import { mapState } from "vuex";
 import CoinGeckoUpdater from "@/components/CoinGeckoUpdater.vue";
 import GasFees from "@/components/GasFees";
+import TokenPrice from "@/components/TokenPrice";
 
 export default {
   name: "App",
   components: {
     CoinGeckoUpdater,
     GasFees,
+    TokenPrice,
   },
   data() {
     return {

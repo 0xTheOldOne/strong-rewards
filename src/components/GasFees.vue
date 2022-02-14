@@ -8,7 +8,6 @@
         </b-badge>
       </b-overlay>
     </div>
-    <b-toast id="gasfees-toast" title="Gas fees alert" static></b-toast>
   </div>
 </template>
 
