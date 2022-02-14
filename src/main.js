@@ -16,6 +16,7 @@ const CoinGecko = require("coingecko-api");
 Vue.prototype.$CoinGeckoClient = new CoinGecko();
 
 Vue.config.productionTip = false;
+Vue.config.devtools = false;
 
 window.Vue = new Vue({
   router,
