@@ -11,7 +11,7 @@
         <b-col sm="6" xs="12">
           <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
             <!-- <b-form-group label="Rewards per node, per day :">
-              <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" required @change="updateNodeRewards($event)"></b-form-input>
+              <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" min="0" required @change="updateNodeRewards($event)"></b-form-input>
               <template #description>
                 <span v-html="rewardsPerNode"></span>
               </template>

@@ -11,7 +11,7 @@
         <b-col sm="6" xs="12">
           <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
             <b-form-group label="Rewards per node, per day :">
-              <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" required @change="updateNodeRewards($event)"></b-form-input>
+              <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" min="0" required @change="updateNodeRewards($event)"></b-form-input>
               <template #description>
                 <span v-html="rewardsPerNode"></span>
               </template>
@@ -59,6 +59,7 @@ export default {
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,
       ticker: (state) => state.ticker,
+      walletTokens: (state) => state.walletTokens,
     }),
     rewardsPerNode: function () {
       switch (this.network.name) {
@@ -77,8 +78,9 @@ export default {
   },
   methods: {
     daysToCompound: function (ticker, rewards, count) {
-      if (count > 0) {
-        return "The 10 $" + ticker.toUpperCase() + " tokens that you need to have in order to create another node will be earned in approximatly " + (10 / (count * rewards)).toFixed(2) + " day(s).";
+      var countWithWallet = count + this.walletTokens;
+      if (countWithWallet > 0) {
+        return "The 10 $" + ticker.toUpperCase() + " tokens that you need to have in order to create another node will be earned in approximatly " + (10 / (countWithWallet * rewards)).toFixed(2) + " day(s)" + (this.walletTokens > 0 ? ", including the " + this.walletTokens + " token(s) you already have in your wallet" : "") + ".";
       } else {
         return "Without node you can't earn tokens...";
       }

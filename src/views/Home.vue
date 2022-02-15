@@ -24,14 +24,14 @@
                   <b-col sm="6" xs="12">
                     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
                       <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'">
-                        <b-form-input :value="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" @change="updatePrice" required></b-form-input>
+                        <b-form-input :value="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" @change="updatePrice" min="0" required></b-form-input>
                         <template #description>⏱️ This value is fetched from CoinGecko, in {{ currencies[currency].val.toUpperCase() }} ({{ currencies[currency].symbol }}) every {{ refreshPeriod }}. </template>
                       </b-form-group>
                     </b-overlay>
                   </b-col>
                   <b-col sm="6" xs="12">
                     <b-form-group :label="'$' + ticker.toUpperCase() + ' token(s) that are already in your wallet :'">
-                      <b-form-input :value="walletTokens" type="number" :placeholder="'$' + ticker.toUpperCase() + ' in your wallet'" @change="updateWalletTokens"></b-form-input>
+                      <b-form-input :value="walletTokens" type="number" :placeholder="'$' + ticker.toUpperCase() + ' in your wallet'" min="0" @change="updateWalletTokens"></b-form-input>
                       <template #description>Here you can set how many tokens you already have in your wallet, so all the calculations will be more accurate for you.</template>
                     </b-form-group>
                   </b-col>
