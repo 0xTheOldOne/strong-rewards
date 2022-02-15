@@ -97,7 +97,7 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col sm="6" xs="12" class="mb-4">
+      <b-col class="mb-4">
         <b-card>
           <b-card-text>
             📝 Technical informations :
@@ -144,30 +144,14 @@
           </b-card-text>
         </b-card>
       </b-col>
-      <b-col sm="6" xs="12" class="mb-4">
-        <b-card class="mb-4">
-          <b-card-text>
-            🔎 Details about the {{githubHistoryDepth}} last updates :
-            <b-overlay :show="!loaded" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-              <div v-if="loaded" class="commits mt-2">
-                <div class="commit mb-2" v-for="commit in githubResponse" :key="commit.sha">
-                    <div class="message">{{commit.commit.message}}</div>
-                    <div class="date">
-                      <b-badge class="sha mr-2">{{commit.sha.substring(0,7)}}</b-badge>
-                      <small>{{new Date(commit.commit.author.date).toLocaleString()}}</small>
-                    </div>
-                </div>
-              </div>
-            </b-overlay>
-          </b-card-text>
-        </b-card>
+    </b-row>
+    <b-row>
+      <b-col class="mb-4">
         <b-card>
           <b-card-text>
             🐞 Known bugs :
             <ul class="icons">
-              <li>
-                <small>On desktop (not mobile), when you change an input on home page, Google Chrome scrolls to the top of the page... Maybe it's the same on other browsers.</small>
-              </li>
+              <li>On desktop (not mobile), when you change an input on home page, Google Chrome scrolls to the top of the page... Maybe it's the same on other browsers.</li>
             </ul>
           </b-card-text>
         </b-card>
@@ -181,38 +165,38 @@ import axios from "axios";
 
 export default {
   name: "Author",
-  data() {
-    return {
-      loaded: false,
-      githubUser: "0xTheOldOne",
-      githubRepo: "strong-rewards",
-      githubHistoryDepth: 5,
-      githubError: "",
-      githubResponse: {
-        commits: [],
-      },
-    };
-  },
-  created() {
-    this.loaded = false;
-    axios
-      .get("https://api.github.com/repos/" + this.githubUser + "/" + this.githubRepo + "/commits")
-      .then((response) => {
-        this.githubResponse = response.data.slice(0, this.githubHistoryDepth);
-        this.loaded = true;
-      })
-      .catch((e) => {
-        this.githubError = e;
-      });
-  },
-  computed: {
-    bio: function () {
-      if (this.githubResponse != null && this.githubResponse.bio != null) {
-        return this.githubResponse.bio.replace(" - ", "<br />");
-      }
-      return "";
-    },
-  },
+  // data() {
+  //   return {
+  //     loaded: false,
+  //     githubUser: "0xTheOldOne",
+  //     githubRepo: "strong-rewards",
+  //     githubHistoryDepth: 5,
+  //     githubError: "",
+  //     githubResponse: {
+  //       commits: [],
+  //     },
+  //   };
+  // },
+  // created() {
+  //   this.loaded = false;
+  //   axios
+  //     .get("https://api.github.com/repos/" + this.githubUser + "/" + this.githubRepo + "/commits")
+  //     .then((response) => {
+  //       this.githubResponse = response.data.slice(0, this.githubHistoryDepth);
+  //       this.loaded = true;
+  //     })
+  //     .catch((e) => {
+  //       this.githubError = e;
+  //     });
+  // },
+  // computed: {
+  //   bio: function () {
+  //     if (this.githubResponse != null && this.githubResponse.bio != null) {
+  //       return this.githubResponse.bio.replace(" - ", "<br />");
+  //     }
+  //     return "";
+  //   },
+  // },
 };
 </script>
 
