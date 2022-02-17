@@ -19,6 +19,7 @@
 
 <script>
 import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Rewards",
@@ -45,15 +46,7 @@ export default {
       }
     },
     earnedOnPeriod: function () {
-      var total = 0;
-
-      total += this.networks["etherum"].display ? this.networks["etherum"].nodes * this.networks["etherum"].rewards : 0;
-      total += this.networks["polygon"].display ? this.networks["polygon"].nodes * this.networks["polygon"].rewards : 0;
-      total += this.networks["sentinel"].display ? this.networks["sentinel"].nodes * this.networks["sentinel"].rewards : 0;
-
-      return (total * this.days).toFixed(4);
-
-      // return (this.days * this.networks.etherum.rewards * this.networks.etherum.count).toFixed(4);
+      return this.rewardsPerDay;
     },
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,
@@ -62,6 +55,9 @@ export default {
       ticker: (state) => state.ticker,
       price: (state) => state.price,
       networks: (state) => state.networks,
+    }),
+    ...mapGetters({
+      rewardsPerDay: "rewardsPerDay",
     }),
   },
 };

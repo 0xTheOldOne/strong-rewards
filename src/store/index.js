@@ -149,6 +149,17 @@ export default new Vuex.Store({
       state.projectionAutoCompound = payload.value;
     },
   },
+  getters: {
+    rewardsPerDay(state) {
+      var rewards = [];
+
+      rewards.push(state.networks.etherum.display ? state.networks.etherum.count * state.networks.etherum.rewards : 0);
+      rewards.push(state.networks.polygon.display ? state.networks.polygon.count * state.networks.polygon.rewards : 0);
+      rewards.push(state.networks.sentinel.display ? state.networks.sentinel.count * state.networks.sentinel.rewards : 0);
+
+      return rewards.reduce((partialSum, toAdd) => partialSum + toAdd, 0).toFixed(4);
+    },
+  },
   actions: {},
   modules: {},
   plugins: [vuexLocal.plugin],
