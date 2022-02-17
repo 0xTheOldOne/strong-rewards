@@ -41,7 +41,7 @@
             <NodeSettings :network="networks['etherum']" />
             <NodeSettings :network="networks['polygon']" />
             <NodeSettings :network="networks['sentinel']" />
-            <NFTSettings />
+            <!-- <NFTSettings :ntf="nft" /> -->
           </b-tabs>
         </b-card>
       </b-col>
@@ -113,6 +113,7 @@ export default {
       price: (state) => state.price,
       walletTokens: (state) => state.walletTokens,
       networks: (state) => state.networks,
+      nft: (state) => state.nft,
     }),
   },
   methods: {

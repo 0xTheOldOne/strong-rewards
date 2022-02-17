@@ -45,7 +45,7 @@ import { mapState } from "vuex";
 import ComingSoon from "@/components/ComingSoon.vue";
 
 export default {
-  name: "NodeSettings",
+  name: "NftSettings",
   components: {
     ComingSoon,
   },
