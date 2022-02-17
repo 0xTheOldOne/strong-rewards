@@ -24,7 +24,11 @@ import { mapGetters } from "vuex";
 export default {
   name: "Rewards",
   props: {
-    days: Number,
+    days: {
+      type: Number,
+      default: () => 1,
+      required: true,
+    },
   },
   methods: {
     asFiat: function (tokens) {

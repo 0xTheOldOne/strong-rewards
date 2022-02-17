@@ -53,6 +53,7 @@ export default {
     nft: {
       type: Object,
       default: () => ({}),
+      required: true,
     },
   },
   computed: {

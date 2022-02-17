@@ -71,7 +71,8 @@ export default {
   props: {
     ticker: {
       type: String,
-      default: () => "",
+      default: () => "bitcoin",
+      required: true,
     },
     currency: {
       type: String,

@@ -66,10 +66,10 @@
                   <b-icon icon="check-circle" variant="success" class="mr-1" />
                   Add an auto-compound option to this chart so you can see when you will be able to create the next node
                 </li>
-                <li>
+                <!-- <li>
                   <b-icon icon="circle" class="mr-1" />
                   Sync network tabs on home page (if the Etherum settings tab is active, then the Etherum projection chart must be active too)
-                </li>
+                </li> -->
                 <li>
                   <b-icon icon="circle" class="mr-1" />
                   Add a NFT tab

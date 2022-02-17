@@ -208,6 +208,7 @@ export default {
     network: {
       type: Object,
       default: () => ({}),
+      required: true,
     },
   },
   data() {
@@ -240,12 +241,6 @@ export default {
     },
     daysBetweenDates: function () {
       return (this.endProjectionDate.getTime() - this.startProjectionDate.getTime()) / (1000 * 3600 * 24);
-    },
-    rewardAxisLabelText: function () {
-      return "Rewards for " + this.network.nodes + " " + this.network.name + " nodes";
-    },
-    feesAxisLabelText: function () {
-      return "Maintenance fees for " + this.network.nodes + " " + this.network.name + " nodes";
     },
   },
   mounted() {
