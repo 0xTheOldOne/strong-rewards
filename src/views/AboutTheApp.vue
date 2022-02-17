@@ -18,7 +18,7 @@
               Also, i thought that it could be cool if my app was able to connect to a wallet and see how many tokens you have in your wallet, how many nodes too or how many earnings you had but i <b>don't</b> know how to do that at the moment and i <b>don't</b> want this app to be able to interact with people's wallets because nowadays we see a lot of scammers trying to do so and people could be in fear about that and that's not what i want, stay safe !
             </p>
             <p class="text-center">
-              This app will not retrieve those kind of informations, i hope it's ok for you !
+              <b>This app will not retrieve this kind of informations, i hope it's ok for you !</b>
             </p>
             <p>
               Please keep in mind that it was originally created in order to practice VueJs basics so maybe it's not perfect...
@@ -66,10 +66,10 @@
                   <b-icon icon="check-circle" variant="success" class="mr-1" />
                   Add an auto-compound option to this chart so you can see when you will be able to create the next node
                 </li>
-                <!-- <li>
+                <li>
                   <b-icon icon="circle" class="mr-1" />
-                  Sync network tabs on home page (if the Etherum settings tab is active, then the Etherum projection chart must be active too)
-                </li> -->
+                  Add translation (i18n) for non english speakers
+                </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
                   Add a NFT tab
@@ -82,10 +82,10 @@
                   <b-icon icon="circle" class="mr-1" />
                   Add a Sentinel nodes tab
                 </li>
-                <li>
-                  <b-icon icon="question-circle" class="mr-1" />
-                  Maybe add some internationalization (i18n) for non english speakers
-                </li>
+                <!-- <li>
+                  <b-icon icon="circle" class="mr-1" />
+                  Sync network tabs on home page (if the Etherum settings tab is active, then the Etherum projection chart must be active too)
+                </li> -->
               </ul>
             </p>
             <p>
@@ -113,7 +113,11 @@
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />
-                  Data state is stored to <code>localStorage</code> using <a href="https://github.com/championswimmer/vuex-persist" target="_blank" rel="noopener noreferrer">Championswimmer's plugin</a> so you can retrieve your settings everytime you use this app (data remains, across PC reboots, untill you clear browser data)
+                  Data state is stored to <code>localStorage</code> using <a href="https://github.com/championswimmer/vuex-persist" target="_blank" rel="noopener noreferrer">Championswimmer's plugin</a> (vuex-persist) so you can retrieve your settings everytime you use this app (data remains, across PC reboots, untill you clear browser data)
+                </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  Internationalization (i18n) is made with <a href="https://kazupon.github.io/vue-i18n/" target="_blank" rel="noopener noreferrer">Kazupon's plugin</a> (vue-i18n), following <a href="https://phrase.com/blog/posts/ultimate-guide-to-vue-localization-with-vue-i18n/" target="_blank" rel="noopener noreferrer">this</a> tutorial
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />
@@ -152,6 +156,7 @@
             🐞 Known bugs :
             <ul class="icons">
               <li>On desktop (not mobile), when you change an input on home page, Google Chrome scrolls to the top of the page... Maybe it's the same on other browsers.</li>
+              <li>Rewards are not refreshed when you click on <b-badge>♻️ {{ $t("pages.home.reset_settings.button_text") }}</b-badge></li>
             </ul>
           </b-card-text>
         </b-card>
