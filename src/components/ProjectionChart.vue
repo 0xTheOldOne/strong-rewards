@@ -12,7 +12,13 @@
           <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
             <div class="projection-options">
               <small>
-                <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">Create new node at 10 ${{ ticker.toUpperCase() }}</b-form-checkbox>
+                <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">
+                  {{
+                    $t("components.projection_chart.create_at_ten", {
+                      token: ticker.toUpperCase(),
+                    })
+                  }}
+                </b-form-checkbox>
               </small>
               <small>
                 <b-form-select :value="projectionPeriod" :options="options" @change="updateProjectionPeriodInMonths" size="sm" style="width: auto !important"></b-form-select>

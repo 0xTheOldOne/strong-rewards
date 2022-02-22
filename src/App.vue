@@ -5,12 +5,8 @@
         <b-navbar-brand href="#">
           <span class="mr-1">🧮</span>
           <span class="mr-3">Strong Calculator</span>
-          <small>
-            <b-badge class="mr-2 light" variant="success">{{ appVersion }}</b-badge>
-            <br class="visible-xs" />
-            <GasFees class="mr-2" />
-            <TokenPrice class="mr-2" />
-          </small>
+          <b-badge class="mr-2 light" variant="success">{{ appVersion }}</b-badge>
+          <br class="visible-xs" />
         </b-navbar-brand>
 
         <!-- right nav-items -->
@@ -33,18 +29,39 @@
       <b-container fluid="md">
         <b-collapse id="nav-collapse" is-nav>
           <!-- left nav-items -->
+          <b-navbar-nav class="settings">
+            <b-nav-item>
+              <GasFees class="mr-2" />
+              <TokenPrice class="mr-2" />
+            </b-nav-item>
+          </b-navbar-nav>
+
+          <!-- right nav-items -->
+          <b-navbar-nav class="settings ml-auto hidden-xs">
+            <b-nav-item size="sm">
+              <LocaleSwitcher />
+            </b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-container>
+    </b-navbar>
+
+    <b-navbar toggleable="md" type="dark" variant="primary" style="padding: 0 1rem; font-size: 90%">
+      <b-container fluid="md">
+        <b-collapse id="nav-collapse" is-nav>
+          <!-- left nav-items -->
           <b-navbar-nav class="menu">
             <b-nav-item href="#">
-              <router-link to="/">Home</router-link>
+              <router-link to="/">{{ $t("menu.home") }}</router-link>
             </b-nav-item>
             <b-nav-item href="#">
-              <router-link to="/strongblock">What is StrongBlock ?</router-link>
+              <router-link to="/strongblock">{{ $t("menu.strongblock") }}</router-link>
             </b-nav-item>
             <b-nav-item href="#">
-              <router-link to="/about">Concerning the app</router-link>
+              <router-link to="/about">{{ $t("menu.about") }}</router-link>
             </b-nav-item>
             <b-nav-item href="#">
-              <router-link to="/author">About the author</router-link>
+              <router-link to="/author">{{ $t("menu.author") }}</router-link>
             </b-nav-item>
             <b-nav-item size="sm" class="visible-xs">
               <CoinGeckoUpdater />
@@ -53,6 +70,18 @@
         </b-collapse>
       </b-container>
     </b-navbar>
+
+    <b-container fluid="md">
+      <b-row>
+        <b-col>
+          <small>
+            <b-alert show dismissible variant="warning" class="mb-0 mt-4">
+              {{ $t("translation.need_help") }} <a href="https://twitter.com/messages/compose?recipient_id=1214500509060673536" target="_blank" rel="noopener noreferrer"><b-icon icon="twitter" /> {{ $t("translation.send_message") }}</a>
+            </b-alert>
+          </small>
+        </b-col>
+      </b-row>
+    </b-container>
 
     <router-view class="mt-4 mb-4" />
   </div>
@@ -66,6 +95,7 @@ import { mapState } from "vuex";
 import CoinGeckoUpdater from "@/components/CoinGeckoUpdater.vue";
 import GasFees from "@/components/GasFees";
 import TokenPrice from "@/components/TokenPrice";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 
 export default {
   name: "App",
@@ -73,6 +103,7 @@ export default {
     CoinGeckoUpdater,
     GasFees,
     TokenPrice,
+    LocaleSwitcher,
   },
   data() {
     return {
@@ -130,6 +161,14 @@ export default {
 
 <style lang="less">
 @import "./assets/style/site.less";
+
+.settings {
+  .nav-link {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+}
+
 .menu {
   .nav-link {
     & > * {

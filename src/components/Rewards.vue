@@ -3,7 +3,7 @@
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       <b-list-group flush>
         <b-list-group-item>
-          <div class="period">{{ title.charAt(0).toUpperCase() + title.slice(1) }} rewards</div>
+          <div class="period">{{ $t(title).charAt(0).toUpperCase() + $t(title).slice(1) }}</div>
         </b-list-group-item>
         <b-list-group-item>
           <b-icon icon="wallet" class="mr-2" /><span class="value mr-1">{{ earnedOnPeriod }}</span> ${{ ticker.toUpperCase() }}
@@ -37,20 +37,20 @@ export default {
   },
   computed: {
     title: function () {
+      var period = "unknown";
       if (this.days == 1) {
-        return "daily";
+        period = "daily";
       } else if (this.days == 7) {
-        return "weekly";
+        period = "weekly";
       } else if (this.days == 30) {
-        return "monthly";
+        period = "monthly";
       } else if (this.days == 365) {
-        return "annually";
-      } else {
-        return "unknown day count !";
+        period = "annually";
       }
+      return "misc." + period;
     },
     earnedOnPeriod: function () {
-      return this.rewardsPerDay;
+      return this.rewardsPerDay * this.days;
     },
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,

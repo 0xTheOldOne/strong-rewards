@@ -3,10 +3,10 @@
     <b-row class="mb-4">
       <b-col>
         <div class="title">
-          ⚙️ Nodes settings
+          ⚙️ {{ $t("pages.home.node_settings.title") }}
           <div class="reset-settings">
             <b-badge @click="resetLocalStorage">
-              <small>♻️ Reset settings</small>
+              <small>♻️ {{ $t("pages.home.reset_settings.button_text") }}</small>
             </b-badge>
           </div>
         </div>
@@ -23,16 +23,42 @@
                 <b-row class="settings">
                   <b-col sm="6" xs="12">
                     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-                      <b-form-group :label="'$' + ticker.toUpperCase() + ' token price is :'">
+                      <b-form-group>
                         <b-form-input :value="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" @change="updatePrice" min="0" required></b-form-input>
-                        <template #description>⏱️ This value is fetched from CoinGecko, in {{ currencies[currency].val.toUpperCase() }} ({{ currencies[currency].symbol }}) every {{ refreshPeriod }}. </template>
+                        <template #label>
+                          {{
+                            $t("pages.home.node_settings.input_price_title", {
+                              token: ticker.toUpperCase(),
+                            })
+                          }}
+                        </template>
+                        <template #description>
+                          ⏱️
+                          {{
+                            $t("pages.home.node_settings.input_price_description", {
+                              currency: currencies[currency].val.toUpperCase(),
+                              symbol: currencies[currency].symbol,
+                              period: refreshPeriod,
+                              unit: $tc(refreshUnit, refreshPeriod),
+                            })
+                          }}
+                        </template>
                       </b-form-group>
                     </b-overlay>
                   </b-col>
                   <b-col sm="6" xs="12">
                     <b-form-group :label="'$' + ticker.toUpperCase() + ' token(s) that are already in your wallet :'">
                       <b-form-input :value="walletTokens" type="number" :placeholder="'$' + ticker.toUpperCase() + ' in your wallet'" min="0" @change="updateWalletTokens"></b-form-input>
-                      <template #description>Here you can set how many tokens you already have in your wallet, so all the calculations will be more accurate for you.</template>
+                      <template #label>
+                        {{
+                          $t("pages.home.node_settings.input_walletTokens_title", {
+                            token: ticker.toUpperCase(),
+                          })
+                        }}
+                      </template>
+                      <template #description>
+                        {{ $t("pages.home.node_settings.input_walletTokens_description") }}
+                      </template>
                     </b-form-group>
                   </b-col>
                 </b-row>
@@ -48,7 +74,7 @@
     </b-row>
     <b-row class="mb-4">
       <b-col>
-        <div class="title">💸 Periodical rewards</div>
+        <div class="title">💸 {{ $t("pages.home.rewards.title") }}</div>
         <div class="rewards">
           <Rewards :days="1" />
           <Rewards :days="7" />
@@ -59,7 +85,7 @@
     </b-row>
     <b-row class="mb-2">
       <b-col>
-        <div class="title">🔄 Rewards projection chart</div>
+        <div class="title">🔄 {{ $t("pages.home.projection.title") }}</div>
       </b-col>
     </b-row>
     <b-row class="mb-4">
@@ -95,14 +121,19 @@ export default {
   computed: {
     refreshPeriod() {
       var period = this.refreshRateInMs / 1000;
+      if (period > 60) {
+        period = period / 60;
+      }
+      return period;
+    },
+    refreshUnit() {
+      var period = this.refreshRateInMs / 1000;
       var unit = "second";
 
       if (period > 60) {
         unit = "minute";
-        period = period / 60;
       }
-
-      return period + " " + unit + (period > 1 ? "s" : "");
+      return "misc." + unit;
     },
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,
@@ -121,7 +152,7 @@ export default {
       this.$store.commit({
         type: "resetLocalStorage",
       });
-      this.$bvToast.toast("Values were restored to defaults (you now have 0 node for each type of node).", {
+      this.$bvToast.toast("Values were restored to defaults.", {
         title: "♻️ Settings restored",
         toaster: "b-toaster-top-center",
         autoHideDelay: 5000,

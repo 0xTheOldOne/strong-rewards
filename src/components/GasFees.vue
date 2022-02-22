@@ -2,10 +2,12 @@
   <div class="status">
     <div>
       <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-        <b-badge :variant="gweiVariant" class="light">
-          <span class="mr-1">⛽</span>
-          <span class="gwei">{{ gwei }}</span> gwei
-        </b-badge>
+        <a href="https://etherscan.io/gasTracker" target="_blank" rel="noopener noreferrer">
+          <b-badge :variant="gweiVariant" class="light">
+            <span class="mr-1">⛽</span>
+            <span class="gwei">{{ gwei }}</span> gwei
+          </b-badge>
+        </a>
       </b-overlay>
     </div>
   </div>
@@ -75,8 +77,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+@import "../assets/style/variables.less";
 .status {
   display: inline-block;
+
+  * {
+    color: @text-color;
+    text-decoration: none;
+  }
 
   .gwei {
     font-family: "Source Code Pro", monospace;

@@ -2,14 +2,14 @@
   <div :class="variant">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       <div class="status">
-        <b-badge variant="success" class="light" v-if="reachable">{{ target }} is online</b-badge>
-        <b-badge variant="danger" class="light" v-else>{{ target }} is offline</b-badge>
+        <b-badge variant="success" class="light" v-if="reachable">{{ $t("components.coingeckoupdater.online") }}</b-badge>
+        <b-badge variant="danger" class="light" v-else>{{ $t("components.coingeckoupdater.offline") }}</b-badge>
       </div>
-      <div class="refresh-container">
+      <!-- <div class="refresh-container">
         ⏱️ Next {{ currencies[currency].val.toUpperCase() }} price refresh in
         <div class="refresh">{{ ((refreshRateInMs - timerTicks * timerTicksRateInMs) / 1000).toFixed(2) }}</div>
         seconds
-      </div>
+      </div> -->
     </b-overlay>
   </div>
 </template>
@@ -29,10 +29,9 @@ export default {
   },
   data() {
     return {
-      target: "Coin Gecko API",
       timer: null,
       timerTicks: 0,
-      timerTicksRateInMs: 100,
+      timerTicksRateInMs: 1000, //100,
     };
   },
   mounted: function () {
@@ -98,7 +97,7 @@ export default {
 <style scoped lang="less">
 .status {
   .badge {
-    line-height: 1rem;
+    // line-height: 1rem;
   }
 }
 
@@ -114,7 +113,7 @@ export default {
 }
 
 &.right {
-  font-size: 0.8rem;
+  // font-size: 0.8rem;
   text-align: right;
 
   .refresh-container {
@@ -124,7 +123,7 @@ export default {
 }
 
 &.left {
-  font-size: 0.8rem;
+  // font-size: 0.8rem;
 
   .status {
     display: inline-block;

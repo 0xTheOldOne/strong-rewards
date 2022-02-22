@@ -24,6 +24,9 @@ var display_sentinel = false;
 
 export default new Vuex.Store({
   state: {
+    i18n: {
+      userLocale: "",
+    },
     screenOrientationToast: false,
     coinGeckoRefreshRateInMs: 5 * 60 * 1000,
     coinGeckoIsReachable: false,
