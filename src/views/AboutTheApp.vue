@@ -157,6 +157,7 @@
             <ul class="icons">
               <li>On desktop (not mobile), when you change an input on home page, Google Chrome scrolls to the top of the page... Maybe it's the same on other browsers.</li>
               <li>Rewards are not refreshed when you click on <b-badge>♻️ {{ $t("pages.home.reset_settings.button_text") }}</b-badge></li>
+              <li>Sometimes rewards are displaying "<code>NaN</code>", you need to click on the <b-badge>♻️ {{ $t("pages.home.reset_settings.button_text") }}</b-badge> button in order to reset </li>
             </ul>
           </b-card-text>
         </b-card>
