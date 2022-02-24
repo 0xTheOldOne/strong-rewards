@@ -3,7 +3,9 @@
     <template #title>
       <small>
         <img :src="network.name + '.png'" class="logo" />
-        <span class="ticker hidden-xs">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }} ({{ network.nodes }})</span>
+        <span class="ticker">
+          <span class="hidden-xs">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }}</span> ({{ network.nodes }})
+        </span>
       </small>
     </template>
     <b-card-text v-if="network.display">
@@ -142,6 +144,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/style/variables.less";
+
+.ticker {
+  color: @text-color-secondary;
+}
 
 .settings {
   @media (max-width: @screen-xs-max) {

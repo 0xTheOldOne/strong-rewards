@@ -2,14 +2,20 @@
   <b-container fluid="md">
     <b-row class="mb-4">
       <b-col>
-        <div class="title">
-          ⚙️ {{ $t("pages.home.node_settings.title") }}
-          <div class="reset-settings">
-            <b-badge @click="resetLocalStorage">
-              <small>♻️ {{ $t("pages.home.reset_settings.button_text") }}</small>
-            </b-badge>
-          </div>
-        </div>
+        <b-row>
+          <b-col md="9" xs="12">
+            <div class="title">⚙️ {{ $t("pages.home.node_settings.title") }}</div>
+          </b-col>
+          <b-col md="3" xs="12">
+            <div class="reset-settings">
+              <b-badge @click="resetLocalStorage">
+                <small>♻️ {{ $t("pages.home.reset_settings.button_text") }}</small>
+              </b-badge>
+            </div>
+            <span class="visible-xs mb-1"></span>
+          </b-col>
+        </b-row>
+
         <b-card no-body>
           <b-tabs card>
             <b-tab active>
@@ -185,7 +191,6 @@ export default {
 @import "../assets/style/variables.less";
 
 .reset-settings {
-  float: right;
   cursor: pointer;
 }
 
