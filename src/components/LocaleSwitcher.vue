@@ -1,8 +1,8 @@
 <template>
   <div>
     <span class="locale-switcher" v-b-modal.modal-i18n>
-      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/' + $i18n.locale + '.svg'" class="mr-1 logo" rounded v-if="$i18n.locale != 'en'" />
-      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/gb.svg'" class="mr-1 logo" rounded v-else />
+      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/' + $i18n.locale + '.svg'" class="logo" rounded v-if="$i18n.locale != 'en'" />
+      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/gb.svg'" class="logo" rounded v-else />
       {{ $t("components.localeswitcher.title") }}
     </span>
 
@@ -64,5 +64,10 @@ export default {
 @import "../assets/style/variables.less";
 .locale-switcher {
   display: inline-block;
+
+  img.logo {
+    margin: 0px !important;
+    margin-right: 0.125rem !important;
+  }
 }
 </style>

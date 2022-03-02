@@ -22,10 +22,10 @@
               </template>
               <b-card-text>
                 <b-row class="settings">
-                  <b-col sm="6" xs="12">
+                  <b-col sm="6" cols="12">
                     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-                      <b-form-group>
-                        <b-form-input :value="price" type="number" :placeholder="'$' + ticker.toUpperCase() + ' token price'" @change="updatePrice" min="0" required></b-form-input>
+                      <b-form-group class="mb-3">
+                        <b-form-input :value="price" type="number" @change="updatePrice" min="0" required></b-form-input>
                         <template #label>
                           {{
                             $t("pages.home.node_settings.input_price_title", {
@@ -45,11 +45,25 @@
                           }}
                         </template>
                       </b-form-group>
+                      <!-- <b-form-group>
+                        <b-form-input :value="walletTokens" type="number" min="0" @change="updateWalletTokens"></b-form-input>
+                        <template #label>
+                          {{
+                            $t("pages.home.node_settings.input_walletTokens_title", {
+                              token: ticker.toUpperCase(),
+                            })
+                          }}
+                        </template>
+                        <template #description>
+                          {{ $t("pages.home.node_settings.input_walletTokens_description") }}
+                        </template>
+                      </b-form-group> -->
                     </b-overlay>
                   </b-col>
-                  <b-col sm="6" xs="12">
-                    <b-form-group :label="'$' + ticker.toUpperCase() + ' token(s) that are already in your wallet :'">
-                      <b-form-input :value="walletTokens" type="number" :placeholder="'$' + ticker.toUpperCase() + ' in your wallet'" min="0" @change="updateWalletTokens"></b-form-input>
+                  <b-col sm="6" cols="12">
+                    <!-- <DaysTillNewNode /> -->
+                    <b-form-group>
+                      <b-form-input :value="walletTokens" type="number" min="0" @change="updateWalletTokens"></b-form-input>
                       <template #label>
                         {{
                           $t("pages.home.node_settings.input_walletTokens_title", {
@@ -107,6 +121,7 @@
 // @ is an alias to /src
 import { mapState } from "vuex";
 import ResetSettings from "@/components/ResetSettings.vue";
+import DaysTillNewNode from "@/components/DaysTillNewNode.vue";
 import Rewards from "@/components/Rewards.vue";
 import NodeSettings from "@/components/NodeSettings.vue";
 import NFTSettings from "@/components/NFTSettings.vue";
@@ -120,6 +135,7 @@ export default {
     NFTSettings,
     ProjectionChart,
     ResetSettings,
+    DaysTillNewNode,
   },
   computed: {
     refreshPeriod() {

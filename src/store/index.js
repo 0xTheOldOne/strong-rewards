@@ -10,6 +10,7 @@ const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
   reducer: (state) => ({
     screenOrientationToast: state.screenOrientationToast,
+    traductionToast: state.traductionToast,
     walletTokens: state.walletTokens,
     networks: state.networks,
     nft: state.nft,
@@ -28,6 +29,7 @@ export default new Vuex.Store({
       userLocale: "",
     },
     screenOrientationToast: false,
+    traductionToast: false,
     coinGeckoRefreshRateInMs: 5 * 60 * 1000,
     coinGeckoIsReachable: false,
     coinGeckoRequestPending: false,
@@ -38,8 +40,8 @@ export default new Vuex.Store({
       eur: { id: 2, val: "eur", symbol: "€" },
     },
     ticker: "strong",
-    price: 0.0,
-    walletTokens: 0.0,
+    price: 0,
+    walletTokens: 0,
     networks: {
       etherum: {
         name: "etherum",
@@ -110,6 +112,10 @@ export default new Vuex.Store({
     setScreenOrientationToast(state, payload) {
       console.debug(payload);
       state.screenOrientationToast = payload.seen;
+    },
+    setTraductionToast(state, payload) {
+      console.debug(payload);
+      state.traductionToast = payload.dismissed;
     },
     setRefreshRate(state, payload) {
       console.debug(payload);

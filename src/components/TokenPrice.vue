@@ -1,5 +1,5 @@
 <template>
-  <div class="status">
+  <div class="status hidden-xs">
     <div>
       <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
         <b-badge variant="info" class="light">

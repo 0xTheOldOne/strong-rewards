@@ -8,7 +8,7 @@
     </template>
     <b-card-text v-if="nft.display">
       <b-row class="settings">
-        <b-col sm="6" xs="12">
+        <b-col sm="6" cols="12">
           <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
             <!-- <b-form-group label="Rewards per node, per day :">
               <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" min="0" required @change="updateNodeRewards($event)"></b-form-input>
@@ -18,7 +18,7 @@
             </b-form-group> -->
           </b-overlay>
         </b-col>
-        <b-col sm="6" xs="12">
+        <b-col sm="6" cols="12">
           <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
             <!-- <b-form-group :label="'Node count : ' + network.nodes">
               <b-form-input v-model.number="network.nodes" type="range" min="0" :max="network.maxNodesPerWallet" placeholder="Node count" required @change="updateNodeCount($event)"></b-form-input>

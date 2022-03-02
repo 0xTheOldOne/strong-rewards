@@ -1,7 +1,7 @@
 <template>
   <b-container fluid="md">
     <b-row>
-      <b-col md="4" xs="12">
+      <b-col md="4" cols="12">
         <div v-if="githubError != ''">
           <b-card title="Something went wrong... Oops.">
             <b-card-text>
@@ -63,7 +63,7 @@
           </b-skeleton-wrapper>
         </div>
       </b-col>
-      <b-col md="8" xs="12">
+      <b-col md="8" cols="12">
         <b-card img-top tag="article" class="mb-4">
           <b-card-text>
             <p class="text-justify">Since people on Twitter suggested that i add a "tip" part on this page i created a MetaMask wallet only for this purpose.</p>
