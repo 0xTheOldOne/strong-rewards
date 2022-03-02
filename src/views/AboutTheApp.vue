@@ -67,7 +67,7 @@
                   Add an auto-compound option to this chart so you can see when you will be able to create the next node
                 </li>
                 <li>
-                  <b-icon icon="circle" class="mr-1" />
+                  <b-icon icon="check-circle" variant="success" class="mr-1" />
                   Add translation (i18n) for non english speakers
                 </li>
                 <li>
@@ -118,6 +118,10 @@
                 <li>
                   <b-icon icon="chevron-right" />
                   Internationalization (i18n) is made with <a href="https://kazupon.github.io/vue-i18n/" target="_blank" rel="noopener noreferrer">Kazupon's plugin</a> (vue-i18n), following <a href="https://phrase.com/blog/posts/ultimate-guide-to-vue-localization-with-vue-i18n/" target="_blank" rel="noopener noreferrer">this</a> tutorial
+                </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  Country flags come from <a href="https://flagicons.lipis.dev/" target="_blank" rel="noopener noreferrer">Flagicons</a> 
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />

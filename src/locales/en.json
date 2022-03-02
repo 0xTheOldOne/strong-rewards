@@ -32,6 +32,9 @@
     }
   },
   "components": {
+    "localeswitcher": {
+      "title": "Translation"
+    },
     "coingeckoupdater": {
       "online": "CoinGecko API is online",
       "offline": "CoinGecko API is offline"

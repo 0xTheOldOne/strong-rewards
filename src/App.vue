@@ -5,7 +5,9 @@
         <b-navbar-brand href="#">
           <span class="mr-1">🧮</span>
           <span class="mr-3">Strong Calculator</span>
-          <b-badge class="mr-2 light" variant="success">{{ appVersion }}</b-badge>
+          <b-badge class="mr-2 light" variant="success">
+            <small>{{ appVersion }}</small>
+          </b-badge>
           <br class="visible-xs" />
         </b-navbar-brand>
 
@@ -37,11 +39,7 @@
           </b-navbar-nav>
 
           <!-- right nav-items -->
-          <b-navbar-nav class="settings ml-auto hidden-xs">
-            <b-nav-item size="sm">
-              <LocaleSwitcher />
-            </b-nav-item>
-          </b-navbar-nav>
+          <b-navbar-nav class="settings ml-auto"></b-navbar-nav>
         </b-collapse>
       </b-container>
     </b-navbar>
@@ -62,6 +60,12 @@
             </b-nav-item>
             <b-nav-item href="#">
               <router-link to="/author">{{ $t("menu.author") }}</router-link>
+            </b-nav-item>
+            <b-nav-item size="sm">
+              <LocaleSwitcher />
+            </b-nav-item>
+            <b-nav-item size="sm" class="visible-xs">
+              <ResetSettings />
             </b-nav-item>
             <b-nav-item size="sm" class="visible-xs">
               <CoinGeckoUpdater />
@@ -84,6 +88,11 @@
     </b-container>
 
     <router-view class="mt-4 mb-4" />
+
+    <b-toast id="reset-toast" toaster="b-toaster-top-center" auto-hide-delay="5000" append-toast no-close-button solid>
+      <template #toast-title>♻️ {{ $t("pages.home.reset_settings.toast_title") }}</template>
+      {{ $t("pages.home.reset_settings.toast_text") }}
+    </b-toast>
   </div>
 </template>
 
@@ -96,6 +105,7 @@ import CoinGeckoUpdater from "@/components/CoinGeckoUpdater.vue";
 import GasFees from "@/components/GasFees";
 import TokenPrice from "@/components/TokenPrice";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
+import ResetSettings from "@/components/ResetSettings.vue";
 
 export default {
   name: "App",
@@ -104,6 +114,7 @@ export default {
     GasFees,
     TokenPrice,
     LocaleSwitcher,
+    ResetSettings,
   },
   data() {
     return {
@@ -170,15 +181,23 @@ export default {
 }
 
 .menu {
-  .nav-link {
-    & > * {
-      padding: 0;
-      border-width: 0;
-      font-size: 0.9rem;
+  .nav-item {
+    position: relative;
 
-      &:hover {
-        text-decoration: none;
+    .nav-link {
+      & > * {
+        padding: 0;
+        border-width: 0;
+        font-size: 0.9rem;
+
+        &:hover {
+          text-decoration: none;
+        }
       }
+    }
+
+    img.logo {
+      height: 1rem !important;
     }
   }
 }

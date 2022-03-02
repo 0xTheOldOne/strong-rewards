@@ -3,16 +3,11 @@
     <b-row class="mb-4">
       <b-col>
         <b-row>
-          <b-col md="9" xs="12">
+          <b-col md="9" cols="12">
             <div class="title">⚙️ {{ $t("pages.home.node_settings.title") }}</div>
           </b-col>
-          <b-col md="3" xs="12">
-            <div class="reset-settings">
-              <b-badge @click="resetLocalStorage">
-                <small>♻️ {{ $t("pages.home.reset_settings.button_text") }}</small>
-              </b-badge>
-            </div>
-            <span class="visible-xs mb-1"></span>
+          <b-col md="3" class="hidden-xs text-right">
+            <ResetSettings />
           </b-col>
         </b-row>
 
@@ -111,6 +106,7 @@
 <script>
 // @ is an alias to /src
 import { mapState } from "vuex";
+import ResetSettings from "@/components/ResetSettings.vue";
 import Rewards from "@/components/Rewards.vue";
 import NodeSettings from "@/components/NodeSettings.vue";
 import NFTSettings from "@/components/NFTSettings.vue";
@@ -123,6 +119,7 @@ export default {
     NodeSettings,
     NFTSettings,
     ProjectionChart,
+    ResetSettings,
   },
   computed: {
     refreshPeriod() {
@@ -154,19 +151,6 @@ export default {
     }),
   },
   methods: {
-    resetLocalStorage() {
-      this.$store.commit({
-        type: "resetLocalStorage",
-      });
-      this.$bvToast.toast("Values were restored to defaults.", {
-        title: "♻️ Settings restored",
-        toaster: "b-toaster-top-center",
-        autoHideDelay: 5000,
-        appendToast: true,
-        noCloseButton: true,
-        solid: true,
-      });
-    },
     updatePrice: function (price) {
       this.$store.commit({
         type: "setPrice",
@@ -189,10 +173,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/style/variables.less";
-
-.reset-settings {
-  cursor: pointer;
-}
 
 .settings {
   @media (max-width: @screen-xs-max) {
