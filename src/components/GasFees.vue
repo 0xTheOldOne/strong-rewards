@@ -93,7 +93,7 @@ export default {
     background-color: #fdd835;
   }
   &.green {
-    background-color: #43a047;
+    background-color: #28a745;
   }
 
   * {
