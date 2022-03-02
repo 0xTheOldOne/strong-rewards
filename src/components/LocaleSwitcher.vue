@@ -1,14 +1,15 @@
 <template>
   <div>
     <span class="locale-switcher" v-b-modal.modal-i18n>
-      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/' + $i18n.locale + '.svg'" class="logo" rounded v-if="$i18n.locale != 'en'" />
-      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/gb.svg'" class="logo" rounded v-else />
-      {{ $t("components.localeswitcher.title") }}
+      <span class="mr-2">{{ $t("components.localeswitcher.title") }}</span>
+      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/' + $i18n.locale + '.svg'" class="logo hidden-xs" rounded v-if="$i18n.locale != 'en'" />
+      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/gb.svg'" class="logo hidden-xs" rounded v-else />
+      <span class="visible-xs">({{ locales.filter(loc => { return loc.code == $i18n.locale})[0].name }})</span>
     </span>
 
     <b-modal id="modal-i18n" hide-footer centered :title="$t('components.localeswitcher.title')">
       <b-container fluid>
-        <b-row v-model="$i18n.locale" class="pt-4">
+        <b-row class="pt-4">
           <b-col sm="4" cols="6" v-for="locale in locales" :key="locale.code" @click="setLocale(locale.code)" class="mb-4">
             <b-card :img-src="'https://flagicons.lipis.dev/flags/4x3/' + locale.code + '.svg'" v-if="locale.code != 'en'">
               <div class="text-center">
@@ -44,16 +45,28 @@ export default {
   },
   methods: {
     setLocale(locale) {
+      console.debug('🌐 Previous $i18n.locale : ' + this.$i18n.locale);
+      this.$store.commit({
+        type: "setUserLocale",
+        locale: locale,
+      });
       this.$i18n.locale = locale;
       this.$bvModal.hide("modal-i18n");
     },
   },
   mounted() {
-    this.setLocale(this.browserLocale);
+    console.debug('🌐 userLocale = ' + this.$store.state.userLocale + ' / i18n.locale = ' + this.$i18n.locale);
+    if(this.userLocale !== "" && this.userLocale != undefined && this.userLocale != null) {
+      console.debug('🌐 using userLocale')
+      this.setLocale(this.userLocale);
+    } else {
+      console.debug('🌐 using browserLocale')
+      this.setLocale(this.browserLocale);
+    }
   },
   computed: {
     ...mapState({
-      userLocale: (state) => state.i18n.userLocale,
+      userLocale: (state) => state.userLocale,
     }),
   },
 };

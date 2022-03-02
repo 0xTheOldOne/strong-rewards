@@ -1,6 +1,6 @@
 {
   "translation": {
-    "need_help": "👋 Hey, want to help with translations ?",
+    "need_help": "Hey, want to help with translations ?",
     "send_message": "Send me a private message on Twitter"
   },
   "menu": {
@@ -38,6 +38,9 @@
     "coingeckoupdater": {
       "online": "CoinGecko API is online",
       "offline": "CoinGecko API is offline"
+    },
+    "gasfees": {
+      "label": "Gas tracker"
     },
     "projection_chart": {
       "create_at_ten": "Create a new node once you reach 10 ${token}"

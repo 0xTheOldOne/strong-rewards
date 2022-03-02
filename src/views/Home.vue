@@ -3,10 +3,10 @@
     <b-row class="mb-4">
       <b-col>
         <b-row>
-          <b-col md="9" cols="12">
+          <b-col md="8" cols="12">
             <div class="title">⚙️ {{ $t("pages.home.node_settings.title") }}</div>
           </b-col>
-          <b-col md="3" class="hidden-xs text-right">
+          <b-col md="4" class="hidden-xs text-right">
             <ResetSettings />
           </b-col>
         </b-row>
@@ -25,7 +25,7 @@
                   <b-col sm="6" cols="12">
                     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
                       <b-form-group class="mb-3">
-                        <b-form-input :value="price" type="number" @change="updatePrice" min="0" required></b-form-input>
+                        <b-form-input :value="price" type="number" @change="updatePrice" min="0" required number></b-form-input>
                         <template #label>
                           {{
                             $t("pages.home.node_settings.input_price_title", {
@@ -34,7 +34,6 @@
                           }}
                         </template>
                         <template #description>
-                          ⏱️
                           {{
                             $t("pages.home.node_settings.input_price_description", {
                               currency: currencies[currency].val.toUpperCase(),
@@ -45,7 +44,7 @@
                           }}
                         </template>
                       </b-form-group>
-                      <!-- <b-form-group>
+                      <b-form-group>
                         <b-form-input :value="walletTokens" type="number" min="0" @change="updateWalletTokens"></b-form-input>
                         <template #label>
                           {{
@@ -57,24 +56,16 @@
                         <template #description>
                           {{ $t("pages.home.node_settings.input_walletTokens_description") }}
                         </template>
-                      </b-form-group> -->
+                      </b-form-group>
                     </b-overlay>
                   </b-col>
                   <b-col sm="6" cols="12">
-                    <!-- <DaysTillNewNode /> -->
-                    <b-form-group>
-                      <b-form-input :value="walletTokens" type="number" min="0" @change="updateWalletTokens"></b-form-input>
-                      <template #label>
-                        {{
-                          $t("pages.home.node_settings.input_walletTokens_title", {
-                            token: ticker.toUpperCase(),
-                          })
-                        }}
-                      </template>
-                      <template #description>
-                        {{ $t("pages.home.node_settings.input_walletTokens_description") }}
-                      </template>
-                    </b-form-group>
+                    <!-- <div class="mb-3"> -->
+                      <GasFees />
+                    <!-- </div>
+                    <div>
+                      <DaysTillNewNode />
+                    </div> -->
                   </b-col>
                 </b-row>
               </b-card-text>
@@ -122,6 +113,7 @@
 import { mapState } from "vuex";
 import ResetSettings from "@/components/ResetSettings.vue";
 import DaysTillNewNode from "@/components/DaysTillNewNode.vue";
+import GasFees from "@/components/GasFees.vue";
 import Rewards from "@/components/Rewards.vue";
 import NodeSettings from "@/components/NodeSettings.vue";
 import NFTSettings from "@/components/NFTSettings.vue";
@@ -136,6 +128,7 @@ export default {
     ProjectionChart,
     ResetSettings,
     DaysTillNewNode,
+    GasFees
   },
   computed: {
     refreshPeriod() {

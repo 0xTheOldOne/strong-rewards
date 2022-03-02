@@ -39,7 +39,8 @@
         <b-col sm="6" cols="12">
           <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
             <b-form-group>
-              <b-form-input v-model.number="network.nodes" type="range" min="0" :max="network.maxNodesPerWallet" placeholder="Node count" required @change="updateNodeCount($event)"></b-form-input>
+              <b-form-input v-model.number="network.nodes" type="range" min="0" :max="network.maxNodesPerWallet" step="1" required @change="updateNodeCount($event)" class="hidden-xs"></b-form-input>
+              <b-form-input v-model.number="network.nodes" type="number" min="0" :max="network.maxNodesPerWallet" step="1" required @change="updateNodeCount($event)" class="visible-xs"></b-form-input>
               <template #label> {{ $t("components.node_settings.input_nodeCount_title") }} {{ network.count }} </template>
               <template #description v-if="network.nodes > 0 && walletTokens >= 10">
                 {{
@@ -119,7 +120,7 @@ export default {
         return 0; // No node, can't earn
       }
 
-      return result;
+      return result; 
     },
   },
   methods: {

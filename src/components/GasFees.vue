@@ -1,16 +1,14 @@
 <template>
-  <div class="status">
-    <div>
-      <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-        <a href="https://etherscan.io/gasTracker" target="_blank" rel="noopener noreferrer">
-          <b-badge :variant="gweiVariant" class="light">
-            <span class="mr-1">⛽</span>
-            <span class="gwei">{{ gwei }}</span> gwei
-          </b-badge>
-        </a>
-      </b-overlay>
-    </div>
-  </div>
+  <b-form-group>
+    <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+      ⛽ {{ $t("components.gasfees.label") }} : 
+      <a href="https://etherscan.io/gasTracker" target="_blank" rel="noopener noreferrer">
+        <b-badge pill :class="gweiVariant">
+          <span class="gwei">{{ gwei }}</span> gwei
+        </b-badge>
+      </a>
+    </b-overlay>
+  </b-form-group>
 </template>
 
 <script>
@@ -55,13 +53,13 @@ export default {
       }
 
       if (this.gwei >= 100) {
-        this.gweiVariant = "danger";
+        this.gweiVariant = "red";
       } else if (this.gwei >= 80) {
-        this.gweiVariant = "warning";
+        this.gweiVariant = "orange";
       } else if (this.gwei >= 50) {
-        this.gweiVariant = "info";
+        this.gweiVariant = "yellow";
       } else if (this.gwei < 50) {
-        this.gweiVariant = "success";
+        this.gweiVariant = "green";
       }
 
       this.requestPending = false;
@@ -78,16 +76,32 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/style/variables.less";
-.status {
-  display: inline-block;
+
+* {
+  color: @text-color-secondary;
+  text-decoration: none;
+}
+
+.badge {
+  &.red {
+    background-color: #d32f2f;
+  }
+  &.orange {
+    background-color: #fb8c00;
+  }
+  &.yellow {
+    background-color: #fdd835;
+  }
+  &.green {
+    background-color: #43a047;
+  }
 
   * {
     color: @text-color;
-    text-decoration: none;
   }
+}
 
-  .gwei {
-    font-family: "Source Code Pro", monospace;
-  }
+.gwei {
+  font-family: "Source Code Pro", monospace;
 }
 </style>

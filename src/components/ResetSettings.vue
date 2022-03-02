@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div class="reset-settings" @click="resetLocalStorage">
-      <b-badge class="hidden-xs">♻️ {{ $t("pages.home.reset_settings.button_text") }}</b-badge>
-      <span class="visible-xs">♻️ {{ $t("pages.home.reset_settings.button_text") }}</span>
-    </div>
+  <div class="reset-settings" @click="resetLocalStorage">
+    <b-badge class="hidden-xs">♻️ {{ $t("pages.home.reset_settings.button_text") }}</b-badge>
+    <span class="visible-xs">{{ $t("pages.home.reset_settings.button_text") }}</span>
   </div>
 </template>
 
@@ -28,6 +26,9 @@ export default {
 
 .reset-settings {
   cursor: pointer;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
 
   * {
     font-weight: normal;

@@ -1,6 +1,6 @@
 {
   "translation": {
-    "need_help": "👋 Hola, ¿quieres ayudar con las traducciones?",
+    "need_help": "Hola, ¿quieres ayudar con las traducciones?",
     "send_message": "Envíame un mensaje privado en Twitter"
   },
   "menu": {
@@ -38,6 +38,9 @@
     "coingeckoupdater": {
       "online": "CoinGecko API está online",
       "offline": "CoinGecko API está offline"
+    },
+    "gasfees": {
+      "label": "Gas tracker"
     },
     "projection_chart": {
       "create_at_ten": "Crea un nuevo nodo una vez que llegues a 10 ${token}"

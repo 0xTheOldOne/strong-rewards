@@ -94,7 +94,7 @@
             </table>
 
             <div class="address-container mt-4 mb-4">
-              <div class="address hover">
+              <div class="address">
                 <img src="metamask.png" class="logo" />0x6D768Eb34608F6Ec148EaCb0B834cCe33bBBe234<br />
                 <img src="donation-address.png" class="mt-3 mb-3" />
               </div>

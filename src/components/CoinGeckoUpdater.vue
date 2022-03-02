@@ -2,8 +2,8 @@
   <div :class="variant">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       <div class="status">
-        <b-badge variant="success" class="light" v-if="reachable">{{ $t("components.coingeckoupdater.online") }}</b-badge>
-        <b-badge variant="danger" class="light" v-else>{{ $t("components.coingeckoupdater.offline") }}</b-badge>
+        <b-badge pill variant="success" class="light" v-if="reachable">{{ $t("components.coingeckoupdater.online") }}</b-badge>
+        <b-badge pill variant="danger" class="light" v-else>{{ $t("components.coingeckoupdater.offline") }}</b-badge>
       </div>
       <!-- <div class="refresh-container">
         ⏱️ Next {{ currencies[currency].val.toUpperCase() }} price refresh in
@@ -95,12 +95,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-.status {
-  .badge {
-    // line-height: 1rem;
-  }
-}
-
 .refresh-container {
   display: inline-block;
 

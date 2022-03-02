@@ -32,23 +32,6 @@
         <b-container fluid="md">
           <b-collapse id="nav-collapse" is-nav>
             <!-- left nav-items -->
-            <b-navbar-nav class="settings">
-              <b-nav-item>
-                <GasFees class="mr-2" />
-                <TokenPrice class="mr-2" />
-              </b-nav-item>
-            </b-navbar-nav>
-
-            <!-- right nav-items -->
-            <b-navbar-nav class="settings ml-auto"></b-navbar-nav>
-          </b-collapse>
-        </b-container>
-      </b-navbar>
-
-      <b-navbar toggleable="md" type="dark" variant="primary" style="padding: 0 1rem; font-size: 90%">
-        <b-container fluid="md">
-          <b-collapse id="nav-collapse" is-nav>
-            <!-- left nav-items -->
             <b-navbar-nav class="menu">
               <b-nav-item href="#">
                 <router-link to="/">{{ $t("menu.home") }}</router-link>
@@ -82,7 +65,7 @@
         <b-col>
           <small>
             <b-alert show dismissible variant="warning" class="mb-0 mt-4" @dismissed="handleTraductionToastDismiss">
-              {{ $t("translation.need_help") }} <a href="https://twitter.com/messages/compose?recipient_id=1214500509060673536" target="_blank" rel="noopener noreferrer"><b-icon icon="twitter" /> {{ $t("translation.send_message") }}</a>
+              👋 {{ $t("translation.need_help") }} <a href="https://twitter.com/messages/compose?recipient_id=1214500509060673536" target="_blank" rel="noopener noreferrer"><b-icon icon="twitter" /> {{ $t("translation.send_message") }}</a>
             </b-alert>
           </small>
         </b-col>

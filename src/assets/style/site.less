@@ -1,4 +1,4 @@
-@import "variables.less";
+@import 'variables.less';
 
 body {
   position: absolute;
@@ -22,12 +22,17 @@ body {
     height: 100%;
     overflow-y: auto;
     color: @text-color;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: rgb(0, 13, 16);
-    background: linear-gradient(225deg, rgba(0, 13, 16, 1) 0%, rgba(7, 27, 36, 1) 10%, @background-color 100%);
+    background: linear-gradient(
+      225deg,
+      rgba(0, 13, 16, 1) 0%,
+      rgba(7, 27, 36, 1) 10%,
+      @background-color 100%
+    );
 
     // Bootstrap components
     .bg-primary {
@@ -39,6 +44,12 @@ body {
         & > * {
           color: inherit !important;
         }
+      }
+
+      .navbar-toggler {
+        padding: 0.25rem;
+        border-radius: 100%;
+        background-color: fade(white, 10%);
       }
 
       @media (min-width: @screen-md) {
@@ -72,6 +83,10 @@ body {
       }
     }
 
+    .badge {
+      font-size: 100%;
+    }
+
     // Misc
     .title {
       font-weight: 400;
@@ -98,6 +113,16 @@ body {
         height: 1.25rem;
         margin: 0 0.25rem;
         vertical-align: middle;
+
+        &.hidden-xs {
+          display: inline-block;
+        }
+
+        @media (max-width: @screen-xs-max) {
+          &.hidden-xs {
+            display: none;
+          }
+        }
       }
     }
 
