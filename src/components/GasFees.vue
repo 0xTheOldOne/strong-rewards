@@ -1,7 +1,7 @@
 <template>
   <b-form-group>
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-      ⛽ {{ $t("components.gasfees.label") }} : 
+      ⛽ {{ $t("components.gasfees.label") }} :
       <a href="https://etherscan.io/gasTracker" target="_blank" rel="noopener noreferrer">
         <b-badge pill :class="gweiVariant">
           <span class="gwei">{{ gwei }}</span> gwei
@@ -78,11 +78,14 @@ export default {
 @import "../assets/style/variables.less";
 
 * {
-  color: @text-color-secondary;
-  text-decoration: none;
+  color: @text-color-secondary !important;
+  text-decoration: none !important;
+  font-weight: normal !important;
 }
 
 .badge {
+  color: @text-color !important;
+
   &.red {
     background-color: #d32f2f;
   }
@@ -97,7 +100,7 @@ export default {
   }
 
   * {
-    color: @text-color;
+    color: @text-color !important;
   }
 }
 
