@@ -23,7 +23,7 @@
               <b-card-text>
                 <b-row class="settings">
                   <b-col sm="6" cols="12">
-                    <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+                    <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm" class="mb-5">
                       <b-form-group class="mb-3">
                         <b-form-input :value="price" type="number" @change="updatePrice" min="0" required number></b-form-input>
                         <template #label>
@@ -58,14 +58,13 @@
                         </template>
                       </b-form-group>
                     </b-overlay>
+
+                    <div class="text-center">
+                      <GasFees />
+                    </div>
                   </b-col>
                   <b-col sm="6" cols="12">
-                    <!-- <div class="mb-3"> -->
-                      <GasFees />
-                    <!-- </div>
-                    <div>
-                      <DaysTillNewNode />
-                    </div> -->
+                    <DaysTillNewNode />
                   </b-col>
                 </b-row>
               </b-card-text>
@@ -128,7 +127,7 @@ export default {
     ProjectionChart,
     ResetSettings,
     DaysTillNewNode,
-    GasFees
+    GasFees,
   },
   computed: {
     refreshPeriod() {

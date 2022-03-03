@@ -1,5 +1,5 @@
 <template>
-  <b-form-group>
+  <b-form-group class="gasfees">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       ⛽ {{ $t("components.gasfees.label") }} :
       <a href="https://etherscan.io/gasTracker" target="_blank" rel="noopener noreferrer">
@@ -77,34 +77,38 @@ export default {
 <style scoped lang="less">
 @import "../assets/style/variables.less";
 
-* {
-  color: @text-color-secondary !important;
-  text-decoration: none !important;
-  font-weight: normal !important;
-}
-
-.badge {
-  color: @text-color !important;
-
-  &.red {
-    background-color: #d32f2f;
-  }
-  &.orange {
-    background-color: #fb8c00;
-  }
-  &.yellow {
-    background-color: #fdd835;
-  }
-  &.green {
-    background-color: #28a745;
-  }
+.gasfees {
+  display: inline-block;
 
   * {
-    color: @text-color !important;
+    color: @text-color-secondary !important;
+    text-decoration: none !important;
+    font-weight: normal !important;
   }
-}
 
-.gwei {
-  font-family: "Source Code Pro", monospace;
+  .badge {
+    color: @text-color !important;
+
+    &.red {
+      background-color: #d32f2f;
+    }
+    &.orange {
+      background-color: #fb8c00;
+    }
+    &.yellow {
+      background-color: #fdd835;
+    }
+    &.green {
+      background-color: #28a745;
+    }
+
+    * {
+      color: @text-color !important;
+    }
+  }
+
+  .gwei {
+    font-family: "Source Code Pro", monospace;
+  }
 }
 </style>
