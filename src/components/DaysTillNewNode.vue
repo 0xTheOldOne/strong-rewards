@@ -3,30 +3,36 @@
     <div id="days-till-new-node-chart"></div>
     <div class="days">
       <div v-if="daysToCompound == 0 || walletTokens >= 10">
-        {{
-          $t("components.node_settings.input_nodeCount_description_countReached", {
-            ticker: ticker.toUpperCase(),
-            token: $tc("misc.token", walletTokens),
-          })
-        }}
+        <small>
+          {{
+            $t("components.node_settings.input_nodeCount_description_countReached", {
+              ticker: ticker.toUpperCase(),
+              token: $tc("misc.token", walletTokens),
+            })
+          }}
+        </small>
       </div>
       <div v-else-if="daysToCompound > 0 && walletTokens < 10">
-        {{
-          $t("components.node_settings.input_nodeCount_description", {
-            ticker: ticker.toUpperCase(),
-            count: daysToCompound,
-            days: $tc("misc.day", walletTokens),
-            wallet: walletTokens,
-            token: $tc("misc.token", walletTokens),
-          })
-        }}
+        <small>
+          {{
+            $t("components.node_settings.input_nodeCount_description", {
+              ticker: ticker.toUpperCase(),
+              count: daysToCompound,
+              days: $tc("misc.day", walletTokens),
+              wallet: walletTokens,
+              token: $tc("misc.token", walletTokens),
+            })
+          }}
+        </small>
       </div>
       <div v-else>
-        {{
-          $t("components.node_settings.input_nodeCount_description_zeroNode", {
-            ticker: ticker.toUpperCase(),
-          })
-        }}
+        <small>
+          {{
+            $t("components.node_settings.input_nodeCount_description_zeroNode", {
+              ticker: ticker.toUpperCase(),
+            })
+          }}
+        </small>
       </div>
     </div>
   </div>
@@ -50,6 +56,7 @@ let chartOptions = {
     align: "center",
     verticalAlign: "middle",
     y: 80,
+    useHTML: true,
   },
   credits: {
     enabled: false,

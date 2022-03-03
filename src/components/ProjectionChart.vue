@@ -205,6 +205,20 @@ let chartOptions = {
   legend: {
     enabled: false,
   },
+  responsive: {
+    rules: [
+      {
+        condition: {
+          maxWidth: 768,
+        },
+        chartOptions: {
+          chart: {
+            height: 300,
+          },
+        },
+      },
+    ],
+  },
 };
 
 export default {
