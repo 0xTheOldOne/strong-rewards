@@ -165,10 +165,9 @@ export default {
 <style lang="less">
 @import "./assets/style/site.less";
 
-.settings {
-  .nav-link {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
+#menu {
+  .navbar {
+    background-color: transparent !important;
   }
 }
 
@@ -178,9 +177,9 @@ export default {
 
     .nav-link {
       & > * {
-        padding: 0;
+        // padding: 0;
         border-width: 0;
-        font-size: 0.9rem;
+        // font-size: 0.9rem;
 
         &:hover {
           text-decoration: none;

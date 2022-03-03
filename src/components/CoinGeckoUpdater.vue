@@ -2,8 +2,14 @@
   <div :class="variant">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       <div class="status">
-        <b-badge pill variant="success" class="light" v-if="reachable">{{ $t("components.coingeckoupdater.online") }}</b-badge>
-        <b-badge pill variant="danger" class="light" v-else>{{ $t("components.coingeckoupdater.offline") }}</b-badge>
+        <div class="hidden-xs">
+          <b-badge pill variant="success" class="light" v-if="reachable">{{ $t("components.coingeckoupdater.online") }}</b-badge>
+          <b-badge pill variant="danger" class="light" v-else>{{ $t("components.coingeckoupdater.offline") }}</b-badge>
+        </div>
+        <div class="visible-xs">
+          <span v-if="reachable">{{ $t("components.coingeckoupdater.online") }}</span>
+          <span v-else>{{ $t("components.coingeckoupdater.offline") }}</span>
+        </div>
       </div>
       <!-- <div class="refresh-container">
         ⏱️ Next {{ currencies[currency].val.toUpperCase() }} price refresh in

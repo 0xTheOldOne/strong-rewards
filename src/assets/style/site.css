@@ -24,11 +24,26 @@ body #app {
   background: #000d10;
   background: linear-gradient(225deg, #000d10 0%, #071b24 10%, #0f3444 100%);
 }
-body #app .bg-primary {
+body #app :not(#menu) .bg-primary {
   background-color: #1668b0 !important;
 }
 body #app .navbar .nav-link > * {
   color: inherit !important;
+}
+body #app .navbar .navbar-toggler {
+  padding: 0.25rem;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+body #app .navbar .badge.badge-success {
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+body #app .navbar .badge.badge-danger {
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(211, 47, 47, 0.25);
+  background-color: rgba(211, 47, 47, 0.5);
 }
 @media (min-width: 992px) {
   body #app .navbar .navbar-collapse {
@@ -49,6 +64,9 @@ body #app .card .card-body fieldset:last-of-type,
 body #app .card .card-body .alert:last-of-type {
   margin-bottom: 0px !important;
 }
+body #app .badge {
+  font-size: 100%;
+}
 body #app .title {
   font-weight: 400;
   font-size: 1.25rem;
@@ -66,6 +84,14 @@ body #app img.logo {
   height: 1.25rem;
   margin: 0 0.25rem;
   vertical-align: middle;
+}
+body #app img.logo.hidden-xs {
+  display: inline-block;
+}
+@media (max-width: 767px) {
+  body #app img.logo.hidden-xs {
+    display: none;
+  }
 }
 body #app blockquote {
   border-left: 3px solid rgba(241, 255, 255, 0.5);

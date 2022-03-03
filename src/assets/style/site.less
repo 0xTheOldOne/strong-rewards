@@ -1,4 +1,4 @@
-@import 'variables.less';
+@import "variables.less";
 
 body {
   position: absolute;
@@ -22,21 +22,18 @@ body {
     height: 100%;
     overflow-y: auto;
     color: @text-color;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: rgb(0, 13, 16);
-    background: linear-gradient(
-      225deg,
-      rgba(0, 13, 16, 1) 0%,
-      rgba(7, 27, 36, 1) 10%,
-      @background-color 100%
-    );
+    background: linear-gradient(225deg, rgba(0, 13, 16, 1) 0%, rgba(7, 27, 36, 1) 10%, @background-color 100%);
 
     // Bootstrap components
-    .bg-primary {
-      background-color: @strongblock-blue !important;
+    :not(#menu) {
+      .bg-primary {
+        background-color: @strongblock-blue !important;
+      }
     }
 
     .navbar {
@@ -50,6 +47,21 @@ body {
         padding: 0.25rem;
         border-radius: 100%;
         background-color: fade(white, 10%);
+      }
+
+      .badge {
+        &.badge-success {
+          color: fade(white, 75%);
+          border: 1px solid fade(white, 25%);
+          background-color: fade(white, 10%);
+        }
+
+        &.badge-danger {
+          @red: #d32f2f;
+          color: fade(white, 75%);
+          border: 1px solid fade(@red, 25%);
+          background-color: fade(@red, 50%);
+        }
       }
 
       @media (min-width: @screen-md) {

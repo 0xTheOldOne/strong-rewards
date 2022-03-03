@@ -90,6 +90,26 @@ let chartOptions = {
       data: [],
     },
   ],
+  responsive: {
+    rules: [
+      {
+        condition: {
+          maxWidth: 300,
+        },
+        chartOptions: {
+          chart: {
+            height: 200,
+          },
+          plotOptions: {
+            pie: {
+              center: ["50%", "105%"],
+              size: "150%",
+            },
+          },
+        },
+      },
+    ],
+  },
 };
 
 export default {

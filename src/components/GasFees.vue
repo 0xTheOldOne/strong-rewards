@@ -3,9 +3,9 @@
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       ⛽ {{ $t("components.gasfees.label") }} :
       <a href="https://etherscan.io/gasTracker" target="_blank" rel="noopener noreferrer">
-        <b-badge pill :class="gweiVariant">
-          <span class="gwei">{{ gwei }}</span> gwei
-        </b-badge>
+        <!-- <b-badge pill :class="gweiVariant"> -->
+        <span class="gwei">{{ gwei }}</span> gwei
+        <!-- </b-badge> -->
       </a>
     </b-overlay>
   </b-form-group>
@@ -78,7 +78,11 @@ export default {
 @import "../assets/style/variables.less";
 
 .gasfees {
+  @padding: 0.75rem;
   display: inline-block;
+  border: 1px solid fade(@text-color-secondary, 25%);
+  padding: 0.5 * @padding @padding;
+  border-radius: 2 * @padding;
 
   * {
     color: @text-color-secondary !important;
