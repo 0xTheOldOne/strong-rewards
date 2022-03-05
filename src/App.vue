@@ -4,9 +4,9 @@
       <b-navbar toggleable="md" type="dark" variant="primary">
         <b-container fluid="md">
           <b-navbar-brand href="#">
-            <span class="mr-1">🧮</span>
+            <span class="strongblock-logo mr-2">&nbsp;</span>
             <span class="mr-3">Strong Calculator</span>
-            <b-badge pill class="mr-2" variant="success">
+            <b-badge pill class="mr-2 light-version hidden-xs" variant="success">
               <small>{{ appVersion }}</small>
             </b-badge>
             <br class="visible-xs" />
@@ -34,7 +34,9 @@
             <!-- left nav-items -->
             <b-navbar-nav class="menu">
               <b-nav-item href="#">
-                <router-link to="/">{{ $t("menu.home") }}</router-link>
+                <router-link to="/"
+                  >{{ $t("menu.home") }}<span class="visible-xs ml-2">(v{{ appVersion }})</span></router-link
+                >
               </b-nav-item>
               <b-nav-item href="#">
                 <router-link to="/strongblock">{{ $t("menu.strongblock") }}</router-link>
@@ -169,27 +171,35 @@ export default {
   .navbar {
     background-color: transparent !important;
   }
-}
 
-.menu {
-  .nav-item {
-    position: relative;
+  .menu {
+    .nav-item {
+      position: relative;
 
-    .nav-link {
-      & > * {
-        // padding: 0;
-        border-width: 0;
-        // font-size: 0.9rem;
+      .nav-link {
+        & > * {
+          // padding: 0;
+          border-width: 0;
+          // font-size: 0.9rem;
 
-        &:hover {
-          text-decoration: none;
+          &:hover {
+            text-decoration: none;
+          }
         }
       }
-    }
 
-    img.logo {
-      height: 1rem !important;
+      img.logo {
+        height: 1rem !important;
+      }
     }
+  }
+
+  .strongblock-logo {
+    display: inline-block;
+    width: 3rem;
+    height: 2rem;
+    background: transparent url("../public/strongblock_white.png") center center no-repeat;
+    background-size: auto 2rem;
   }
 }
 </style>

@@ -160,7 +160,7 @@
             🐞 Known bugs :
             <ul class="icons">
               <li>On desktop (not mobile), when you change an input on home page, Google Chrome scrolls to the top of the page... Maybe it's the same on other browsers.</li>
-              <li>Node count is not refreshed when you click on <b-badge>♻️ {{ $t("pages.home.reset_settings.button_text") }}</b-badge></li>
+              <li>Node count is not refreshed when you click on "{{ $t("pages.home.reset_settings.button_text") }}"</li>
             </ul>
           </b-card-text>
         </b-card>
@@ -170,7 +170,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "Author",

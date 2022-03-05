@@ -49,21 +49,6 @@ body {
         background-color: fade(white, 10%);
       }
 
-      .badge {
-        &.badge-success {
-          color: fade(white, 75%);
-          border: 1px solid fade(white, 25%);
-          background-color: fade(white, 10%);
-        }
-
-        &.badge-danger {
-          @red: #d32f2f;
-          color: fade(white, 75%);
-          border: 1px solid fade(@red, 25%);
-          background-color: fade(@red, 50%);
-        }
-      }
-
       @media (min-width: @screen-md) {
         .navbar-collapse {
           justify-content: space-evenly;
@@ -97,6 +82,21 @@ body {
 
     .badge {
       font-size: 100%;
+
+      &.light-version {
+        &.badge-success {
+          color: fade(white, 75%);
+          border: 1px solid fade(white, 25%);
+          background-color: fade(white, 10%);
+        }
+
+        &.badge-danger {
+          @red: #d32f2f;
+          color: fade(white, 75%);
+          border: 1px solid fade(@red, 25%);
+          background-color: fade(@red, 50%);
+        }
+      }
     }
 
     // Misc
@@ -135,6 +135,13 @@ body {
             display: none;
           }
         }
+      }
+    }
+
+    .nav-tabs {
+      .logo {
+        height: 1rem;
+        margin: 0 0.5rem 0 0;
       }
     }
 

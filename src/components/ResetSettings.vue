@@ -1,6 +1,6 @@
 <template>
   <div class="reset-settings" @click="resetLocalStorage">
-    <b-badge class="hidden-xs">♻️ {{ $t("pages.home.reset_settings.button_text") }}</b-badge>
+    <b-badge pill variant="success" class="light-version hidden-xs">♻️ {{ $t("pages.home.reset_settings.button_text") }}</b-badge>
     <span class="visible-xs">{{ $t("pages.home.reset_settings.button_text") }}</span>
   </div>
 </template>

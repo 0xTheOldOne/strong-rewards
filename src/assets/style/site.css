@@ -35,16 +35,6 @@ body #app .navbar .navbar-toggler {
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.1);
 }
-body #app .navbar .badge.badge-success {
-  color: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background-color: rgba(255, 255, 255, 0.1);
-}
-body #app .navbar .badge.badge-danger {
-  color: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(211, 47, 47, 0.25);
-  background-color: rgba(211, 47, 47, 0.5);
-}
 @media (min-width: 992px) {
   body #app .navbar .navbar-collapse {
     justify-content: space-evenly;
@@ -66,6 +56,16 @@ body #app .card .card-body .alert:last-of-type {
 }
 body #app .badge {
   font-size: 100%;
+}
+body #app .badge.light-version.badge-success {
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+body #app .badge.light-version.badge-danger {
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(211, 47, 47, 0.25);
+  background-color: rgba(211, 47, 47, 0.5);
 }
 body #app .title {
   font-weight: 400;
@@ -92,6 +92,10 @@ body #app img.logo.hidden-xs {
   body #app img.logo.hidden-xs {
     display: none;
   }
+}
+body #app .nav-tabs .logo {
+  height: 1rem;
+  margin: 0 0.5rem 0 0;
 }
 body #app blockquote {
   border-left: 3px solid rgba(241, 255, 255, 0.5);

@@ -3,8 +3,8 @@
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       <div class="status">
         <div class="hidden-xs">
-          <b-badge pill variant="success" class="light" v-if="reachable">{{ $t("components.coingeckoupdater.online") }}</b-badge>
-          <b-badge pill variant="danger" class="light" v-else>{{ $t("components.coingeckoupdater.offline") }}</b-badge>
+          <b-badge pill variant="success" class="light-version" v-if="reachable">{{ $t("components.coingeckoupdater.online") }}</b-badge>
+          <b-badge pill variant="danger" class="light-version" v-else>{{ $t("components.coingeckoupdater.offline") }}</b-badge>
         </div>
         <div class="visible-xs">
           <span v-if="reachable">{{ $t("components.coingeckoupdater.online") }}</span>

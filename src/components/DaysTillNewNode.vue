@@ -153,6 +153,7 @@ export default {
   computed: {
     ...mapState({
       ticker: (state) => state.ticker,
+      price: (state) => state.price,
       walletTokens: (state) => state.walletTokens,
     }),
     ...mapGetters({
