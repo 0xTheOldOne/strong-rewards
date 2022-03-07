@@ -152,6 +152,10 @@
                   <b-icon icon="chevron-right" />
                   Emojis were found in <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank" rel="noopener noreferrer">Ikatyang's emoji cheat sheet</a>
                 </li>
+                <li>
+                  <b-icon icon="chevron-right" />
+                  I use <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer">Google Analytics</a> to see if people use the app 
+                </li>
               </ul>
             </p>
           </b-card-text>
