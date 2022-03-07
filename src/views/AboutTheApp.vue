@@ -5,10 +5,15 @@
         <b-card>
           <b-card-text>
             <div class="disclaimer mb-3 pb-3">
-              <b-badge variant="warning" class="mb-3">
-                ⚠️ Disclaimer ⚠️
-              </b-badge>
-              <p class="text-left">This tool was <b>not</b> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator or any other tool that may look like this app.</p>
+              <p class="text-center">
+                <b-badge variant="warning" class="mb-3">
+                  ⚠️ Disclaimer ⚠️
+                </b-badge>
+              </p>
+              <p>
+                This tool is <b>not</b> an official StrongBlock app. It's just something that i wanted to share with the StrongBlock community 🙏<br />
+                This tool was <b>not</b> created in order to compete with <a href="https://twitter.com/phtevenstrong" target="_blank" rel="noopener noreferrer">The Calculator Guy</a>'s existant calculator or any other tool that may look like this app.
+              </p>
             </div>
             
             <p>
@@ -214,7 +219,6 @@ export default {
 @import "../assets/style/variables.less";
 
 .disclaimer {
-  text-align: center;
   border-bottom: 1px solid @border-color;
 }
 

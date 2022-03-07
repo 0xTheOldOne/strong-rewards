@@ -20,10 +20,13 @@
             <div class="links">
               <ul class="icons">
                 <li>
-                  <a href="https://strongblock.com/" target="_blank" rel="noopener noreferrer"><img src="strongblock.png" class="logo" />Official website</a>
+                  <a href="https://strongblock.com/" target="_blank" rel="noopener noreferrer"><img src="strongblock_circled.png" class="logo" />Official website</a>
                 </li>
                 <li>
-                  <a href="https://strongblock.com/dont-fall-for-it.html" target="_blank" rel="noopener noreferrer"><img src="strongblock.png" class="logo" />Official "Don't fall for it!" campain</a>
+                  <a href="https://strongblock.com/dont-fall-for-it.html" target="_blank" rel="noopener noreferrer"><img src="strongblock_circled.png" class="logo" />Official "Don't fall for it!" campain</a>
+                </li>
+                <li>
+                  <a href="https://github.com/StrongBlock/StrongChain" target="_blank" rel="noopener noreferrer"><img src="strongblock_circled.png" class="logo" />StrongBlock Light Paper 2022 </a>
                 </li>
                 <li>
                   <a href="https://www.coingecko.com/en/coins/strong" target="_blank" rel="noopener noreferrer"><img src="coingecko.png" class="logo" />StrongBlock on CoinGecko</a>

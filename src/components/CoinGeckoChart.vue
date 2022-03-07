@@ -39,6 +39,10 @@ let chartOptions = {
       enabled: false,
     },
   },
+  rangeSelector: {
+    selected: 2,
+    inputEnabled: false,
+  },
   series: [
     {
       data: [],
