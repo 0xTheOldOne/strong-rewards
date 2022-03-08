@@ -1,6 +1,6 @@
 <template>
   <div class="component">
-    <a class="twitter-share-button" :href="'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + encodedText" data-size="large" data-text="custom share text" data-url="https://strong-rewards.herokuapp.com/" data-hashtags="example,demo" data-via="twitterdev" data-related="twitterapi,twitter">
+    <a class="twitter-share-button" :href="'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + encodedText + ''">
       <b-badge pill variant="success" class="light-version hidden-xs"> <b-icon icon="twitter" /> {{ $t("components.share.button") }} </b-badge>
     </a>
   </div>
