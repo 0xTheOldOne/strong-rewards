@@ -77,11 +77,19 @@
                 </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
+                  Add a load/save configuration button so you can easily share a <code>.json</code> file with all your settings
+                </li>
+                <li>
+                  <b-icon icon="circle" class="mr-1" />
+                  Maybe add a share button (<a href="https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview" target="_blank" rel="noopener noreferrer">Twitter intent</a> can help with this)
+                </li>
+                <li>
+                  <b-icon icon="circle" class="mr-1" />
                   Add a NFT tab
                 </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
-                  Add a Polygon nodes tab
+                  Add a Polygon nodes tab with decay system (this mean i'll need to add a node creation date in order to compute rewards)
                 </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
@@ -154,7 +162,7 @@
                 </li>
                 <li>
                   <b-icon icon="chevron-right" />
-                  I use <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer">Google Analytics</a> to see if people use the app 
+                  I use <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer">Google Analytics</a> to get stats on the people using this app (number of visits and country mostly)
                 </li>
               </ul>
             </p>
@@ -169,7 +177,7 @@
             🐞 Known bugs :
             <ul class="icons">
               <li>On desktop (not mobile), when you change an input on home page, Google Chrome scrolls to the top of the page... Maybe it's the same on other browsers.</li>
-              <li>Node count is not refreshed when you click on "{{ $t("pages.home.reset_settings.button_text") }}"</li>
+              <li>Node count is not refreshed when you click on "<b-icon icon="arrow-repeat" /> {{ $t("pages.home.reset_settings.button_text") }}"</li>
             </ul>
           </b-card-text>
         </b-card>

@@ -1,52 +1,54 @@
 <template>
-  <b-tab v-if="network.display">
-    <template #title>
-      <small>
-        <img :src="network.name + '.png'" class="logo" />
-        <span class="ticker">
-          <span class="hidden-xs">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }}</span> ({{ network.nodes }})
-        </span>
-      </small>
-    </template>
-    <b-card-text v-if="network.display">
-      <b-row>
-        <b-col>
-          <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-            <div class="projection-options">
-              <small>
-                <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">
-                  {{
-                    $t("components.projection_chart.create_at_ten", {
-                      token: ticker.toUpperCase(),
-                    })
-                  }}
-                </b-form-checkbox>
-              </small>
-              <small>
-                <b-form-select :value="projectionPeriod" :options="options" @change="updateProjectionPeriodInMonths" size="sm" style="width: auto !important"></b-form-select>
-              </small>
-            </div>
-            <div :id="'graph-' + network.name">
-              <div class="text-center">
-                <div class="spinner-border text-primary" role="status"></div>
+  <div class="component">
+    <b-tab v-if="network.display">
+      <template #title>
+        <small>
+          <img :src="network.name + '.png'" class="logo" />
+          <span class="ticker">
+            <span class="hidden-xs">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }}</span> ({{ network.nodes }})
+          </span>
+        </small>
+      </template>
+      <b-card-text v-if="network.display">
+        <b-row>
+          <b-col>
+            <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+              <div class="options">
+                <small>
+                  <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">
+                    {{
+                      $t("components.projection_chart.create_at_ten", {
+                        token: ticker.toUpperCase(),
+                      })
+                    }}
+                  </b-form-checkbox>
+                </small>
+                <small>
+                  <b-form-select :value="projectionPeriod" :options="options" @change="updateProjectionPeriodInMonths" size="sm" style="width: auto !important"></b-form-select>
+                </small>
               </div>
-            </div>
-          </b-overlay>
-        </b-col>
-      </b-row>
-    </b-card-text>
-    <b-card-text v-else>
-      <b-row>
-        <b-col>
-          <ComingSoon />
-        </b-col>
-      </b-row>
-    </b-card-text>
-  </b-tab>
+              <div :id="'graph-' + network.name">
+                <div class="text-center">
+                  <div class="spinner-border text-primary" role="status"></div>
+                </div>
+              </div>
+            </b-overlay>
+          </b-col>
+        </b-row>
+      </b-card-text>
+      <b-card-text v-else>
+        <b-row>
+          <b-col>
+            <ComingSoon />
+          </b-col>
+        </b-row>
+      </b-card-text>
+    </b-tab>
+  </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import Highcharts from "../assets/scripts/highcharts";
 import ComingSoon from "@/components/ComingSoon.vue";
 
@@ -367,30 +369,33 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/style/variables.less";
-.projection-options {
-  background-color: fade(white, 50%);
-  padding: 0.25rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  z-index: 2;
 
-  * {
-    font-size: 0.7rem !important;
-  }
+.component {
+  .options {
+    background-color: fade(white, 50%);
+    padding: 0.25rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 2;
 
-  small {
-    display: inline-block;
-    margin-left: 0.5rem;
-  }
+    * {
+      font-size: 0.7rem !important;
+    }
 
-  .custom-checkbox {
-    .custom-control-label {
-      vertical-align: sub !important;
+    small {
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
 
-      &:before,
-      &:after {
-        top: 0.05rem !important;
+    .custom-checkbox {
+      .custom-control-label {
+        vertical-align: sub !important;
+
+        &:before,
+        &:after {
+          top: 0.05rem !important;
+        }
       }
     }
   }

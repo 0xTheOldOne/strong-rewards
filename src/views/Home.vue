@@ -13,62 +13,64 @@
 
         <b-card no-body>
           <b-tabs card>
-            <b-tab active>
-              <template #title>
-                <small>
-                  <img src="strongblock.png" class="logo" />
-                  <span class="ticker hidden-xs">StrongBlock</span>
-                </small>
-              </template>
-              <b-card-text>
-                <b-row class="settings">
-                  <b-col sm="6" cols="12">
-                    <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm" class="mb-5">
-                      <b-form-group class="mb-3">
-                        <b-form-input :value="price" type="number" @change="updatePrice" min="0" required number></b-form-input>
-                        <template #label>
-                          {{
-                            $t("pages.home.node_settings.input_price_title", {
-                              token: ticker.toUpperCase(),
-                            })
-                          }}
-                        </template>
-                        <template #description>
-                          {{
-                            $t("pages.home.node_settings.input_price_description", {
-                              currency: currencies[currency].val.toUpperCase(),
-                              symbol: currencies[currency].symbol,
-                              period: refreshPeriod,
-                              unit: $tc(refreshUnit, refreshPeriod),
-                            })
-                          }}
-                        </template>
-                      </b-form-group>
-                      <b-form-group>
-                        <b-form-input :value="walletTokens" type="number" min="0" @change="updateWalletTokens"></b-form-input>
-                        <template #label>
-                          {{
-                            $t("pages.home.node_settings.input_walletTokens_title", {
-                              token: ticker.toUpperCase(),
-                            })
-                          }}
-                        </template>
-                        <template #description>
-                          {{ $t("pages.home.node_settings.input_walletTokens_description") }}
-                        </template>
-                      </b-form-group>
-                    </b-overlay>
+            <div class="component">
+              <b-tab active>
+                <template #title>
+                  <small>
+                    <img src="strongblock.png" class="logo" />
+                    <span class="hidden-xs">StrongBlock</span>
+                  </small>
+                </template>
+                <b-card-text>
+                  <b-row class="content">
+                    <b-col sm="6" cols="12">
+                      <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm" class="mb-5">
+                        <b-form-group class="mb-3">
+                          <b-form-input :value="price" type="number" @change="updatePrice" min="0" required number></b-form-input>
+                          <template #label>
+                            {{
+                              $t("pages.home.node_settings.input_price_title", {
+                                token: ticker.toUpperCase(),
+                              })
+                            }}
+                          </template>
+                          <template #description>
+                            {{
+                              $t("pages.home.node_settings.input_price_description", {
+                                currency: currencies[currency].val.toUpperCase(),
+                                symbol: currencies[currency].symbol,
+                                period: refreshPeriod,
+                                unit: $tc(refreshUnit, refreshPeriod),
+                              })
+                            }}
+                          </template>
+                        </b-form-group>
+                        <b-form-group>
+                          <b-form-input :value="walletTokens" type="number" min="0" @change="updateWalletTokens"></b-form-input>
+                          <template #label>
+                            {{
+                              $t("pages.home.node_settings.input_walletTokens_title", {
+                                token: ticker.toUpperCase(),
+                              })
+                            }}
+                          </template>
+                          <template #description>
+                            {{ $t("pages.home.node_settings.input_walletTokens_description") }}
+                          </template>
+                        </b-form-group>
+                      </b-overlay>
 
-                    <div class="text-center">
-                      <GasFees />
-                    </div>
-                  </b-col>
-                  <b-col sm="6" cols="12">
-                    <DaysTillNewNode />
-                  </b-col>
-                </b-row>
-              </b-card-text>
-            </b-tab>
+                      <div class="text-center">
+                        <GasFees />
+                      </div>
+                    </b-col>
+                    <b-col sm="6" cols="12">
+                      <DaysTillNewNode />
+                    </b-col>
+                  </b-row>
+                </b-card-text>
+              </b-tab>
+            </div>
             <NodeSettings :network="networks['etherum']" />
             <NodeSettings :network="networks['polygon']" />
             <NodeSettings :network="networks['sentinel']" />
@@ -79,7 +81,14 @@
     </b-row>
     <b-row class="mb-4">
       <b-col>
-        <div class="title">💸 {{ $t("pages.home.rewards.title") }}</div>
+        <b-row>
+          <b-col md="8" cols="12">
+            <div class="title">💸 {{ $t("pages.home.rewards.title") }}</div>
+          </b-col>
+          <b-col md="4" class="hidden-xs text-right">
+            <TwitterShare />
+          </b-col>
+        </b-row>
         <div class="rewards">
           <Rewards :days="1" />
           <Rewards :days="7" />
@@ -90,7 +99,7 @@
     </b-row>
     <b-row class="mb-2">
       <b-col>
-        <div class="title">🔄 {{ $t("pages.home.projection.title") }}</div>
+        <div class="title">📈 {{ $t("pages.home.projection.title") }}</div>
       </b-col>
     </b-row>
     <b-row class="mb-4">
@@ -109,10 +118,11 @@
 
 <script>
 // @ is an alias to /src
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import ResetSettings from "@/components/ResetSettings.vue";
 import DaysTillNewNode from "@/components/DaysTillNewNode.vue";
 import GasFees from "@/components/GasFees.vue";
+import TwitterShare from "@/components/TwitterShare.vue";
 import Rewards from "@/components/Rewards.vue";
 import NodeSettings from "@/components/NodeSettings.vue";
 import NFTSettings from "@/components/NFTSettings.vue";
@@ -128,6 +138,7 @@ export default {
     ResetSettings,
     DaysTillNewNode,
     GasFees,
+    TwitterShare,
   },
   computed: {
     refreshPeriod() {
@@ -182,11 +193,13 @@ export default {
 <style scoped lang="less">
 @import "../assets/style/variables.less";
 
-.settings {
-  @media (max-width: @screen-xs-max) {
-    .col-sm-6 {
-      &:first-of-type {
-        margin-bottom: 1rem;
+.component {
+  .content {
+    @media (max-width: @screen-xs-max) {
+      .col-sm-6 {
+        &:first-of-type {
+          margin-bottom: 1rem;
+        }
       }
     }
   }
@@ -196,7 +209,7 @@ export default {
   display: flex;
   justify-content: center;
 
-  .reward {
+  .component {
     flex: 1 1 150px;
     margin: 0 0.5rem;
 

@@ -87,10 +87,9 @@
 // @ is an alias to /src
 import { version } from "../package";
 import "particles.js";
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import CoinGeckoUpdater from "@/components/CoinGeckoUpdater.vue";
 import GasFees from "@/components/GasFees";
-import TokenPrice from "@/components/TokenPrice";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import ResetSettings from "@/components/ResetSettings.vue";
 
@@ -99,7 +98,6 @@ export default {
   components: {
     CoinGeckoUpdater,
     GasFees,
-    TokenPrice,
     LocaleSwitcher,
     ResetSettings,
   },

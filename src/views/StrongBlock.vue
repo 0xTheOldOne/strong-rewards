@@ -50,7 +50,7 @@
 
 <script>
 // @ is an alias to /src
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import CoinGeckoChart from "@/components/CoinGeckoChart.vue";
 
 export default {

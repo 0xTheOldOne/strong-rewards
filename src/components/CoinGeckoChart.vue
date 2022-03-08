@@ -1,13 +1,15 @@
 <template>
-  <b-card>
-    <b-card-text>
-      <div id="graph-price">
-        <div class="text-center">
-          <div class="spinner-border text-primary" role="status"></div>
+  <div class="component">
+    <b-card>
+      <b-card-text>
+        <div id="graph-price">
+          <div class="text-center">
+            <div class="spinner-border text-primary" role="status"></div>
+          </div>
         </div>
-      </div>
-    </b-card-text>
-  </b-card>
+      </b-card-text>
+    </b-card>
+  </div>
 </template>
 
 <script>
@@ -130,4 +132,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/style/variables.less";
+
+.component {
+  /**/
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="reset-settings" @click="resetLocalStorage">
-    <b-badge pill variant="success" class="light-version hidden-xs">♻️ {{ $t("pages.home.reset_settings.button_text") }}</b-badge>
+  <div class="component" @click="resetLocalStorage">
+    <b-badge pill variant="success" class="light-version hidden-xs"> <b-icon icon="arrow-repeat" /> {{ $t("pages.home.reset_settings.button_text") }} </b-badge>
     <span class="visible-xs">{{ $t("pages.home.reset_settings.button_text") }}</span>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
 <style scoped lang="less">
 @import "../assets/style/variables.less";
 
-.reset-settings {
+.component {
   cursor: pointer;
   height: 100%;
   display: inline-flex;

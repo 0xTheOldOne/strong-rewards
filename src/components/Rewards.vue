@@ -1,25 +1,26 @@
 <template>
-  <b-card no-body class="reward">
-    <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-      <b-list-group flush>
-        <b-list-group-item>
-          <div class="period">{{ $t(title).charAt(0).toUpperCase() + $t(title).slice(1) }}</div>
-        </b-list-group-item>
-        <b-list-group-item>
-          <b-icon icon="wallet" class="mr-2" /><span class="value mr-1">{{ earnedOnPeriod }}</span> ${{ ticker.toUpperCase() }}
-        </b-list-group-item>
-        <b-list-group-item>
-          <b-icon icon="cash" class="mr-2" /><span class="value mr-1">{{ asFiat(earnedOnPeriod) }}</span
-          >{{ currencies[currency].symbol }}
-        </b-list-group-item>
-      </b-list-group>
-    </b-overlay>
-  </b-card>
+  <div class="component">
+    <b-card no-body>
+      <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+        <b-list-group flush>
+          <b-list-group-item>
+            <div class="period">{{ $t(title).charAt(0).toUpperCase() + $t(title).slice(1) }}</div>
+          </b-list-group-item>
+          <b-list-group-item>
+            <b-icon icon="wallet" class="mr-2" /><span class="value mr-1">{{ earnedOnPeriod }}</span> ${{ ticker.toUpperCase() }}
+          </b-list-group-item>
+          <b-list-group-item>
+            <b-icon icon="cash" class="mr-2" /><span class="value mr-1">{{ asFiat(earnedOnPeriod) }}</span
+            >{{ currencies[currency].symbol }}
+          </b-list-group-item>
+        </b-list-group>
+      </b-overlay>
+    </b-card>
+  </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { mapGetters } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   name: "Rewards",
@@ -71,15 +72,17 @@ export default {
 <style scoped lang="less">
 @import "../assets/style/variables.less";
 
-.card {
-  font-size: 0.9rem;
+.component {
+  .card {
+    font-size: 0.9rem;
 
-  .period {
-    font-size: 1rem;
-  }
+    .period {
+      font-size: 1rem;
+    }
 
-  .value {
-    font-family: "Source Code Pro", monospace;
+    .value {
+      font-family: "Source Code Pro", monospace;
+    }
   }
 }
 </style>

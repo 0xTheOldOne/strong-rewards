@@ -35,6 +35,10 @@
     "localeswitcher": {
       "title": "Translation"
     },
+    "share": {
+      "button": "Share",
+      "text": "I now have ${ticker} {nodeCount} {nodeWord} ! 🥳\nI'm earning {strongDaily} ${ticker} per day (At current price (1 {ticker} = {price} $) it's about {fiatDaily}$ per day, {fiatYearly}$ per year) 🚀\n#StrongArmy #NodeLife"
+    },
     "coingeckoupdater": {
       "online": "CoinGecko API is online",
       "offline": "CoinGecko API is offline"
@@ -71,6 +75,7 @@
     "weekly": "weekly",
     "monthly": "monthly",
     "annually": "annually",
-    "token": "token | token | tokens"
+    "token": "token | token | tokens",
+    "node": "node | node | nodes"
   }
 }

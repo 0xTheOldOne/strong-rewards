@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="component">
     <div id="days-till-new-node-chart"></div>
     <div class="days">
       <div v-if="daysToCompound == 0 || walletTokens >= 10">
@@ -39,8 +39,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { mapGetters } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import Highcharts from "../assets/scripts/highcharts";
 
 let chartOptions = {
@@ -187,4 +186,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/style/variables.less";
+
+.component {
+  /**/
+}
 </style>

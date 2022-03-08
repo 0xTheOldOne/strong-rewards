@@ -1,5 +1,5 @@
 <template>
-  <div :class="variant">
+  <div :class="'component ' + variant">
     <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
       <div class="status">
         <div class="hidden-xs">
@@ -11,17 +11,12 @@
           <span v-else>{{ $t("components.coingeckoupdater.offline") }}</span>
         </div>
       </div>
-      <!-- <div class="refresh-container">
-        ⏱️ Next {{ currencies[currency].val.toUpperCase() }} price refresh in
-        <div class="refresh">{{ ((refreshRateInMs - timerTicks * timerTicksRateInMs) / 1000).toFixed(2) }}</div>
-        seconds
-      </div> -->
     </b-overlay>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 const CoinGecko = require("coingecko-api"); // https://github.com/miscavage/CoinGecko-API
 const CoinGeckoClient = new CoinGecko();
 
@@ -101,36 +96,26 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-.refresh-container {
-  display: inline-block;
+@import "../assets/style/variables.less";
 
-  .refresh {
-    font-family: "Source Code Pro", monospace;
-    min-width: 40px;
-    line-height: 1rem;
-    display: inline-block;
+.component {
+  &.right {
+    text-align: right;
+
+    .refresh-container {
+      display: block;
+      margin-top: 0.25rem;
+    }
   }
-}
 
-&.right {
-  // font-size: 0.8rem;
-  text-align: right;
+  &.left {
+    .status {
+      display: inline-block;
 
-  .refresh-container {
-    display: block;
-    margin-top: 0.25rem;
-  }
-}
-
-&.left {
-  // font-size: 0.8rem;
-
-  .status {
-    display: inline-block;
-
-    .badge {
-      margin-right: 1rem;
-      margin-bottom: 0.25rem;
+      .badge {
+        margin-right: 1rem;
+        margin-bottom: 0.25rem;
+      }
     }
   }
 }

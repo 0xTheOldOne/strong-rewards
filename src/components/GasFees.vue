@@ -1,18 +1,20 @@
 <template>
-  <b-form-group class="gasfees">
-    <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-      ⛽ {{ $t("components.gasfees.label") }} :
-      <a href="https://etherscan.io/gasTracker" target="_blank" rel="noopener noreferrer">
-        <!-- <b-badge pill :class="gweiVariant"> -->
-        <span class="gwei">{{ gwei }}</span> gwei
-        <!-- </b-badge> -->
-      </a>
-    </b-overlay>
-  </b-form-group>
+  <div class="component">
+    <b-form-group>
+      <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
+        <a href="https://etherscan.io/gasTracker" target="_blank" rel="noopener noreferrer">
+          ⛽ {{ $t("components.gasfees.label") }} :
+          <!-- <b-badge pill :class="gweiVariant"> -->
+          <span class="value">{{ gwei }}</span> gwei
+          <!-- </b-badge> -->
+        </a>
+      </b-overlay>
+    </b-form-group>
+  </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 const axios = require("axios");
 
 export default {
@@ -77,7 +79,7 @@ export default {
 <style scoped lang="less">
 @import "../assets/style/variables.less";
 
-.gasfees {
+.component {
   @padding: 0.75rem;
   display: inline-block;
   border: 1px solid fade(@text-color-secondary, 25%);
@@ -111,8 +113,10 @@ export default {
     }
   }
 
-  .gwei {
+  .value {
     font-family: "Source Code Pro", monospace;
+    display: inline-block;
+    min-width: 20px;
   }
 }
 </style>
