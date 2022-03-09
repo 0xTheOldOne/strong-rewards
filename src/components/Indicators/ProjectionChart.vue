@@ -45,7 +45,7 @@
 
 <script>
 import { mapState, mapGetters } from "vuex";
-import Highcharts from "../assets/scripts/highcharts";
+import Highcharts from "../../assets/scripts/highcharts";
 import ComingSoon from "@/components/ComingSoon.vue";
 
 let chartOptions = {
@@ -399,7 +399,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-@import "../assets/style/variables.less";
+@import "../../assets/style/variables.less";
 
 .component {
   .options {

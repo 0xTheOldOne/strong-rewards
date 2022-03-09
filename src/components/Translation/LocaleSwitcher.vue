@@ -38,8 +38,8 @@
 
 <script>
 import { mapState, mapGetters } from "vuex";
-import { getSupportedLocales } from "../locales/helper";
-import { getBrowserLocale } from "../locales/helper";
+import { getSupportedLocales } from "../../locales/helper";
+import { getBrowserLocale } from "../../locales/helper";
 
 export default {
   name: "LocaleSwitcher",
@@ -80,7 +80,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-@import "../assets/style/variables.less";
+@import "../../assets/style/variables.less";
 
 .component {
   .locale-switcher {

@@ -87,8 +87,8 @@ import { version } from "../package";
 import "particles.js";
 import { mapState, mapGetters } from "vuex";
 import CoinGeckoUpdater from "@/components/CoinGecko/CoinGeckoUpdater.vue";
-import LocaleSwitcher from "@/components/LocaleSwitcher";
-import ResetSettings from "@/components/ResetSettings.vue";
+import LocaleSwitcher from "@/components/Translation/LocaleSwitcher";
+import ResetSettings from "@/components/Settings/ResetSettings.vue";
 
 export default {
   name: "App",

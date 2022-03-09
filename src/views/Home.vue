@@ -13,64 +13,7 @@
 
         <b-card no-body>
           <b-tabs card>
-            <div class="component">
-              <b-tab active>
-                <template #title>
-                  <small>
-                    <img src="strongblock.png" class="logo" />
-                    <span class="hidden-xs">StrongBlock</span>
-                  </small>
-                </template>
-                <b-card-text>
-                  <b-row class="content">
-                    <b-col sm="6" cols="12">
-                      <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm" class="mb-5">
-                        <b-form-group class="mb-3">
-                          <b-form-input :value="price" type="number" @change="updatePrice" min="0" required number></b-form-input>
-                          <template #label>
-                            {{
-                              $t("pages.home.node_settings.input_price_title", {
-                                token: ticker.toUpperCase(),
-                              })
-                            }}
-                          </template>
-                          <template #description>
-                            {{
-                              $t("pages.home.node_settings.input_price_description", {
-                                currency: currencies[currency].val.toUpperCase(),
-                                symbol: currencies[currency].symbol,
-                                period: refreshPeriod,
-                                unit: $tc(refreshUnit, refreshPeriod),
-                              })
-                            }}
-                          </template>
-                        </b-form-group>
-                        <b-form-group>
-                          <b-form-input :value="walletTokens" type="number" min="0" @change="updateWalletTokens"></b-form-input>
-                          <template #label>
-                            {{
-                              $t("pages.home.node_settings.input_walletTokens_title", {
-                                token: ticker.toUpperCase(),
-                              })
-                            }}
-                          </template>
-                          <template #description>
-                            {{ $t("pages.home.node_settings.input_walletTokens_description") }}
-                          </template>
-                        </b-form-group>
-                      </b-overlay>
-
-                      <div class="text-center">
-                        <GasFees />
-                      </div>
-                    </b-col>
-                    <b-col sm="6" cols="12">
-                      <DaysTillNewNode />
-                    </b-col>
-                  </b-row>
-                </b-card-text>
-              </b-tab>
-            </div>
+            <GlobalSettings />
             <NodeSettings :network="networks['etherum']" />
             <NodeSettings :network="networks['polygon']" />
             <NodeSettings :network="networks['sentinel']" />
@@ -119,72 +62,30 @@
 <script>
 // @ is an alias to /src
 import { mapState, mapGetters } from "vuex";
-import ResetSettings from "@/components/ResetSettings.vue";
-import DaysTillNewNode from "@/components/DaysTillNewNode.vue";
-import GasFees from "@/components/Etherscan/GasFees.vue";
-import TwitterShare from "@/components/TwitterShare.vue";
-import Rewards from "@/components/Rewards.vue";
-import NodeSettings from "@/components/NodeSettings.vue";
-import NFTSettings from "@/components/NFTSettings.vue";
-import ProjectionChart from "@/components/ProjectionChart.vue";
+import ResetSettings from "@/components/Settings/ResetSettings.vue";
+import GlobalSettings from "@/components/Settings/GlobalSettings.vue";
+import NodeSettings from "@/components/Settings/NodeSettings.vue";
+import NFTSettings from "@/components/Settings/NFTSettings.vue";
+import TwitterShare from "@/components/Social/TwitterShare.vue";
+import Rewards from "@/components/Indicators/Rewards.vue";
+import ProjectionChart from "@/components/Indicators/ProjectionChart.vue";
 
 export default {
   name: "Home",
   components: {
-    Rewards,
+    ResetSettings,
+    GlobalSettings,
     NodeSettings,
     NFTSettings,
+    Rewards,
     ProjectionChart,
-    ResetSettings,
-    DaysTillNewNode,
-    GasFees,
     TwitterShare,
   },
   computed: {
-    refreshPeriod() {
-      var period = this.refreshRateInMs / 1000;
-      if (period > 60) {
-        period = period / 60;
-      }
-      return period;
-    },
-    refreshUnit() {
-      var period = this.refreshRateInMs / 1000;
-      var unit = "second";
-
-      if (period > 60) {
-        unit = "minute";
-      }
-      return "misc." + unit;
-    },
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,
-      refreshRateInMs: (state) => state.coinGeckoRefreshRateInMs,
-      currencies: (state) => state.currencies,
-      currency: (state) => state.currency,
-      ticker: (state) => state.ticker,
-      price: (state) => state.price,
-      walletTokens: (state) => state.walletTokens,
       networks: (state) => state.networks,
-      nft: (state) => state.nft,
     }),
-  },
-  methods: {
-    updatePrice: function (price) {
-      this.$store.commit({
-        type: "setPrice",
-        price: price,
-      });
-    },
-    updateWalletTokens: function (tokens) {
-      this.$store.commit({
-        type: "setWalletTokens",
-        tokens: tokens,
-      });
-    },
-    asFiat: function (tokens) {
-      return (tokens * this.price).toFixed(2);
-    },
   },
 };
 </script>
