@@ -51,7 +51,7 @@
 <script>
 // @ is an alias to /src
 import { mapState, mapGetters } from "vuex";
-import CoinGeckoChart from "@/components/CoinGeckoChart.vue";
+import CoinGeckoChart from "@/components/CoinGecko/CoinGeckoChart.vue";
 
 export default {
   name: "StrongBlock",

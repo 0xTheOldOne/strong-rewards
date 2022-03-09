@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Highcharts from "../assets/scripts/highstock";
+import Highcharts from "@/assets/scripts/highstock";
 const CoinGecko = require("coingecko-api"); // https://github.com/miscavage/CoinGecko-API
 const CoinGeckoClient = new CoinGecko();
 
@@ -130,10 +130,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
-@import "../assets/style/variables.less";
-
-.component {
-  /**/
-}
-</style>
+<style scoped lang="less"></style>

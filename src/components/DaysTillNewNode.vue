@@ -2,38 +2,32 @@
   <div class="component">
     <div id="days-till-new-node-chart"></div>
     <div class="days">
-      <div v-if="daysToCompound == 0 || walletTokens >= 10">
-        <small>
-          {{
-            $t("components.node_settings.input_nodeCount_description_countReached", {
-              ticker: ticker.toUpperCase(),
-              token: $tc("misc.token", walletTokens),
-            })
-          }}
-        </small>
-      </div>
-      <div v-else-if="daysToCompound > 0 && walletTokens < 10">
-        <small>
-          {{
-            $t("components.node_settings.input_nodeCount_description", {
-              ticker: ticker.toUpperCase(),
-              count: daysToCompound,
-              days: $tc("misc.day", walletTokens),
-              wallet: walletTokens,
-              token: $tc("misc.token", walletTokens),
-            })
-          }}
-        </small>
-      </div>
-      <div v-else>
-        <small>
-          {{
-            $t("components.node_settings.input_nodeCount_description_zeroNode", {
-              ticker: ticker.toUpperCase(),
-            })
-          }}
-        </small>
-      </div>
+      <small v-if="daysToCompound == 0 || walletTokens >= 10">
+        {{
+          $t("components.node_settings.input_nodeCount_description_countReached", {
+            ticker: ticker.toUpperCase(),
+            token: $tc("misc.token", Math.floor(walletTokens), { count: walletTokens }),
+          })
+        }}
+      </small>
+      <small v-else-if="daysToCompound > 0 && walletTokens < 10">
+        {{
+          $t("components.node_settings.input_nodeCount_description", {
+            ticker: ticker.toUpperCase(),
+            count: daysToCompound,
+            days: $tc("misc.day", Math.floor(walletTokens), { count: walletTokens }),
+            wallet: walletTokens,
+            token: $tc("misc.token", Math.floor(walletTokens), { count: walletTokens }),
+          })
+        }}
+      </small>
+      <small v-else>
+        {{
+          $t("components.node_settings.input_nodeCount_description_zeroNode", {
+            ticker: ticker.toUpperCase(),
+          })
+        }}
+      </small>
     </div>
   </div>
 </template>

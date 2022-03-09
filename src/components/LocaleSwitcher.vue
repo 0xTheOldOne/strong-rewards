@@ -2,8 +2,8 @@
   <div class="component">
     <span v-b-modal.modal-i18n>
       <span class="mr-2">{{ $t("components.localeswitcher.title") }}</span>
-      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/' + $i18n.locale + '.svg'" class="logo hidden-xs" rounded v-if="$i18n.locale != 'en'" />
-      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/gb.svg'" class="logo hidden-xs" rounded v-else />
+      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/' + $i18n.locale + '.svg'" class="logo hidden-xs" v-if="$i18n.locale != 'en'" />
+      <b-img :src="'https://flagicons.lipis.dev/flags/4x3/gb.svg'" class="logo hidden-xs" v-else />
       <span class="visible-xs"
         >({{
           locales.filter((loc) => {

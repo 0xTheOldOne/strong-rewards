@@ -50,6 +50,7 @@ import ComingSoon from "@/components/ComingSoon.vue";
 
 let chartOptions = {
   chart: {
+    height: 300,
     renderTo: "graph",
     type: "area",
   },
@@ -402,8 +403,10 @@ export default {
 
 .component {
   .options {
-    transform: scale(0.75);
-    margin-right: -12.5%;
+    @scale: 0.8;
+    @margin: (100 - @scale * 100) / 2;
+    transform: scale(@scale);
+    margin-right: ~"-@{margin}%";
 
     background-color: fade(white, 50%);
     padding: 0.25rem;

@@ -121,7 +121,7 @@
 import { mapState, mapGetters } from "vuex";
 import ResetSettings from "@/components/ResetSettings.vue";
 import DaysTillNewNode from "@/components/DaysTillNewNode.vue";
-import GasFees from "@/components/GasFees.vue";
+import GasFees from "@/components/Etherscan/GasFees.vue";
 import TwitterShare from "@/components/TwitterShare.vue";
 import Rewards from "@/components/Rewards.vue";
 import NodeSettings from "@/components/NodeSettings.vue";

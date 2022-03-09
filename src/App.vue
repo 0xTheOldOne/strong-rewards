@@ -21,9 +21,7 @@
               </template>
             </b-navbar-toggle>
 
-            <b-nav-item size="sm" class="hidden-xs">
-              <CoinGeckoUpdater variant="right" />
-            </b-nav-item>
+            <CoinGeckoUpdater variant="right" />
           </b-navbar-nav>
         </b-container>
       </b-navbar>
@@ -77,7 +75,7 @@
     <router-view class="mt-4 mb-4" />
 
     <b-toast id="reset-toast" toaster="b-toaster-top-center" auto-hide-delay="5000" append-toast no-close-button solid>
-      <template #toast-title>♻️ {{ $t("pages.home.reset_settings.toast_title") }}</template>
+      <template #toast-title><b-icon icon="arrow-repeat" /> {{ $t("pages.home.reset_settings.toast_title") }}</template>
       {{ $t("pages.home.reset_settings.toast_text") }}
     </b-toast>
   </div>
@@ -88,8 +86,7 @@
 import { version } from "../package";
 import "particles.js";
 import { mapState, mapGetters } from "vuex";
-import CoinGeckoUpdater from "@/components/CoinGeckoUpdater.vue";
-import GasFees from "@/components/GasFees";
+import CoinGeckoUpdater from "@/components/CoinGecko/CoinGeckoUpdater.vue";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import ResetSettings from "@/components/ResetSettings.vue";
 
@@ -97,7 +94,6 @@ export default {
   name: "App",
   components: {
     CoinGeckoUpdater,
-    GasFees,
     LocaleSwitcher,
     ResetSettings,
   },
@@ -188,6 +184,7 @@ export default {
 
       img.logo {
         height: 1rem !important;
+        box-shadow: 0px 0px 1px white;
       }
     }
   }

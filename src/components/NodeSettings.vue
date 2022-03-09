@@ -44,7 +44,7 @@
                 {{
                   $t("components.node_settings.input_nodeCount_description_countReached", {
                     ticker: ticker.toUpperCase(),
-                    token: $tc("misc.token", walletTokens),
+                    token: $tc("misc.token", Math.floor(walletTokens), { count: walletTokens }),
                   })
                 }}
               </template>
@@ -53,9 +53,9 @@
                   $t("components.node_settings.input_nodeCount_description", {
                     ticker: ticker.toUpperCase(),
                     count: daysToCompound,
-                    days: $tc("misc.day", walletTokens),
+                    days: $tc("misc.day", Math.floor(walletTokens), { count: walletTokens }),
                     wallet: walletTokens,
-                    token: $tc("misc.token", walletTokens),
+                    token: $tc("misc.token", Math.floor(walletTokens), { count: walletTokens }),
                   })
                 }}
               </template>
