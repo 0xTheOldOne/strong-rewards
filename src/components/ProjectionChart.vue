@@ -14,18 +14,14 @@
           <b-col>
             <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
               <div class="options">
-                <small>
-                  <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">
-                    {{
-                      $t("components.projection_chart.create_at_ten", {
-                        token: ticker.toUpperCase(),
-                      })
-                    }}
-                  </b-form-checkbox>
-                </small>
-                <small>
-                  <b-form-select :value="projectionPeriod" :options="options" @change="updateProjectionPeriodInMonths" size="sm" style="width: auto !important"></b-form-select>
-                </small>
+                <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">
+                  {{
+                    $t("components.projection_chart.create_at_ten", {
+                      token: ticker.toUpperCase(),
+                    })
+                  }}
+                </b-form-checkbox>
+                <b-form-select :value="projectionPeriod" :options="options" @change="updateProjectionPeriodInMonths" size="sm" style="width: auto !important" class="ml-3"></b-form-select>
               </div>
               <div :id="'graph-' + network.name">
                 <div class="text-center">
@@ -216,7 +212,39 @@ let chartOptions = {
         chartOptions: {
           chart: {
             height: 300,
+            marginLeft: 38,
+            marginRight: 0,
           },
+          yAxis: [
+            {
+              min: 0,
+              labels: {
+                format: "{text}S",
+              },
+              title: {
+                text: "",
+              },
+            },
+            {
+              min: 0,
+              labels: {
+                format: "{text} node(s)",
+              },
+              title: {
+                text: "",
+              },
+            },
+            {
+              min: 0,
+              labels: {
+                format: "{text} USD",
+              },
+              title: {
+                text: "",
+              },
+              opposite: true,
+            },
+          ],
         },
       },
     ],
@@ -237,12 +265,6 @@ export default {
   },
   data() {
     return {
-      options: [
-        { value: 1, text: "One month" },
-        { value: 3, text: "Three months" },
-        { value: 6, text: "Six months" },
-        { value: 12, text: "One year" },
-      ],
       selected: [],
     };
   },
@@ -255,6 +277,14 @@ export default {
       projectionPeriod: (state) => state.projectionPeriodInMonths,
       projectionAutoCompound: (state) => state.projectionAutoCompound,
     }),
+    options: function () {
+      return [
+        { value: 1, text: "1 " + this.$tc("misc.month", 1) },
+        { value: 3, text: "3 " + this.$tc("misc.month", 3) },
+        { value: 6, text: "6 " + this.$tc("misc.month", 6) },
+        { value: 12, text: "1 " + this.$tc("misc.year", 1) },
+      ];
+    },
     startProjectionDate: function () {
       return new Date();
     },
@@ -372,16 +402,15 @@ export default {
 
 .component {
   .options {
+    transform: scale(0.75);
+    margin-right: -12.5%;
+
     background-color: fade(white, 50%);
     padding: 0.25rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     z-index: 2;
-
-    * {
-      font-size: 0.7rem !important;
-    }
 
     small {
       display: inline-block;

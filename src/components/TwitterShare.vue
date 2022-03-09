@@ -1,7 +1,10 @@
 <template>
   <div class="component">
     <a class="twitter-share-button" :href="'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + encodedText + ''">
-      <b-badge pill variant="success" class="light-version hidden-xs"> <b-icon icon="twitter" /> {{ $t("components.share.button") }} </b-badge>
+      <b-badge pill variant="success" class="light-version">
+        <b-icon icon="twitter" />
+        <span class="hidden-xs">&nbsp;{{ $t("components.share.button") }}</span>
+      </b-badge>
     </a>
   </div>
 </template>

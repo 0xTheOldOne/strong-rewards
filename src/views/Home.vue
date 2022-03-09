@@ -3,10 +3,10 @@
     <b-row class="mb-4">
       <b-col>
         <b-row>
-          <b-col md="8" cols="12">
+          <b-col md="6" cols="12">
             <div class="title">⚙️ {{ $t("pages.home.node_settings.title") }}</div>
           </b-col>
-          <b-col md="4" class="hidden-xs text-right">
+          <b-col md="6" class="hidden-xs text-right">
             <ResetSettings />
           </b-col>
         </b-row>
@@ -82,10 +82,10 @@
     <b-row class="mb-4">
       <b-col>
         <b-row>
-          <b-col md="8" cols="12">
+          <b-col md="6" cols="9">
             <div class="title">💸 {{ $t("pages.home.rewards.title") }}</div>
           </b-col>
-          <b-col md="4" class="hidden-xs text-right">
+          <b-col md="6" cols="3" class="text-right">
             <TwitterShare />
           </b-col>
         </b-row>
@@ -225,7 +225,7 @@ export default {
   @media (max-width: @screen-xs-max) {
     flex-flow: column;
 
-    .reward {
+    .component {
       margin: 0;
       margin-bottom: 0.5rem;
     }

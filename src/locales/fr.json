@@ -37,7 +37,7 @@
     },
     "share": {
       "button": "Partager",
-      "text": "J'ai actuellement {nodeCount} {nodeWord} de ${ticker} ! 🥳\nÇa rapporte {strongDaily} ${ticker} par jour (Au prix actuel (1 {ticker} = {price} $) ça fait environ {fiatDaily}$ par jour, {fiatYearly}$ par an) 🚀\nPour avoir un aperçu des rewards :"
+      "text": "J'ai actuellement {nodeCount} {nodeWord} de ${ticker} ! 🥳\nÇa rapporte {strongDaily} ${ticker} par jour (Au prix actuel (1 {ticker} = {price} $) ça fait environ {fiatDaily}$ par jour, {fiatYearly}$ par an) 🚀\n\nPour avoir un aperçu des gains :"
     },
     "coingeckoupdater": {
       "online": "CoinGecko API est joignable",
