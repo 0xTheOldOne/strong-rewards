@@ -21,7 +21,7 @@
               </template>
             </b-navbar-toggle>
 
-            <CoinGeckoUpdater variant="right" />
+            <CoinGeckoUpdater variant="right" class="hidden-xs" />
           </b-navbar-nav>
         </b-container>
       </b-navbar>
