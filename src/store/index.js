@@ -29,7 +29,7 @@ export default new Vuex.Store({
     userLocale: "",
     screenOrientationToast: false,
     traductionToast: false,
-    coinGeckoRefreshRateInMs: 1 * 60 * 1000,
+    coinGeckoRefreshRateInMs: 5 * 60 * 1000,
     coinGeckoIsReachable: false,
     coinGeckoRequestPending: false,
     etherScanApiKey: "HKXG2563Y9ZKCUZ6Y398JE8K8WHFEN1QQ3",

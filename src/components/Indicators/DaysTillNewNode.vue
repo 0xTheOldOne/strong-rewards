@@ -48,8 +48,8 @@ let chartOptions = {
     text: "",
     align: "center",
     verticalAlign: "middle",
-    y: 80,
-    useHTML: true,
+    y: 70,
+    useHTML: false,
   },
   credits: {
     enabled: false,
@@ -126,8 +126,10 @@ export default {
       try {
         var compoundMax = 10;
         var compound = this.walletTokens;
+        var value = (compound * this.price).toFixed();
+        var currencySymbol = this.currencies[this.currency].symbol;
 
-        chartOptions.title.text = `<span class="title"><span class="earned">${compound}</span><span class="divide">/</span><span class="total">${compoundMax}</span></span>`;
+        chartOptions.title.text = `${value} ${currencySymbol}<br />${compound} / ${compoundMax}`;
         chartOptions.series[0].data = [
           ["Earned", compound],
           ["To be earned", compoundMax - compound],
@@ -147,6 +149,8 @@ export default {
     ...mapState({
       ticker: (state) => state.ticker,
       price: (state) => state.price,
+      currencies: (state) => state.currencies,
+      currency: (state) => state.currency,
       walletTokens: (state) => state.walletTokens,
     }),
     ...mapGetters({
@@ -167,6 +171,9 @@ export default {
     },
   },
   watch: {
+    price: function (newVal, oldVal) {
+      this.drawChart();
+    },
     walletTokens: function (newVal, oldVal) {
       this.drawChart();
     },
@@ -182,6 +189,5 @@ export default {
 @import "../../assets/style/variables.less";
 
 .component {
-  /**/
 }
 </style>
