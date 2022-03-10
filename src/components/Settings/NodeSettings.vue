@@ -39,7 +39,7 @@
             <b-form-group>
               <b-form-input v-model.number="network.nodes" type="range" min="0" :max="network.maxNodesPerWallet" step="1" required @change="updateNodeCount($event)" class="hidden-xs"></b-form-input>
               <b-form-input v-model.number="network.nodes" type="number" min="0" :max="network.maxNodesPerWallet" step="1" required @change="updateNodeCount($event)" class="visible-xs"></b-form-input>
-              <template #label> {{ $t("components.node_settings.input_nodeCount_title") }} {{ network.count }} </template>
+              <template #label> {{ $t("components.node_settings.input_nodeCount_title") }} {{ network.nodes }} </template>
               <template #description v-if="network.nodes > 0 && walletTokens >= 10">
                 {{
                   $t("components.node_settings.input_nodeCount_description_countReached", {
@@ -97,6 +97,22 @@ export default {
       required: true,
     },
   },
+  methods: {
+    updateNodeRewards(event) {
+      this.$store.commit({
+        type: "setNodeRewards",
+        network: this.network.name,
+        rewards: parseFloat(event),
+      });
+    },
+    updateNodeCount(event) {
+      this.$store.commit({
+        type: "setNodeCount",
+        network: this.network.name,
+        count: parseInt(event),
+      });
+    },
+  },
   computed: {
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,
@@ -121,21 +137,8 @@ export default {
       return result;
     },
   },
-  methods: {
-    updateNodeRewards(event) {
-      this.$store.commit({
-        type: "setNodeRewards",
-        network: this.network.name,
-        rewards: event,
-      });
-    },
-    updateNodeCount(event) {
-      this.$store.commit({
-        type: "setNodeCount",
-        network: this.network.name,
-        count: event,
-      });
-    },
+  watch: {
+    "network.nodes": function (newVal, oldVal) {},
   },
 };
 </script>

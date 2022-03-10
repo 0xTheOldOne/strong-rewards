@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import VuexPersistence from 'vuex-persist';
-const vuexPersistKey = 'store';
+import Vue from "vue";
+import Vuex from "vuex";
+import VuexPersistence from "vuex-persist";
+const vuexPersistKey = "store";
 
 Vue.use(Vuex);
 
@@ -26,32 +26,32 @@ var display_sentinel = false;
 
 export default new Vuex.Store({
   state: {
-    userLocale: '',
+    userLocale: "",
     screenOrientationToast: false,
     traductionToast: false,
-    coinGeckoRefreshRateInMs: 5 * 60 * 1000,
+    coinGeckoRefreshRateInMs: 1 * 60 * 1000,
     coinGeckoIsReachable: false,
     coinGeckoRequestPending: false,
-    etherScanApiKey: 'GK5ISJEBJAIJR1Q97MB6HSVYWB1IJ9UR46',
-    currency: 'usd',
+    etherScanApiKey: "GK5ISJEBJAIJR1Q97MB6HSVYWB1IJ9UR46",
+    currency: "usd",
     currencies: {
-      usd: { id: 1, val: 'usd', symbol: '$' },
-      eur: { id: 2, val: 'eur', symbol: '€' },
+      usd: { id: 1, val: "usd", symbol: "$" },
+      eur: { id: 2, val: "eur", symbol: "€" },
     },
-    ticker: 'strong',
+    ticker: "strong",
     price: 0,
     walletTokens: 0,
     networks: {
       etherum: {
-        name: 'etherum',
-        nodes: 1,
+        name: "etherum",
+        nodes: 0,
         maxNodesPerWallet: 100,
         rewards: 0.09143,
         monthlyFees: 14.95,
         display: true,
       },
       polygon: {
-        name: 'polygon',
+        name: "polygon",
         nodes: 0,
         maxNodesPerWallet: 100,
         rewards: 0.1,
@@ -59,7 +59,7 @@ export default new Vuex.Store({
         display: false,
       },
       sentinel: {
-        name: 'sentinel',
+        name: "sentinel",
         nodes: 0,
         maxNodesPerWallet: 100,
         rewards: 0.1,
@@ -79,13 +79,13 @@ export default new Vuex.Store({
   },
   mutations: {
     resetLocalStorage(state) {
-      console.debug('Reset localStorage...');
+      console.debug("Reset localStorage...");
 
       // Delete localStorage state
       localStorage.removeItem(vuexPersistKey);
 
       // Default values
-      state.userLocale = '';
+      state.userLocale = "";
       state.walletTokens = 0;
       state.networks.etherum.display = display_etherum;
       state.networks.etherum.nodes = 0;
@@ -94,23 +94,20 @@ export default new Vuex.Store({
       state.networks.sentinel.display = display_sentinel;
       state.networks.sentinel.nodes = 0;
 
-      this.commit('initializeFromLocalStorage');
+      this.commit("initializeFromLocalStorage");
 
-      console.debug('Reset localStorage... DONE');
+      console.debug("Reset localStorage... DONE");
     },
     initializeFromLocalStorage(state) {
-      console.debug('Retrieving settings from localStorage...');
+      console.debug("Retrieving settings from localStorage...");
 
-      if (
-        localStorage.getItem(vuexPersistKey) != null &&
-        localStorage.getItem(vuexPersistKey) != undefined
-      ) {
+      if (localStorage.getItem(vuexPersistKey) != null && localStorage.getItem(vuexPersistKey) != undefined) {
         state = JSON.parse(localStorage.getItem(vuexPersistKey));
       } else {
         localStorage.setItem(vuexPersistKey, JSON.stringify(state));
       }
 
-      console.debug('Retrieving settings from localStorage... DONE');
+      console.debug("Retrieving settings from localStorage... DONE");
     },
     setUserLocale(state, payload) {
       console.debug(payload);
@@ -146,7 +143,7 @@ export default new Vuex.Store({
     },
     setNodeCount(state, payload) {
       console.debug(payload);
-      state.networks[payload.network].count = parseInt(payload.count);
+      state.networks[payload.network].count = payload.count;
     },
     setNodeRewards(state, payload) {
       console.debug(payload);
@@ -169,20 +166,16 @@ export default new Vuex.Store({
     rewardsPerDay(state) {
       var perDay = 0;
 
-      if (state.networks.etherum.display && state.networks.etherum.count > 0) {
-        perDay += state.networks.etherum.count * state.networks.etherum.rewards;
+      if (state.networks.etherum.display && state.networks.etherum.nodes > 0) {
+        perDay += state.networks.etherum.nodes * state.networks.etherum.rewards;
       }
 
-      if (state.networks.polygon.display && state.networks.polygon.count > 0) {
-        perDay += state.networks.polygon.count * state.networks.polygon.rewards;
+      if (state.networks.polygon.display && state.networks.polygon.nodes > 0) {
+        perDay += state.networks.polygon.nodes * state.networks.polygon.rewards;
       }
 
-      if (
-        state.networks.sentinel.display &&
-        state.networks.sentinel.count > 0
-      ) {
-        perDay +=
-          state.networks.sentinel.count * state.networks.sentinel.rewards;
+      if (state.networks.sentinel.display && state.networks.sentinel.nodes > 0) {
+        perDay += state.networks.sentinel.nodes * state.networks.sentinel.rewards;
       }
 
       return perDay.toFixed(4);

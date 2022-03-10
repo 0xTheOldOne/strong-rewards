@@ -14,9 +14,9 @@
         <b-card no-body>
           <b-tabs card>
             <GlobalSettings />
-            <NodeSettings :network="networks['etherum']" />
-            <NodeSettings :network="networks['polygon']" />
-            <NodeSettings :network="networks['sentinel']" />
+            <NodeSettings :network.sync="networks['etherum']" />
+            <NodeSettings :network.sync="networks['polygon']" />
+            <NodeSettings :network.sync="networks['sentinel']" />
             <!-- <NFTSettings :ntf="nft" /> -->
           </b-tabs>
         </b-card>
@@ -49,9 +49,9 @@
       <b-col>
         <b-card no-body>
           <b-tabs card>
-            <ProjectionChart :network="networks['etherum']" />
-            <ProjectionChart :network="networks['polygon']" />
-            <ProjectionChart :network="networks['sentinel']" />
+            <ProjectionChart :network.sync="networks['etherum']" />
+            <ProjectionChart :network.sync="networks['polygon']" />
+            <ProjectionChart :network.sync="networks['sentinel']" />
           </b-tabs>
         </b-card>
       </b-col>
