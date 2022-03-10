@@ -7,13 +7,13 @@
             <div class="period">{{ $t(title).charAt(0).toUpperCase() + $t(title).slice(1) }}</div>
           </b-list-group-item>
           <b-list-group-item>
-            <b-icon icon="wallet" class="mr-2" />
+            <!-- <b-icon icon="wallet" class="mr-2" /> -->
             <span class="value mr-1">{{ earnedOnPeriod.toFixed(2) }}</span>
             <!-- <b-img src="strongblock_circled.png" class="logo m-0 float-right" /> -->
             <span class="">{{ ticker.toUpperCase() }}</span>
           </b-list-group-item>
           <b-list-group-item>
-            <b-icon icon="cash" class="mr-2" />
+            <!-- <b-icon icon="cash" class="mr-2" /> -->
             <span class="value mr-1">{{ asFiat(earnedOnPeriod) }}</span>
             <span class="">{{ currencies[currency].symbol }}</span>
           </b-list-group-item>
