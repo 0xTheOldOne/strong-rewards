@@ -3,10 +3,10 @@
     <b-row class="mb-4">
       <b-col>
         <b-row>
-          <b-col md="6" cols="12">
+          <b-col md="6" cols="9">
             <div class="title">⚙️ {{ $t("pages.home.node_settings.title") }}</div>
           </b-col>
-          <b-col md="6" class="hidden-xs text-right">
+          <b-col md="6" cols="3" class="text-right">
             <ResetSettings />
           </b-col>
         </b-row>

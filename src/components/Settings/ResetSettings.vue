@@ -1,7 +1,9 @@
 <template>
   <div class="component" @click="resetLocalStorage">
-    <b-badge pill variant="success" class="light-version hidden-xs"><b-icon icon="arrow-repeat" /> {{ $t("pages.home.reset_settings.button_text") }}</b-badge>
-    <span class="visible-xs">{{ $t("pages.home.reset_settings.button_text") }}</span>
+    <b-badge pill variant="success" class="light-version">
+      <b-icon icon="arrow-repeat" />
+      <span class="hidden-xs">{{ $t("pages.home.reset_settings.button_text") }}</span>
+    </b-badge>
   </div>
 </template>
 
