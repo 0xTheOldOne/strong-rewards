@@ -5,7 +5,7 @@
         <b-container fluid="md">
           <b-navbar-brand href="#">
             <span class="strongblock-logo mr-2">&nbsp;</span>
-            <span class="mr-3">Strong Calculator</span>
+            <span class="mr-3">{{ appName }}</span>
             <b-badge pill class="mr-2 light-version hidden-xs" variant="success">
               <small>{{ appVersion }}</small>
             </b-badge>
@@ -104,6 +104,7 @@ export default {
   },
   computed: {
     ...mapState({
+      appName: (state) => state.appName,
       screenOrientationToast: (state) => state.screenOrientationToast,
       traductionToast: (state) => state.traductionToast,
     }),

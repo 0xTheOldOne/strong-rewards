@@ -26,6 +26,7 @@ var display_sentinel = false;
 
 export default new Vuex.Store({
   state: {
+    appName: "Strong Calc",
     userLocale: "",
     screenOrientationToast: false,
     traductionToast: false,

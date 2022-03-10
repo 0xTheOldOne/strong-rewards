@@ -31,7 +31,7 @@
             <p>
               Last thing about all of this is i code on my free time (<i>i have a full-time job and a new born, so i don't have a lot of free time unfortunatly</i>... 😅) so this tool is provided "as is" and i'll update it when i can.
             </p>
-            <p>Thank you for your understanding and many thanks for using Strong Calculator ! 🥳</p>
+            <p>Thank you for your understanding and many thanks for using {{ appName }} ! 🥳</p>
           </b-card-text>
         </b-card>
       </b-col>
@@ -188,9 +188,15 @@
 
 <script>
 // import axios from "axios";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   name: "Author",
+  computed: {
+    ...mapState({
+      appName: (state) => state.appName,
+    })
+  },
   // data() {
   //   return {
   //     loaded: false,
