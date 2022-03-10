@@ -80,8 +80,8 @@
                   Add a load/save configuration button so you can easily share a <code>.json</code> file with all your settings
                 </li>
                 <li>
-                  <b-icon icon="circle" class="mr-1" />
-                  Maybe add a share button (<a href="https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview" target="_blank" rel="noopener noreferrer">Twitter intent</a> can help with this)
+                  <b-icon icon="check-circle" variant="success" class="mr-1" />
+                  Maybe add a Twitter share button
                 </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
@@ -93,7 +93,7 @@
                 </li>
                 <li>
                   <b-icon icon="circle" class="mr-1" />
-                  Add a Sentinel nodes tab
+                  Add a Sentinel nodes tab (i don't have this kind of nodes and i'm not whitelisted for this)
                 </li>
                 <!-- <li>
                   <b-icon icon="circle" class="mr-1" />
