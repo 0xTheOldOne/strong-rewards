@@ -32,7 +32,7 @@ export default new Vuex.Store({
     coinGeckoRefreshRateInMs: 1 * 60 * 1000,
     coinGeckoIsReachable: false,
     coinGeckoRequestPending: false,
-    etherScanApiKey: "GK5ISJEBJAIJR1Q97MB6HSVYWB1IJ9UR46",
+    etherScanApiKey: "HKXG2563Y9ZKCUZ6Y398JE8K8WHFEN1QQ3",
     currency: "usd",
     currencies: {
       usd: { id: 1, val: "usd", symbol: "$" },
