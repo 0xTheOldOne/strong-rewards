@@ -47,7 +47,22 @@
       "label": "Gas tracker"
     },
     "projection_chart": {
-      "create_at_ten": "Create a new node once you reach 10 ${token}"
+      "create_at_ten": "Create a new node once you reach 10 ${token}",
+      "series": {
+        "node_count": {
+          "name": "Node count",
+          "tooltip": {
+            "header_format": "After {point.key} day(s)<br />",
+            "value_suffix": " node(s)"
+          }
+        },
+        "compound_projection": {
+          "name": "Compound projections"
+        },
+        "fees_projection": {
+          "name": "Fees projections"
+        }
+      }
     },
     "node_settings": {
       "input_rewards_title": "Rewards per node, per day:",

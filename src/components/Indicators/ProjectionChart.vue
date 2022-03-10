@@ -271,6 +271,7 @@ export default {
   },
   computed: {
     ...mapState({
+      userLocale: (state) => state.userLocale,
       requestPending: (state) => state.coinGeckoRequestPending,
       price: (state) => state.price,
       ticker: (state) => state.ticker,
@@ -278,14 +279,6 @@ export default {
       projectionPeriod: (state) => state.projectionPeriodInMonths,
       projectionAutoCompound: (state) => state.projectionAutoCompound,
     }),
-    options: function () {
-      return [
-        { value: 1, text: "1 " + this.$tc("misc.month", 1) },
-        { value: 3, text: "3 " + this.$tc("misc.month", 3) },
-        { value: 6, text: "6 " + this.$tc("misc.month", 6) },
-        { value: 12, text: "1 " + this.$tc("misc.year", 1) },
-      ];
-    },
     startProjectionDate: function () {
       return new Date();
     },
@@ -296,6 +289,29 @@ export default {
     },
     daysBetweenDates: function () {
       return (this.endProjectionDate.getTime() - this.startProjectionDate.getTime()) / (1000 * 3600 * 24);
+    },
+    options: function () {
+      return [
+        { value: 1, text: "1 " + this.$tc("misc.month", 1) },
+        { value: 3, text: "3 " + this.$tc("misc.month", 3) },
+        { value: 6, text: "6 " + this.$tc("misc.month", 6) },
+        { value: 12, text: "1 " + this.$tc("misc.year", 1) },
+      ];
+    },
+    node_count_name: function () {
+      return this.$t("components.projection_chart.series.node_count.name");
+    },
+    node_count_tooltip_header_format: function () {
+      return this.$t("components.projection_chart.series.node_count.tooltip.header_format");
+    },
+    node_count_tooltip_value_suffix: function () {
+      return this.$t("components.projection_chart.series.node_count.tooltip.value_suffix");
+    },
+    compound_projection_name: function () {
+      return this.$t("components.projection_chart.series.compound_projection.name");
+    },
+    fees_projection_name: function () {
+      return this.$t("components.projection_chart.series.fees_projection.name");
     },
   },
   mounted() {
@@ -313,8 +329,17 @@ export default {
         console.debug(this.network.name + " - drawChart()...");
 
         try {
+          chartOptions.series[0].name = this.node_count_name;
+          chartOptions.series[0].tooltip.headerFormat = this.node_count_tooltip_header_format;
+          chartOptions.series[0].tooltip.valueSuffix = this.node_count_tooltip_value_suffix;
+          chartOptions.series[1].name = this.compound_projection_name;
+          chartOptions.series[2].name = this.fees_projection_name;
           chartOptions.chart.renderTo = "graph-" + this.network.name;
+
+          // TODO : dates
+
           this.computeChartData();
+
           new Highcharts.Chart(chartOptions);
         } catch (error) {
           console.error(error);
@@ -391,6 +416,9 @@ export default {
       this.drawChart();
     },
     "network.nodes": function (newVal, oldVal) {
+      this.drawChart();
+    },
+    userLocale: function (newVal, oldVal) {
       this.drawChart();
     },
   },

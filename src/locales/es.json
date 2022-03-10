@@ -47,7 +47,22 @@
       "label": "Gas tracker"
     },
     "projection_chart": {
-      "create_at_ten": "Crea un nuevo nodo una vez que llegues a 10 ${token}"
+      "create_at_ten": "Crea un nuevo nodo una vez que llegues a 10 ${token}",
+      "series": {
+        "node_count": {
+          "name": "Recuento de nodos",
+          "tooltip": {
+            "header_format": "Después de {point.key} día(s)<br />",
+            "value_suffix": " nodo(s)"
+          }
+        },
+        "compound_projection": {
+          "name": "Proyección de recompensas"
+        },
+        "fees_projection": {
+          "name": "Costos estimados"
+        }
+      }
     },
     "node_settings": {
       "input_rewards_title": "Recompensas por nodo, por día:",
@@ -58,7 +73,7 @@
         "input_rewards_description_etherscan_link": "aquí"
       },
       "input_nodeCount_title": "Recuento de nodos:",
-      "input_nodeCount_description": "Los 10 ${ticker} {token} que necesitas tener para crear otro nodo se ganará aproximadamente {count} {days}, incluyendo el {wallet} {token} ya tienes en tu billetera.",
+      "input_nodeCount_description": "Los 10 ${ticker} {token} que necesitas tener para crear otro nodo se generarán aproximadamente en {count} {days}, incluyendo el {wallet} {token} que ya tienes en tu billetera.",
       "input_nodeCount_description_countReached": "Ya tienes los 10 ${ticker} {token} tokens necesarios para crear otro nodo.",
       "input_nodeCount_description_zeroNode": "Sin ${ticker} nodos, no puedes ganar tokens..."
     }
