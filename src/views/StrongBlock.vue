@@ -2,6 +2,18 @@
   <b-container fluid="md">
     <b-row class="mb-4">
       <b-col>
+        <div class="title">📍 2022 Roadmap</div>
+        <b-card>
+          <b-card-text>
+            <a href="https://github.com/StrongBlock/StrongChain" target="_blank" rel="noopener noreferrer">
+              <b-img src="roadmap_2022.jpg" fluid />
+            </a>
+          </b-card-text>
+        </b-card>
+      </b-col>
+    </b-row>
+    <b-row class="mb-4">
+      <b-col>
         <div class="title">🤔 What is StrongBlock ?</div>
         <b-card>
           <b-card-text>
