@@ -21,10 +21,10 @@
           </b-col>
           <b-col sm="6" cols="12">
             <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
-              <!-- <b-form-group :label="'Node count : ' + network.nodes">
-              <b-form-input v-model.number="network.nodes" type="range" min="0" :max="network.maxNodesPerWallet" placeholder="Node count" required @change="updateNodeCount($event)"></b-form-input>
+              <!-- <b-form-group :label="'Node count : ' + network.nodes.length">
+              <b-form-input v-model.number="network.nodes.length" type="range" min="0" :max="network.maxNodesPerWallet" placeholder="Node count" required @change="updateNodeCount($event)"></b-form-input>
               <template #description>
-                {{ daysToCompound(ticker, network.rewards, network.nodes) }}
+                {{ daysToCompound(ticker, network.rewards, network.nodes.length) }}
               </template>
             </b-form-group> -->
             </b-overlay>

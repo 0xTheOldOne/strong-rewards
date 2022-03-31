@@ -5,7 +5,7 @@
         <small>
           <img :src="network.name + '.png'" class="logo" />
           <span class="ticker">
-            <span class="hidden-xs">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }}</span> ({{ network.nodes }})
+            <span class="hidden-xs">{{ network.name.charAt(0).toUpperCase() + network.name.slice(1) }}</span> ({{ network.nodes.length }})
           </span>
         </small>
       </template>
@@ -370,7 +370,7 @@ export default {
       var data = [];
       var nodes = [];
       var previousValue = parseFloat(this.walletTokens);
-      var numberOfNodes = this.network.nodes;
+      var numberOfNodes = this.network.nodes.length;
 
       for (let i = 0; i <= this.daysBetweenDates; i++) {
         if (this.projectionAutoCompound && previousValue >= 10 && numberOfNodes < this.network.maxNodesPerWallet) {

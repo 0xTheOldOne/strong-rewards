@@ -5,6 +5,10 @@ const vuexPersistKey = "store";
 
 Vue.use(Vuex);
 
+var display_etherum = true;
+var display_polygon = true;
+var display_sentinel = false;
+
 const vuexLocal = new VuexPersistence({
   key: vuexPersistKey,
   storage: window.localStorage,
@@ -12,6 +16,7 @@ const vuexLocal = new VuexPersistence({
     userLocale: state.userLocale,
     screenOrientationToast: state.screenOrientationToast,
     traductionToast: state.traductionToast,
+    newNodeModelToast: state.newNodeModelToast,
     walletTokens: state.walletTokens,
     networks: state.networks,
     nft: state.nft,
@@ -20,16 +25,13 @@ const vuexLocal = new VuexPersistence({
   }),
 });
 
-var display_etherum = true;
-var display_polygon = false;
-var display_sentinel = false;
-
 export default new Vuex.Store({
   state: {
     appName: "Strong Calc",
     userLocale: "",
     screenOrientationToast: false,
     traductionToast: false,
+    newNodeModelToast: false,
     coinGeckoRefreshRateInMs: 5 * 60 * 1000,
     coinGeckoIsReachable: false,
     coinGeckoRequestPending: false,
@@ -45,7 +47,7 @@ export default new Vuex.Store({
     networks: {
       etherum: {
         name: "etherum",
-        nodes: 0,
+        nodes: [],
         maxNodesPerWallet: 100,
         rewards: 0.09143,
         monthlyFees: 14.95,
@@ -53,7 +55,7 @@ export default new Vuex.Store({
       },
       polygon: {
         name: "polygon",
-        nodes: 0,
+        nodes: [],
         maxNodesPerWallet: 100,
         rewards: 0.1,
         monthlyFees: 14.95,
@@ -61,7 +63,7 @@ export default new Vuex.Store({
       },
       sentinel: {
         name: "sentinel",
-        nodes: 0,
+        nodes: [],
         maxNodesPerWallet: 100,
         rewards: 0.1,
         monthlyFees: 14.95,
@@ -89,11 +91,11 @@ export default new Vuex.Store({
       state.userLocale = "";
       state.walletTokens = 0;
       state.networks.etherum.display = display_etherum;
-      state.networks.etherum.nodes = 0;
+      state.networks.etherum.nodes = [];
       state.networks.polygon.display = display_polygon;
-      state.networks.polygon.nodes = 0;
+      state.networks.polygon.nodes = [];
       state.networks.sentinel.display = display_sentinel;
-      state.networks.sentinel.nodes = 0;
+      state.networks.sentinel.nodes = [];
 
       this.commit("initializeFromLocalStorage");
 
@@ -106,6 +108,14 @@ export default new Vuex.Store({
         state = JSON.parse(localStorage.getItem(vuexPersistKey));
       } else {
         localStorage.setItem(vuexPersistKey, JSON.stringify(state));
+      }
+
+      // If local storage used previous node storage version (i.e. node count instead of node array)
+      if (!Array.isArray(state.networks.etherum.nodes)) {
+        console.warn("Local storage need to be reset to default state because it's not correctly reflecting the current data model.");
+        state.newNodeModelToast = true;
+
+        this.commit("resetLocalStorage");
       }
 
       console.debug("Retrieving settings from localStorage... DONE");
@@ -121,6 +131,10 @@ export default new Vuex.Store({
     setTraductionToast(state, payload) {
       console.debug(payload);
       state.traductionToast = payload.dismissed;
+    },
+    setNewNodeModelToast(state, payload) {
+      console.debug(payload);
+      state.newNodeModelToast = payload.dismissed;
     },
     setRefreshRate(state, payload) {
       console.debug(payload);
@@ -144,7 +158,7 @@ export default new Vuex.Store({
     },
     setNodeCount(state, payload) {
       console.debug(payload);
-      state.networks[payload.network].count = payload.count;
+      state.networks[payload.network].nodes = payload.count;
     },
     setNodeRewards(state, payload) {
       console.debug(payload);
@@ -162,21 +176,41 @@ export default new Vuex.Store({
       console.debug(payload);
       state.projectionAutoCompound = payload.value;
     },
+    addNode(state, payload) {
+      console.debug(payload);
+      state.networks[payload.network].nodes.push(payload.node);
+    },
+    removeNode(state, payload) {
+      console.debug(payload);
+
+      if (payload.index != null) {
+        state.networks[payload.network].nodes.splice(payload.index, 1);
+      } else {
+        state.networks[payload.network].nodes.pop();
+      }
+    },
+    editNode(state, payload) {
+      console.debug(payload);
+
+      if (payload.index != null && payload.value != null) {
+        state.networks[payload.network].nodes[payload.index].creation_date = payload.value;
+      }
+    },
   },
   getters: {
     rewardsPerDay(state) {
       var perDay = 0;
 
-      if (state.networks.etherum.display && state.networks.etherum.nodes > 0) {
-        perDay += state.networks.etherum.nodes * state.networks.etherum.rewards;
+      if (state.networks.etherum.display && state.networks.etherum.nodes.length > 0) {
+        perDay += state.networks.etherum.nodes.length * state.networks.etherum.rewards;
       }
 
-      if (state.networks.polygon.display && state.networks.polygon.nodes > 0) {
-        perDay += state.networks.polygon.nodes * state.networks.polygon.rewards;
+      if (state.networks.polygon.display && state.networks.polygon.nodes.length > 0) {
+        perDay += state.networks.polygon.nodes.length * state.networks.polygon.rewards;
       }
 
-      if (state.networks.sentinel.display && state.networks.sentinel.nodes > 0) {
-        perDay += state.networks.sentinel.nodes * state.networks.sentinel.rewards;
+      if (state.networks.sentinel.display && state.networks.sentinel.nodes.length > 0) {
+        perDay += state.networks.sentinel.nodes.length * state.networks.sentinel.rewards;
       }
 
       return perDay.toFixed(4);

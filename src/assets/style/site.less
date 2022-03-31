@@ -120,24 +120,6 @@ body {
       }
     }
 
-    img {
-      &.logo {
-        height: 1.25rem;
-        margin: 0 0.25rem;
-        vertical-align: middle;
-
-        &.hidden-xs {
-          display: inline-block;
-        }
-
-        @media (max-width: @screen-xs-max) {
-          &.hidden-xs {
-            display: none;
-          }
-        }
-      }
-    }
-
     .nav-tabs {
       .nav-item {
         .logo {
@@ -154,6 +136,24 @@ body {
     blockquote {
       border-left: 3px solid fade(@text-color, 50%);
       padding-left: 0.5rem;
+    }
+  }
+
+  img {
+    &.logo {
+      height: 1.25rem;
+      margin: 0 0.25rem;
+      vertical-align: middle;
+
+      &.hidden-xs {
+        display: inline-block;
+      }
+
+      @media (max-width: @screen-xs-max) {
+        &.hidden-xs {
+          display: none;
+        }
+      }
     }
   }
 

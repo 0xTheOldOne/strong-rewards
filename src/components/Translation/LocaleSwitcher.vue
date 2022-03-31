@@ -82,12 +82,7 @@ export default {
 <style scoped lang="less">
 @import "../../assets/style/variables.less";
 
-.component {
-  .locale-switcher {
-    img.logo {
-      margin: 0px !important;
-      margin-right: 0.125rem !important;
-    }
-  }
+.card-body {
+  padding: 0.5rem !important;
 }
 </style>

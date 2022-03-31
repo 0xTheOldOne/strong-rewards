@@ -80,19 +80,6 @@ body #app ul.icons {
 body #app ul.icons li img {
   margin-right: 0.5rem;
 }
-body #app img.logo {
-  height: 1.25rem;
-  margin: 0 0.25rem;
-  vertical-align: middle;
-}
-body #app img.logo.hidden-xs {
-  display: inline-block;
-}
-@media (max-width: 767px) {
-  body #app img.logo.hidden-xs {
-    display: none;
-  }
-}
 body #app .nav-tabs .nav-item .logo {
   height: 1rem;
   margin: 0 0.5rem 0 0;
@@ -103,6 +90,19 @@ body #app .nav-tabs .nav-item * {
 body #app blockquote {
   border-left: 3px solid rgba(241, 255, 255, 0.5);
   padding-left: 0.5rem;
+}
+body img.logo {
+  height: 1.25rem;
+  margin: 0 0.25rem;
+  vertical-align: middle;
+}
+body img.logo.hidden-xs {
+  display: inline-block;
+}
+@media (max-width: 767px) {
+  body img.logo.hidden-xs {
+    display: none;
+  }
 }
 body .light {
   font-weight: 300 !important;

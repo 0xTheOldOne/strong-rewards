@@ -102,13 +102,13 @@ export default {
     daysToCompound: function () {
       var result = -1;
 
-      if (this.network.nodes > 0) {
+      if (this.network.nodes.length > 0) {
         if (this.walletTokens >= 10) {
           result = 0; // 10 tokens already earned
         } else if (this.walletTokens > 0) {
-          result = ((10 - this.walletTokens) / (this.network.nodes * this.network.rewards)).toFixed(2);
+          result = ((10 - this.walletTokens) / (this.network.nodes.length * this.network.rewards)).toFixed(2);
         } else {
-          result = (10 / (this.network.nodes * this.network.rewards)).toFixed(2);
+          result = (10 / (this.network.nodes.length * this.network.rewards)).toFixed(2);
         }
       } else {
         return 0; // No node, can't earn

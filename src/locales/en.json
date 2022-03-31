@@ -3,6 +3,9 @@
     "need_help": "Hey, want to help with translations ?",
     "send_message": "Send me a private message on Twitter"
   },
+  "nodeModelUpdate": {
+    "message": "Following the last update of the application which adds the creation date of a node, the local storage has been restored to a default state because it did not reflect the current data model."
+  },
   "menu": {
     "home": "Calculator",
     "strongblock": "What is StrongBlock ?",
@@ -71,6 +74,9 @@
         "input_rewards_description": "This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 ${ticker} per 7000 Etherum blocks completed.",
         "input_rewards_description_etherscan": "If you want to see the historical number of blocks produced on the Ethereum network and the total block reward, you can download all the values from Etherscan, in a CSV file",
         "input_rewards_description_etherscan_link": "here"
+      },
+      "polygon": {
+        "input_rewards_description": ""
       },
       "input_nodeCount_title": "Node count:",
       "input_nodeCount_description": "The 10 ${ticker} {token} that you need to have in order to create another node will be earned in approximatly {count} {days}, including the {wallet} {token} you already have in your wallet.",

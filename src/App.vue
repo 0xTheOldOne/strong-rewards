@@ -72,6 +72,16 @@
       </b-row>
     </b-container>
 
+    <b-container fluid="md" v-if="!newNodeModelToast">
+      <b-row>
+        <b-col>
+          <small>
+            <b-alert show dismissible variant="warning" class="mb-0 mt-4" @dismissed="handleNewNodeModelToastDismiss">{{ $t("nodeModelUpdate.message") }}</b-alert>
+          </small>
+        </b-col>
+      </b-row>
+    </b-container>
+
     <router-view class="mt-4 mb-4" />
 
     <b-toast id="reset-toast" toaster="b-toaster-top-center" auto-hide-delay="5000" append-toast no-close-button solid>
@@ -107,6 +117,7 @@ export default {
       appName: (state) => state.appName,
       screenOrientationToast: (state) => state.screenOrientationToast,
       traductionToast: (state) => state.traductionToast,
+      newNodeModelToast: (state) => state.newNodeModelToast,
     }),
   },
   created() {
@@ -152,6 +163,12 @@ export default {
     handleTraductionToastDismiss() {
       this.$store.commit({
         type: "setTraductionToast",
+        dismissed: true,
+      });
+    },
+    handleNewNodeModelToastDismiss() {
+      this.$store.commit({
+        type: "setNewNodeModelToast",
         dismissed: true,
       });
     },

@@ -3,6 +3,9 @@
     "need_help": "Hey, tu veux m'aider pour les traductions ?",
     "send_message": "Envoie moi un message sur Twitter"
   },
+  "nodeModelUpdate": {
+    "message": "Suite à la dernière mise à jour de l'application qui ajoute la prise en compte de la date de création des différents noeufs, le stockage local a été restauté à une valeur par défaut car il ne reflétait pas le modèle de données actuel."
+  },
   "menu": {
     "home": "Calculateur",
     "strongblock": "C'est quoi StrongBlock ?",
@@ -68,9 +71,12 @@
       "input_rewards_title": "Gains par node, par jour:",
       "input_rewards_description": "Cette valeur est récupérée depuis CoinGecko, en {currency} ({symbol}) chaque {period} {unit}.",
       "etherum": {
-        "input_rewards_description": "Estimation brute des gains basée sur une moyenne de 6400 blocs Etherum traités par jour. Un node rapporte 0,1 ${ticker} tout les 7000 blocs Etherum traités.",
+        "input_rewards_description": "Estimation brute des gains basée sur une moyenne de 6400 blocs Etherum traités par jour. Un node rapporte 0,1 ${ticker} tous les 7000 blocs Etherum traités.",
         "input_rewards_description_etherscan": "Pour consulter l'historique du nombre de blocs produits sur le réseau Etherum et le total des gains pour ces blocs, il suffit de télécharger ces valeurs depuis Etherscan, disponibles dans un fichier CSV",
         "input_rewards_description_etherscan_link": "ici"
+      },
+      "polygon": {
+        "input_rewards_description": ""
       },
       "input_nodeCount_title": "Nombre de nodes :",
       "input_nodeCount_description": "Les 10 {token} ${ticker} que vous devez posséder pour créer un nouveau node auront été gagnés dans approximativement {count} {days}, en tenant compte des {wallet} {token} que vous avez déjà dans votre wallet.",

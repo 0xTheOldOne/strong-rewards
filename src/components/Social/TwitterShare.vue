@@ -2,8 +2,8 @@
   <div class="component">
     <a :href="'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + encodedText + ''">
       <b-badge pill variant="success" class="light-version">
-        <b-icon icon="twitter" />
-        <span class="hidden-xs">&nbsp;{{ $t("components.share.button") }}</span>
+        <b-icon icon="twitter" class="mr-1" />
+        <span class="hidden-xs">{{ $t("components.share.button") }}</span>
       </b-badge>
     </a>
   </div>
@@ -34,7 +34,7 @@ export default {
       );
     },
     nodeCount() {
-      return this.networks.etherum.nodes + this.networks.polygon.nodes + this.networks.sentinel.nodes;
+      return this.networks.etherum.nodes.length + this.networks.polygon.nodes.length + this.networks.sentinel.nodes.length;
     },
     earnedOnPeriod() {
       return this.rewardsPerDay;
