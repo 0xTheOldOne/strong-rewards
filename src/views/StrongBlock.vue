@@ -35,6 +35,9 @@
                   <a href="https://strongblock.com/" target="_blank" rel="noopener noreferrer"><img src="strongblock_circled.png" class="logo" />Official website</a>
                 </li>
                 <li>
+                  <a href="https://etherscan.io/token/0xDc0327D50E6C73db2F8117760592C8BBf1CDCF38" target="_blank" rel="noopener noreferrer"><img src="strongblock_circled.png" class="logo" />$STRNGR token is minted !</a>
+                </li>
+                <li>
                   <a href="https://strongblock.com/dont-fall-for-it.html" target="_blank" rel="noopener noreferrer"><img src="strongblock_circled.png" class="logo" />Official "Don't fall for it!" campain</a>
                 </li>
                 <li>

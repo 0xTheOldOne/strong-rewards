@@ -57,7 +57,7 @@ export default new Vuex.Store({
         name: "polygon",
         nodes: [],
         maxNodesPerWallet: 100,
-        rewards: 0.1,
+        rewards: 0.125,
         monthlyFees: 14.95,
         display: false,
       },
@@ -91,10 +91,13 @@ export default new Vuex.Store({
       state.userLocale = "";
       state.walletTokens = 0;
       state.networks.etherum.display = display_etherum;
+      state.networks.etherum.rewards = 0.09143;
       state.networks.etherum.nodes = [];
       state.networks.polygon.display = display_polygon;
+      state.networks.polygon.rewards = 0.125;
       state.networks.polygon.nodes = [];
       state.networks.sentinel.display = display_sentinel;
+      state.networks.sentinel.rewards = 0.1;
       state.networks.sentinel.nodes = [];
 
       this.commit("initializeFromLocalStorage");
@@ -156,10 +159,6 @@ export default new Vuex.Store({
       console.debug(payload);
       state.walletTokens = parseFloat(payload.tokens);
     },
-    setNodeCount(state, payload) {
-      console.debug(payload);
-      state.networks[payload.network].nodes = payload.count;
-    },
     setNodeRewards(state, payload) {
       console.debug(payload);
       state.networks[payload.network].rewards = parseFloat(payload.rewards);
@@ -183,32 +182,39 @@ export default new Vuex.Store({
     removeNode(state, payload) {
       console.debug(payload);
 
-      if (payload.index != null) {
-        state.networks[payload.network].nodes.splice(payload.index, 1);
+      if (payload.id != null) {
+        // https://stackoverflow.com/a/15287938
+        console.debug("remove by index !");
+        state.networks[payload.network].nodes = state.networks[payload.network].nodes.filter(function (node) {
+          return node.id !== payload.id;
+        });
       } else {
+        console.debug("node pop !");
         state.networks[payload.network].nodes.pop();
       }
     },
-    editNode(state, payload) {
+    editNodeCreationDate(state, payload) {
       console.debug(payload);
 
-      if (payload.index != null && payload.value != null) {
-        state.networks[payload.network].nodes[payload.index].creation_date = payload.value;
-      }
+      var index = state.networks[payload.network].nodes.findIndex((node) => node.id === payload.id);
+      state.networks[payload.network].nodes[index].creation_date = payload.value;
     },
   },
   getters: {
     rewardsPerDay(state) {
       var perDay = 0;
 
+      // Etherum
       if (state.networks.etherum.display && state.networks.etherum.nodes.length > 0) {
         perDay += state.networks.etherum.nodes.length * state.networks.etherum.rewards;
       }
 
+      // Polygon
       if (state.networks.polygon.display && state.networks.polygon.nodes.length > 0) {
         perDay += state.networks.polygon.nodes.length * state.networks.polygon.rewards;
       }
 
+      // Sentinel
       if (state.networks.sentinel.display && state.networks.sentinel.nodes.length > 0) {
         perDay += state.networks.sentinel.nodes.length * state.networks.sentinel.rewards;
       }

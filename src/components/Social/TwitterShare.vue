@@ -2,8 +2,8 @@
   <div class="component">
     <a :href="'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + encodedText + ''">
       <b-badge pill variant="success" class="light-version">
-        <b-icon icon="twitter" class="mr-1" />
-        <span class="hidden-xs">{{ $t("components.share.button") }}</span>
+        <b-icon icon="twitter" />
+        <span class="ml-1 hidden-xs">{{ $t("components.share.button") }}</span>
       </b-badge>
     </a>
   </div>

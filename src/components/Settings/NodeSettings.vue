@@ -38,8 +38,6 @@
             </b-col>
             <b-col sm="6" cols="12">
               <b-form-group>
-                <!-- <b-form-input v-model.number="network.nodes.length" type="range" min="0" :max="network.maxNodesPerWallet" step="1" required @change="updateNodeCount($event)" class="hidden-xs"></b-form-input> -->
-                <!-- <b-form-input v-model.number="network.nodes.length" type="number" min="0" :max="network.maxNodesPerWallet" step="1" required @change="updateNodeCount($event)" class="visible-xs"></b-form-input> -->
                 <b-form-input v-bind:value="node_count" type="number" min="0" :max="network.maxNodesPerWallet" step="1" required @change="updateNodeCount($event)"></b-form-input>
                 <template #label> {{ $t("components.node_settings.input_nodeCount_title") }} {{ network.nodes.length }} </template>
                 <template #description v-if="network.nodes.length > 0 && walletTokens >= 10">
@@ -73,16 +71,21 @@
           </b-row>
           <b-row v-if="network.nodes.length > 0">
             <b-col cols="12" class="node-list mt-3">
-              <div v-for="node in network.nodes" :key="node.index" class="node">
+              <div v-for="node in network.nodes" :key="node.id" class="node">
                 <b-row>
                   <b-col sm="1" cols="2" class="text-center">
                     <img :src="node.type + '.png'" :alt="network.type" class="logo" />
                   </b-col>
                   <b-col sm="10" cols="8">
-                    <input v-model="network.nodes[node.index].creation_date" :id="node.index" @change="editNodeByIndex" type="date" />
+                    <div class="flex-box">
+                      <input v-model="node.creation_date" :id="node.id" @change="editDateById" type="date" :max="today" />
+                      <div class="hidden-xs centered">
+                        <div>{{ node.reward_per_day }} {{ ticker.toUpperCase() }}/day</div>
+                      </div>
+                    </div>
                   </b-col>
                   <b-col sm="1" cols="2" class="text-right">
-                    <b-button variant="danger" @mouseenter="selectNodeByIndex(node.index)" @click="showDeleteModalByIndex(node.index)">
+                    <b-button variant="danger" @click="deleteById(node.id)">
                       <b-icon icon="trash"></b-icon>
                     </b-button>
                   </b-col>
@@ -121,14 +124,16 @@ export default {
   },
   data() {
     return {
-      node_count: 0,
       selected_node: {},
+      today: new Date().toISOString().split("T")[0],
     };
   },
-  mounted() {
-    this.node_count = this.network.nodes.length;
-  },
+  mounted() {},
   methods: {
+    uuidv4() {
+      // https://stackoverflow.com/a/2117523
+      return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) => (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
+    },
     updateNodeRewards(event) {
       this.$store.commit({
         type: "setNodeRewards",
@@ -145,54 +150,47 @@ export default {
           type: "addNode",
           network: this.network.name,
           node: {
-            index: oldVal,
+            id: this.uuidv4(),
             type: this.network.name,
-            creation_date: new Date().toISOString().split("T")[0],
+            creation_date: this.today,
+            reward_per_day: this.network.rewards,
           },
         });
       } else if (newVal < oldVal) {
         this.$store.commit({
           type: "removeNode",
           network: this.network.name,
-          index: this.node_count - 1,
         });
       }
 
       this.node_count = newVal;
     },
-    selectNodeByIndex(index) {
-      this.selected_node = this.network.nodes[index];
-      this.selected_node.index = index;
-    },
-    showDeleteModalByIndex(index) {
+    deleteById(id) {
       this.$bvModal
         .msgBoxConfirm("Are you sure ?", {
           cancelVariant: "secondary",
-          okVariant: "success",
+          okVariant: "danger",
           hideHeaderClose: true,
           centered: true,
         })
         .then((value) => {
           if (value) {
-            this.deleteNodeByIndex(this.selected_node.index);
+            this.$store.commit({
+              type: "removeNode",
+              network: this.network.name,
+              id: id,
+            });
           }
         })
         .catch((err) => {
           // An error occurred
         });
     },
-    deleteNodeByIndex(index) {
+    editDateById(event) {
       this.$store.commit({
-        type: "removeNode",
+        type: "editNodeCreationDate",
         network: this.network.name,
-        index: index,
-      });
-    },
-    editNodeByIndex(event) {
-      this.$store.commit({
-        type: "editNode",
-        network: this.network.name,
-        index: event.srcElement.id,
+        id: event.srcElement.id,
         value: event.srcElement.value,
       });
     },
@@ -222,9 +220,12 @@ export default {
     },
   },
   watch: {
-    "network.nodes": function (newVal, oldVal) {
-      console.warn(newVal);
-      this.node_count = newVal.length;
+    "network.nodes": {
+      handler(newVal) {
+        this.node_count = newVal.length;
+      },
+      // force eager callback execution
+      immediate: true,
     },
   },
 };
@@ -242,7 +243,12 @@ export default {
   .content {
     .node-list {
       .node {
+        * {
+          font-size: 0.8rem;
+        }
+
         > .row {
+          @height: 2rem;
           @margin: 4px;
           margin: 0;
           margin-bottom: @margin;
@@ -256,13 +262,26 @@ export default {
             width: 100%;
 
             &[type="date"] {
-              line-height: 2rem;
+              line-height: @height;
             }
           }
 
           img {
-            height: 2rem;
+            height: @height;
             width: auto;
+          }
+
+          .flex-box {
+            display: flex;
+            justify-content: space-between;
+
+            .centered {
+              min-width: 200px;
+              height: @height;
+              display: inline-flex;
+              justify-content: center;
+              align-items: center;
+            }
           }
         }
       }

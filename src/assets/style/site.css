@@ -115,10 +115,10 @@ body .hidden-xs {
 }
 @media (max-width: 767px) {
   body .visible-xs {
-    display: block;
+    display: block !important;
   }
   body .hidden-xs {
-    display: none;
+    display: none !important;
   }
 }
 body span.visible-xs {
