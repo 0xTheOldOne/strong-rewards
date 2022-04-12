@@ -23,7 +23,7 @@ export default {
     encodedText() {
       return encodeURI(
         this.$t("components.share.text", {
-          ticker: this.ticker.toUpperCase(),
+          ticker: this.tickerLiteral.toUpperCase(),
           price: this.price,
           nodeCount: this.nodeCount,
           nodeWord: this.$tc("misc.node", this.nodeCount),
@@ -42,6 +42,7 @@ export default {
     encodedUrl: () => encodeURI("https://strong-rewards.herokuapp.com/"),
     ...mapState({
       ticker: (state) => state.ticker,
+      tickerLiteral: (state) => state.tickerLiteral,
       price: (state) => state.price,
       networks: (state) => state.networks,
     }),

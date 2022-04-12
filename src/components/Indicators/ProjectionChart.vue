@@ -17,7 +17,7 @@
                 <b-form-checkbox :checked="projectionAutoCompound" @change="updateProjectionAutoCompound" size="sm" style="width: auto !important">
                   {{
                     $t("components.projection_chart.create_at_ten", {
-                      token: ticker.toUpperCase(),
+                      token: tickerLiteral.toUpperCase(),
                     })
                   }}
                 </b-form-checkbox>
@@ -173,7 +173,7 @@ let chartOptions = {
         xDateFormat: "%e %B %Y (%A)",
         pointFormat: "{series.name}: {point.y}",
         valueDecimals: 2,
-        valueSuffix: " STRONG",
+        valueSuffix: " token(s)",
         shared: true,
       },
       color: "#0F9D58",
@@ -275,6 +275,7 @@ export default {
       requestPending: (state) => state.coinGeckoRequestPending,
       price: (state) => state.price,
       ticker: (state) => state.ticker,
+      tickerLiteral: (state) => state.tickerLiteral,
       walletTokens: (state) => state.walletTokens,
       projectionPeriod: (state) => state.projectionPeriodInMonths,
       projectionAutoCompound: (state) => state.projectionAutoCompound,
@@ -333,6 +334,7 @@ export default {
           chartOptions.series[0].tooltip.headerFormat = this.node_count_tooltip_header_format;
           chartOptions.series[0].tooltip.valueSuffix = this.node_count_tooltip_value_suffix;
           chartOptions.series[1].name = this.compound_projection_name;
+          chartOptions.series[1].tooltip.valueSuffix = " $" + this.tickerLiteral.toUpperCase();
           chartOptions.series[2].name = this.fees_projection_name;
           chartOptions.chart.renderTo = "graph-" + this.network.name;
 

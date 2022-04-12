@@ -4,7 +4,7 @@
     "send_message": "Send me a private message on Twitter"
   },
   "nodeModelUpdate": {
-    "message": "Following the last update of the application which adds the creation date of a node, the local storage has been restored to a default state because it did not reflect the current data model."
+    "message": "The latest update of the application adds the creation date of a node, your local storage has been restored to a default state because it did not reflect the current data model."
   },
   "menu": {
     "home": "Calculator",

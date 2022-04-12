@@ -21,7 +21,7 @@
                     <p>
                       {{
                         $t("components.node_settings." + network.name + ".input_rewards_description", {
-                          ticker: ticker.toUpperCase(),
+                          ticker: tickerLiteral.toUpperCase(),
                         })
                       }}
                     </p>
@@ -43,7 +43,7 @@
                 <template #description v-if="network.nodes.length > 0 && walletTokens >= 10">
                   {{
                     $t("components.node_settings.input_nodeCount_description_countReached", {
-                      ticker: ticker.toUpperCase(),
+                      ticker: tickerLiteral.toUpperCase(),
                       token: $tc("misc.token", Math.floor(walletTokens), { count: walletTokens }),
                     })
                   }}
@@ -51,7 +51,7 @@
                 <template #description v-else-if="network.nodes.length > 0 && walletTokens < 10">
                   {{
                     $t("components.node_settings.input_nodeCount_description", {
-                      ticker: ticker.toUpperCase(),
+                      ticker: tickerLiteral.toUpperCase(),
                       count: daysToCompound,
                       days: $tc("misc.day", Math.floor(walletTokens), { count: walletTokens }),
                       wallet: walletTokens,
@@ -62,7 +62,7 @@
                 <template #description v-else>
                   {{
                     $t("components.node_settings.input_nodeCount_description_zeroNode", {
-                      ticker: ticker.toUpperCase(),
+                      ticker: tickerLiteral.toUpperCase(),
                     })
                   }}
                 </template>
@@ -80,7 +80,7 @@
                     <div class="flex-box">
                       <input v-model="node.creation_date" :id="node.id" @change="editDateById" type="date" :max="today" />
                       <div class="hidden-xs centered">
-                        <div>{{ node.reward_per_day }} {{ ticker.toUpperCase() }}/day</div>
+                        <div>{{ node.reward_per_day }} {{ tickerLiteral.toUpperCase() }}/day</div>
                       </div>
                     </div>
                   </b-col>
@@ -199,6 +199,7 @@ export default {
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,
       ticker: (state) => state.ticker,
+      tickerLiteral: (state) => state.tickerLiteral,
       walletTokens: (state) => state.walletTokens,
     }),
     daysToCompound: function () {

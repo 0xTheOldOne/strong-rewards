@@ -16,7 +16,7 @@
                 <template #label>
                   {{
                     $t("pages.home.node_settings.input_price_title", {
-                      token: ticker.toUpperCase(),
+                      token: tickerLiteral.toUpperCase(),
                     })
                   }}
                 </template>
@@ -36,7 +36,7 @@
                 <template #label>
                   {{
                     $t("pages.home.node_settings.input_walletTokens_title", {
-                      token: ticker.toUpperCase(),
+                      token: tickerLiteral.toUpperCase(),
                     })
                   }}
                 </template>
@@ -79,6 +79,7 @@ export default {
       currencies: (state) => state.currencies,
       currency: (state) => state.currency,
       ticker: (state) => state.ticker,
+      tickerLiteral: (state) => state.tickerLiteral,
       price: (state) => state.price,
       networks: (state) => state.networks,
       walletTokens: (state) => state.walletTokens,

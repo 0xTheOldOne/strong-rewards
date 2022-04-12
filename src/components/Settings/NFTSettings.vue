@@ -62,6 +62,7 @@ export default {
     ...mapState({
       requestPending: (state) => state.coinGeckoRequestPending,
       ticker: (state) => state.ticker,
+      tickerLiteral: (state) => state.tickerLiteral,
     }),
   },
   methods: {},

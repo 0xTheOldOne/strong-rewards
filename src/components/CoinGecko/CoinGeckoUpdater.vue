@@ -71,7 +71,7 @@ export default {
       if (response.success) {
         this.$store.commit({
           type: "setPrice",
-          price: response.data.strong[this.currency],
+          price: response.data[this.ticker][this.currency],
         });
       }
 
@@ -89,6 +89,7 @@ export default {
       currencies: (state) => state.currencies,
       currency: (state) => state.currency,
       ticker: (state) => state.ticker,
+      tickerLiteral: (state) => state.tickerLiteral,
     }),
   },
 };

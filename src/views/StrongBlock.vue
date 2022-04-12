@@ -38,6 +38,9 @@
                   <a href="https://etherscan.io/token/0xDc0327D50E6C73db2F8117760592C8BBf1CDCF38" target="_blank" rel="noopener noreferrer"><img src="strongblock_circled.png" class="logo" />$STRNGR token is minted !</a>
                 </li>
                 <li>
+                  <a href="https://strongblockio.medium.com/strongblock-nodes-as-a-service-upgrades-to-strngr-token-b33d72a3d15a" target="_blank" rel="noopener noreferrer"><img src="strongblock_circled.png" class="logo" />StrongBlock Nodes-as-a-Service upgrades to $STRNGR token</a>
+                </li>
+                <li>
                   <a href="https://strongblock.com/dont-fall-for-it.html" target="_blank" rel="noopener noreferrer"><img src="strongblock_circled.png" class="logo" />Official "Don't fall for it!" campain</a>
                 </li>
                 <li>
@@ -55,7 +58,7 @@
     <b-row class="mb-4">
       <b-col>
         <div>
-          <div class="title">📈 ${{ this.ticker.toUpperCase() }} chart against {{ this.currencies[this.currency].val.toUpperCase() }} ({{ this.currencies[this.currency].symbol }})</div>
+          <div class="title">📈 ${{ this.tickerLiteral.toUpperCase() }} chart against {{ this.currencies[this.currency].val.toUpperCase() }} ({{ this.currencies[this.currency].symbol }})</div>
           <CoinGeckoChart :ticker="ticker" :currency="currency" period="max" />
         </div>
       </b-col>
@@ -78,6 +81,7 @@ export default {
       currencies: (state) => state.currencies,
       currency: (state) => state.currency,
       ticker: (state) => state.ticker,
+      tickerLiteral: (state) => state.tickerLiteral,
     }),
   },
 };

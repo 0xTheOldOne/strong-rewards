@@ -41,7 +41,8 @@ export default new Vuex.Store({
       usd: { id: 1, val: "usd", symbol: "$" },
       eur: { id: 2, val: "eur", symbol: "€" },
     },
-    ticker: "strong",
+    ticker: "stronger",
+    tickerLiteral: "strngr",
     price: 0,
     walletTokens: 0,
     networks: {

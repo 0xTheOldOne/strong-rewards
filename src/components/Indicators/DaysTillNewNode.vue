@@ -5,7 +5,7 @@
       <small v-if="daysToCompound == 0 || walletTokens >= 10">
         {{
           $t("components.node_settings.input_nodeCount_description_countReached", {
-            ticker: ticker.toUpperCase(),
+            ticker: tickerLiteral.toUpperCase(),
             token: $tc("misc.token", Math.floor(walletTokens), { count: walletTokens }),
           })
         }}
@@ -13,7 +13,7 @@
       <small v-else-if="daysToCompound > 0 && walletTokens < 10">
         {{
           $t("components.node_settings.input_nodeCount_description", {
-            ticker: ticker.toUpperCase(),
+            ticker: tickerLiteral.toUpperCase(),
             count: daysToCompound,
             days: $tc("misc.day", Math.floor(walletTokens), { count: walletTokens }),
             wallet: walletTokens,
@@ -24,7 +24,7 @@
       <small v-else>
         {{
           $t("components.node_settings.input_nodeCount_description_zeroNode", {
-            ticker: ticker.toUpperCase(),
+            ticker: tickerLiteral.toUpperCase(),
           })
         }}
       </small>
@@ -148,6 +148,7 @@ export default {
   computed: {
     ...mapState({
       ticker: (state) => state.ticker,
+      tickerLiteral: (state) => state.tickerLiteral,
       price: (state) => state.price,
       currencies: (state) => state.currencies,
       currency: (state) => state.currency,
