@@ -3,9 +3,6 @@
     "need_help": "Hola, ¿quieres ayudar con las traducciones?",
     "send_message": "Envíame un mensaje privado en Twitter"
   },
-  "nodeModelUpdate": {
-    "message": "Después de la última actualización de la aplicación que agrega la fecha de creación de un nodo, el almacenamiento local se restauró a un estado predeterminado porque no reflejaba el modelo de datos actual."
-  },
   "menu": {
     "home": "Calculadora",
     "strongblock": "¿Qué es StrongBlock?",
@@ -72,11 +69,13 @@
       "input_rewards_description": "Este valor se obtiene de CoinGecko, en {currency} ({symbol}) cada {period} {unit}.",
       "etherum": {
         "input_rewards_description": "Ésta es una estimación aproximada de las recompensas basada en un promedio de 6400 bloques de Etherum completados por día. Ganas 0,1 ${ticker} por cada 7000 bloques de Etherum completados.",
-        "input_rewards_description_etherscan": "Si deseas ver el número histórico de bloques producidos en la red Ethereum y la recompensa total por bloques, puedes descargar todos los valores de Etherscan, en un archivo CSV",
-        "input_rewards_description_etherscan_link": "aquí"
+        "input_rewards_description_info": "Si deseas ver el número histórico de bloques producidos en la red Ethereum y la recompensa total por bloques, puedes descargar todos los valores de Etherscan, en un archivo CSV",
+        "input_rewards_description_link": "aquí"
       },
       "polygon": {
-        "input_rewards_description": ""
+        "input_rewards_description": "",
+        "input_rewards_description_info": "El cálculo de las recompensas se realiza mediante una tabla que describe el decaimiento, si quiere ver algunos detalles al respecto, haga clic",
+        "input_rewards_description_link": "here"
       },
       "input_nodeCount_title": "Recuento de nodos:",
       "input_nodeCount_description": "Los 10 ${ticker} {token} que necesitas tener para crear otro nodo se generarán aproximadamente en {count} {days}, incluyendo el {wallet} {token} que ya tienes en tu billetera.",

@@ -27,10 +27,24 @@
                     </p>
                     <div v-if="network.name == 'etherum'">
                       <p class="mt-1">
-                        {{ $t("components.node_settings." + network.name + ".input_rewards_description_etherscan") }}
-                        <a href="https://etherscan.io/chart/blocks?output=csv" target="_blank" rel="noopener noreferrer"> {{ $t("components.node_settings." + network.name + ".input_rewards_description_etherscan_link") }}</a
-                        >.
+                        {{ $t("components.node_settings." + network.name + ".input_rewards_description_info") }}
+                        <a href="https://etherscan.io/chart/blocks?output=csv" target="_blank" rel="noopener noreferrer"> {{ $t("components.node_settings." + network.name + ".input_rewards_description_link") }} </a>.
                       </p>
+                    </div>
+                    <div v-if="network.name == 'polygon'">
+                      <p class="mt-1">
+                        {{ $t("components.node_settings." + network.name + ".input_rewards_description_info") }}
+                        <span v-b-modal.modal-decay-assumption-table>{{ $t("components.node_settings." + network.name + ".input_rewards_description_link") }} </span>.
+                      </p>
+                      <b-modal id="modal-decay-assumption-table" hide-footer centered title="Decay assumption">
+                        <b-container fluid>
+                          <b-row>
+                            <b-col>
+                              <b-img src="decay-assumption.png" fluid-grow alt="Fluid-grow image"></b-img>
+                            </b-col>
+                          </b-row>
+                        </b-container>
+                      </b-modal>
                     </div>
                   </template>
                 </b-form-group>
