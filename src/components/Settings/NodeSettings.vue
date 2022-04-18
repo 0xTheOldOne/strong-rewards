@@ -13,7 +13,17 @@
             <b-col sm="6" cols="12">
               <b-overlay :show="requestPending" variant="transparent" opacity="0.8" blur="5px" rounded="sm">
                 <b-form-group>
-                  <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" min="0" required @change="updateNodeRewards($event)"></b-form-input>
+                  <div v-if="network.name != 'polygon'">
+                    <b-form-input v-model.number="network.rewards" type="number" placeholder="Node rewards" min="0" required @change="updateNodeRewards($event)"></b-form-input>
+                  </div>
+                  <div class="description" v-else>
+                    <code>0.125</code>
+                    on first day<br />
+                    <code>0.124</code>
+                    on second day, till 5<sup>th</sup> day<br />
+                    then <code>f(x) = 0.125 - 0.0004x</code>
+                  </div>
+
                   <template #label>
                     {{ $t("components.node_settings.input_rewards_title") }}
                   </template>
@@ -83,7 +93,7 @@
               </b-form-group>
             </b-col>
           </b-row>
-          <b-row v-if="network.nodes.length > 0">
+          <b-row v-if="false && network.nodes.length > 0">
             <b-col cols="12" class="node-list mt-3">
               <div v-for="node in network.nodes" :key="node.id" class="node">
                 <b-row>
@@ -300,6 +310,12 @@ export default {
           }
         }
       }
+    }
+
+    .description {
+      border-left: 1.5px solid @border-color;
+      padding-left: 0.5rem;
+      margin-bottom: 0.5rem;
     }
 
     @media (max-width: @screen-xs-max) {

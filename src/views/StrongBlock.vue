@@ -2,18 +2,14 @@
   <b-container fluid="md">
     <b-row class="mb-4">
       <b-col>
-        <div class="title">📍 2022 Roadmap</div>
-        <b-card>
-          <b-card-text>
-            <a href="https://github.com/StrongBlock/StrongChain" target="_blank" rel="noopener noreferrer">
-              <b-img src="roadmap_2022.jpg" fluid />
-            </a>
-          </b-card-text>
-        </b-card>
+        <div>
+          <div class="title">📈 ${{ this.tickerLiteral.toUpperCase() }} chart against {{ this.currencies[this.currency].val.toUpperCase() }} ({{ this.currencies[this.currency].symbol }})</div>
+          <CoinGeckoChart :ticker="ticker" :currency="currency" period="max" />
+        </div>
       </b-col>
     </b-row>
     <b-row class="mb-4">
-      <b-col>
+      <b-col sm="8" cols="12">
         <div class="title">🤔 What is StrongBlock ?</div>
         <b-card>
           <b-card-text>
@@ -23,9 +19,7 @@
           </b-card-text>
         </b-card>
       </b-col>
-    </b-row>
-    <b-row class="mb-4">
-      <b-col>
+      <b-col sm="4" cols="12">
         <div class="title">🔗 StrongBlock links</div>
         <b-card>
           <b-card-text>
@@ -47,7 +41,7 @@
                   <a href="https://github.com/StrongBlock/StrongChain" target="_blank" rel="noopener noreferrer"><img src="strongblock_circled.png" class="logo" />StrongBlock Light Paper 2022 </a>
                 </li>
                 <li>
-                  <a href="https://www.coingecko.com/en/coins/strong" target="_blank" rel="noopener noreferrer"><img src="coingecko.png" class="logo" />StrongBlock on CoinGecko</a>
+                  <a :href="'https://www.coingecko.com/en/coins/' + ticker" target="_blank" rel="noopener noreferrer"><img src="coingecko.png" class="logo" />${{ tickerLiteral.toUpperCase() }} on CoinGecko</a>
                 </li>
               </ul>
             </div>
@@ -57,10 +51,14 @@
     </b-row>
     <b-row class="mb-4">
       <b-col>
-        <div>
-          <div class="title">📈 ${{ this.tickerLiteral.toUpperCase() }} chart against {{ this.currencies[this.currency].val.toUpperCase() }} ({{ this.currencies[this.currency].symbol }})</div>
-          <CoinGeckoChart :ticker="ticker" :currency="currency" period="max" />
-        </div>
+        <div class="title">📍 2022 Roadmap</div>
+        <b-card>
+          <b-card-text>
+            <a href="https://github.com/StrongBlock/StrongChain" target="_blank" rel="noopener noreferrer">
+              <b-img src="roadmap_2022.jpg" fluid />
+            </a>
+          </b-card-text>
+        </b-card>
       </b-col>
     </b-row>
   </b-container>

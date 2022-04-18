@@ -6,7 +6,7 @@ const vuexPersistKey = "store";
 Vue.use(Vuex);
 
 var display_etherum = true;
-var display_polygon = true;
+var display_polygon = false;
 var display_sentinel = false;
 
 const vuexLocal = new VuexPersistence({
@@ -212,6 +212,19 @@ export default new Vuex.Store({
 
       // Polygon
       if (state.networks.polygon.display && state.networks.polygon.nodes.length > 0) {
+        var rewards = [];
+        for (let i = 0; i < 181; i++) {
+          var daily = 0;
+          if (i >= 0 && i <= 1) {
+            daily = 0.125;
+          } else if (i > 1 && i < 5) {
+            daily = 0.124;
+          } else {
+            daily = 0.125 - 0.0004 * i;
+          }
+          rewards.push({ x: i, y: daily });
+        }
+
         perDay += state.networks.polygon.nodes.length * state.networks.polygon.rewards;
       }
 
