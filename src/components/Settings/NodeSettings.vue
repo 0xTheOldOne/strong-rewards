@@ -62,7 +62,7 @@
             </b-col>
             <b-col sm="6" cols="12">
               <b-form-group>
-                <b-form-input v-bind:value="node_count" type="number" min="0" :max="network.maxNodesPerWallet" step="1" required @change="updateNodeCount($event)"></b-form-input>
+                <b-form-input v-bind:value="node_count" type="range" min="0" :max="network.maxNodesPerWallet" step="1" required @change="updateNodeCount($event)"></b-form-input>
                 <template #label> {{ $t("components.node_settings.input_nodeCount_title") }} {{ network.nodes.length }} </template>
                 <template #description v-if="network.nodes.length > 0 && walletTokens >= 10">
                   {{
@@ -168,23 +168,28 @@ export default {
     updateNodeCount(event) {
       var newVal = parseInt(event);
       var oldVal = this.node_count;
+      var diff = Math.abs(oldVal - newVal);
 
       if (newVal > oldVal) {
-        this.$store.commit({
-          type: "addNode",
-          network: this.network.name,
-          node: {
-            id: this.uuidv4(),
-            type: this.network.name,
-            creation_date: this.today,
-            reward_per_day: this.network.rewards,
-          },
-        });
+        for (let index = 0; index < diff; index++) {
+          this.$store.commit({
+            type: "addNode",
+            network: this.network.name,
+            node: {
+              id: this.uuidv4(),
+              type: this.network.name,
+              creation_date: this.today,
+              reward_per_day: this.network.rewards,
+            },
+          });
+        }
       } else if (newVal < oldVal) {
-        this.$store.commit({
-          type: "removeNode",
-          network: this.network.name,
-        });
+        for (let index = 0; index < diff; index++) {
+          this.$store.commit({
+            type: "removeNode",
+            network: this.network.name,
+          });
+        }
       }
 
       this.node_count = newVal;
