@@ -11,9 +11,9 @@
 
 <h3>Deploy</h3>
 <p>
-  CI/CD is made using the Heroku pipeline, which is really simple to use when you've allowed Heroku to access to your GitHub repository : everything you push on the main branch is deployed, just what i needed tho ! :yum:
+  Deploy is made using Github pages, i push to the main branch and then i run `npm run build` and `git subtree push --prefix dist origin gh-pages` to push the `/dist` folder to a `gh-pages` branch that is used by Github pages.
 </p>
-<p>See this tutorial if you want to do the same : https://dev.to/anjolaogunmefun/deploy-vue-js-projects-to-heroku-1hb5</p>
+<p>See this tutorial if you want to do the same : https://learnvue.co/2020/09/how-to-deploy-your-vue-app-to-github-pages/</p>
 
 <div class="mb-5">&nbsp;</div>
 
