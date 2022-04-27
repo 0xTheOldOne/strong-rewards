@@ -203,11 +203,11 @@ export default new Vuex.Store({
   },
   getters: {
     rewardsPerDay(state) {
-      var perDay = 0;
+      var result = 0;
 
       // Etherum
       if (state.networks.etherum.display && state.networks.etherum.nodes.length > 0) {
-        perDay += state.networks.etherum.nodes.length * state.networks.etherum.rewards;
+        result += state.networks.etherum.nodes.length * state.networks.etherum.rewards;
       }
 
       // Polygon
@@ -225,15 +225,42 @@ export default new Vuex.Store({
           rewards.push({ x: i, y: daily });
         }
 
-        perDay += state.networks.polygon.nodes.length * state.networks.polygon.rewards;
+        result += state.networks.polygon.nodes.length * state.networks.polygon.rewards;
       }
 
       // Sentinel
       if (state.networks.sentinel.display && state.networks.sentinel.nodes.length > 0) {
-        perDay += state.networks.sentinel.nodes.length * state.networks.sentinel.rewards;
+        result += state.networks.sentinel.nodes.length * state.networks.sentinel.rewards;
       }
 
-      return perDay.toFixed(4);
+      return result.toFixed(4);
+    },
+    feesPerDay(state) {
+      var result = 0;
+
+      // Etherum
+      if (state.networks.etherum.display && state.networks.etherum.nodes.length > 0) {
+        result += state.networks.etherum.nodes.length * state.networks.etherum.monthlyFees;
+      }
+
+      // Polygon
+      if (state.networks.polygon.display && state.networks.polygon.nodes.length > 0) {
+        result += state.networks.polygon.nodes.length * state.networks.polygon.monthlyFees;
+      }
+
+      // Sentinel
+      if (state.networks.sentinel.display && state.networks.sentinel.nodes.length > 0) {
+        result += state.networks.sentinel.nodes.length * state.networks.sentinel.monthlyFees;
+      }
+
+      // Fees are monthly, but we need to display a daily value
+      console.debug("fees per month : " + result.toFixed(4));
+      if (result > 0) {
+        result = result / 30;
+      }
+      console.debug("fees per day : " + result.toFixed(4));
+
+      return result.toFixed(4);
     },
   },
   actions: {},
