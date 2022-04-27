@@ -93,7 +93,7 @@
               </b-form-group>
             </b-col>
           </b-row>
-          <b-row v-if="network.nodes.length > 0">
+          <b-row v-if="false && network.nodes.length > 0">
             <b-col cols="12" class="node-list mt-3">
               <div v-for="node in network.nodes" :key="node.id" class="node">
                 <b-row>
