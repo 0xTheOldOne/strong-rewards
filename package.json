@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\"",
     "postinstall": "npm run build",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "@vue/composition-api": "^1.4.6",
