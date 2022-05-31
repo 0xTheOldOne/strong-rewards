@@ -1,5 +1,7 @@
 <h1 align="center">strong-rewards</h1>
 <img align="right" src="https://img.shields.io/github/package-json/v/0xTheOldOne/strong-rewards?style=for-the-badge" />
+<img align="right" src="https://img.shields.io/github/languages/code-size/0xTheOldOne/strong-rewards?style=for-the-badge" />
+<img align="right" src="https://img.shields.io/github/last-commit/0xTheOldOne/strong-rewards?style=for-the-badge" />
 
 <h3>Description</h3>
 <div>
